@@ -759,19 +759,19 @@ section { position: relative; overflow: hidden; }
   margin: 0 auto 48px;
   text-align: center;
   color: var(--text-gray);
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 18px;
+  line-height: 1.9;
 }
 .products-stats {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 48px;
 }
 .product-stat-card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 22px 14px;
+  padding: 28px 18px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(37,99,235,0.08);
   transition: transform var(--transition), box-shadow var(--transition);
@@ -782,21 +782,21 @@ section { position: relative; overflow: hidden; }
   box-shadow: 0 12px 36px rgba(37,99,235,0.14);
 }
 .product-stat-num {
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--deep-blue);
   line-height: 1.2;
 }
 .product-stat-num .unit {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--teal);
 }
 .product-stat-label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-gray);
-  margin-top: 6px;
-  line-height: 1.4;
+  margin-top: 8px;
+  line-height: 1.5;
 }
 .products-tagline {
   text-align: center;
@@ -993,7 +993,7 @@ section { position: relative; overflow: hidden; }
 @media (max-width: 1024px) {
   .honor-stats { grid-template-columns: repeat(2, 1fr); }
   .honor-grid { grid-template-columns: 1fr; }
-  .products-stats { grid-template-columns: repeat(3, 1fr); }
+  .products-stats { grid-template-columns: repeat(2, 1fr); }
   .patent-banner { padding: 32px 24px; }
   .patent-images-row img { height: 160px; }
   .patent-images-row img:first-child { max-width: 320px; }
@@ -1003,7 +1003,9 @@ section { position: relative; overflow: hidden; }
   .honor-stat-num { font-size: 28px; }
   .honor-gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .products-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .product-stat-num { font-size: 22px; }
+  .product-stat-num { font-size: 26px; }
+  .product-stat-label { font-size: 12px; }
+  .products-intro { font-size: 16px; line-height: 1.8; }
   .products-grid { grid-template-columns: 1fr; }
   .patent-banner { padding: 24px 16px; }
   .patent-banner h3 { font-size: 20px; }
@@ -1234,14 +1236,10 @@ section { position: relative; overflow: hidden; }
       <p style="color:var(--text-light);font-size:14px;margin-top:6px;font-family:var(--font-en);letter-spacing:1px;">Developed Products &amp; Translation Achievements</p>
     </div>
 
-    <p class="products-intro fade-in fade-in-delay-1">权生医药依托生物活性物质开发、纳米递送、细胞衍生物应用和功效产品转化等技术基础，已完成医疗器械、护肤品、功能性食品等多类产品开发，并通过横向项目、技术合作与专利转让等方式实现成果转化，逐步形成"科研服务—技术产品—商业转化"的闭环体系。</p>
+    <p class="products-intro fade-in fade-in-delay-1">权生医药依托生物活性物质开发、纳米递送、细胞衍生物应用和功效产品转化等技术基础，已完成多类产品开发，服务客户升级产品技术，实现商业转化与价值裂变。</p>
 
     <!-- Stats cards -->
     <div class="products-stats fade-in fade-in-delay-2">
-      <div class="product-stat-card">
-        <div class="product-stat-num">1471<span class="unit">万元</span></div>
-        <div class="product-stat-label">横向项目和专利转让费用</div>
-      </div>
       <div class="product-stat-card">
         <div class="product-stat-num">3<span class="unit">项</span></div>
         <div class="product-stat-label">已成功研发产品类型</div>
