@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>预制包/技术包 | 重庆权生医药科技有限公司</title>
+<meta name="description" content="权生医药将复杂研发能力切片封装为标准化技术产品，覆盖线粒体研究、细胞功能研究、纳米粒制备与透皮递送等前沿方向。">
+<style>
+/* ===== CSS Reset & Variables ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --deep-blue:#0B1F3A;--primary-blue:#1A56DB;--teal:#00C9A7;--teal-dark:#00A389;
+  --light-bg:#F0F6FF;--white:#FFFFFF;--text-gray:#4A5568;--text-light:#A0AEC0;
+  --card-shadow:0 4px 24px rgba(11,31,58,0.08);
+  --card-shadow-hover:0 12px 40px rgba(11,31,58,0.14);
+  --radius:16px;--radius-sm:8px;
+  --font-cn:'Source Han Sans CN','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --transition:0.32s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-cn);color:var(--text-gray);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}button{cursor:pointer;border:none;outline:none;font-family:inherit}
+section{position:relative;overflow:hidden}
+
+/* ===== Utility ===== */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal);padding:6px 14px;border:1.5px solid var(--teal);border-radius:100px;margin-bottom:16px}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.2;margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--text-gray);line-height:1.8;max-width:700px}
+.section-sub.center{margin:0 auto}
+.fade-in{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in-delay-1{transition-delay:0.1s}.fade-in-delay-2{transition-delay:0.2s}
+.fade-in-delay-3{transition-delay:0.3s}.fade-in-delay-4{transition-delay:0.4s}
+
+/* ===== Navbar - Shared via nav.css ===== */
+
+/* ===== 1. Hero Banner ===== */
+.kits-hero{position:relative;min-height:82vh;display:flex;align-items:center;background-image:url('images/kits-hero-bg.png');background-size:cover;background-position:center center;background-repeat:no-repeat;overflow:hidden}
+.kits-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,31,58,0.58) 0%,rgba(11,31,58,0.45) 50%,rgba(11,31,58,0.55) 100%);pointer-events:none;z-index:1}
+.kits-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(transparent,rgba(11,31,58,0.35));pointer-events:none;z-index:1}
+.hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto;text-align:center;padding:140px 24px 100px}
+.hero-inner .section-tag{border-color:rgba(0,201,167,0.6);color:var(--teal);background:rgba(0,201,167,0.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);margin-bottom:24px}
+.hero-title{font-size:clamp(36px,5.5vw,56px);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:12px;letter-spacing:-0.5px;text-shadow:0 2px 12px rgba(0,0,0,0.25)}
+.hero-en{font-size:15px;color:rgba(255,255,255,0.55);letter-spacing:1px;font-weight:500;margin-bottom:20px}
+.hero-desc{font-size:17px;color:rgba(255,255,255,0.75);line-height:1.8;max-width:680px;margin:0 auto 36px;text-shadow:0 1px 4px rgba(0,0,0,0.15)}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-btns a{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:13px 28px;border-radius:100px;transition:background var(--transition),box-shadow var(--transition),transform var(--transition)}
+.btn-hero-primary{background:var(--teal);color:var(--white);box-shadow:0 4px 16px rgba(0,201,167,0.3)}
+.btn-hero-primary:hover{background:var(--teal-dark);box-shadow:0 6px 24px rgba(0,201,167,0.4);transform:translateY(-2px)}
+.btn-hero-outline{background:rgba(255,255,255,0.08);color:var(--white);border:1.5px solid rgba(255,255,255,0.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.btn-hero-outline:hover{border-color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.15);transform:translateY(-2px)}
+
+/* ===== 2. Platform Positioning ===== */
+.platform-pos{position:relative;min-height:70vh;display:flex;align-items:center;padding:80px 0;background-image:url('images/kits-platform-bg.png');background-size:cover;background-position:center center;background-repeat:no-repeat;overflow:hidden}
+.platform-pos::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(240,246,255,0.92) 0%,rgba(255,255,255,0.85) 50%,rgba(240,246,255,0.90) 100%);pointer-events:none;z-index:1}
+.platform-pos-inner{position:relative;z-index:2;max-width:900px;margin:0 auto;text-align:center}
+.platform-pos-inner .section-tag{border-color:rgba(0,201,167,0.4);background:rgba(255,255,255,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.platform-pos-inner .section-title{color:var(--deep-blue)!important}
+.platform-pos-inner .section-sub{color:var(--text-gray)!important}
+.platform-pos-text-box{position:relative;z-index:2;background:rgba(255,255,255,0.65);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:16px;padding:28px 36px;max-width:960px;margin:0 auto 40px;border:1px solid rgba(255,255,255,0.7);box-shadow:0 4px 24px rgba(11,31,58,0.06)}
+.platform-pos-text-box .platform-pos-text{font-size:15px;color:var(--text-gray);line-height:1.9;text-align:center;margin:0}
+.platform-cards{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.platform-card{background:rgba(255,255,255,0.70);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:20px;padding:36px 28px;border:1px solid rgba(255,255,255,0.8);box-shadow:0 4px 20px rgba(11,31,58,0.07);transition:transform var(--transition),box-shadow var(--transition);text-align:center}
+.platform-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(11,31,58,0.12);background:rgba(255,255,255,0.85)}
+.platform-card-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(0,201,167,0.15),rgba(0,201,167,0.05));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;color:var(--teal)}
+.platform-card h3{font-size:18px;font-weight:700;color:var(--deep-blue);margin-bottom:10px}
+.platform-card p{font-size:14px;color:var(--text-gray);line-height:1.7}
+
+/* ===== 3. Data Cards ===== */
+.data-section{padding:60px 0;background:linear-gradient(180deg,#F8FBFF,#F0F6FF)}
+.data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.data-card{text-align:center;background:var(--white);border-radius:16px;padding:28px 16px;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.04);transition:transform var(--transition),box-shadow var(--transition)}
+.data-card:hover{transform:translateY(-3px);box-shadow:var(--card-shadow)}
+.data-card-num{font-size:32px;font-weight:800;color:var(--teal);line-height:1;margin-bottom:6px}
+.data-card-num span{font-size:14px;font-weight:600;color:var(--teal-dark)}
+.data-card-label{font-size:12px;color:var(--text-gray);line-height:1.5}
+
+/* ===== 4. Three Directions ===== */
+.directions{padding:80px 0;background:var(--white)}
+.directions-header{text-align:center;max-width:700px;margin:0 auto 48px}
+.directions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.direction-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05);transition:transform var(--transition),box-shadow var(--transition);position:relative}
+.direction-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),rgba(0,201,167,0.2));border-radius:20px 20px 0 0;transform:scaleX(0);transform-origin:left;transition:transform var(--transition)}
+.direction-card:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-hover)}
+.direction-card:hover::before{transform:scaleX(1)}
+.direction-card-head{padding:32px 28px 24px;background:var(--deep-blue);position:relative}
+.direction-card-head h3{font-size:20px;font-weight:700;color:var(--white);margin-bottom:4px}
+.direction-card-head .dir-en{font-size:12px;color:rgba(255,255,255,0.45);letter-spacing:0.5px}
+.direction-card-body{padding:28px}
+.direction-keywords{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.direction-kw{font-size:11px;padding:4px 10px;border-radius:100px;background:rgba(0,201,167,0.08);color:var(--teal-dark);font-weight:500;border:1px solid rgba(0,201,167,0.15)}
+.direction-desc{font-size:14px;color:var(--text-gray);line-height:1.75}
+
+/* ===== 5. Featured Package: Mitochondria ===== */
+.featured-pkg{padding:80px 0;background:linear-gradient(180deg,#F8FBFF,#F0F6FF 50%,#FFFFFF)}
+.featured-pkg-header{margin-bottom:40px}
+.featured-pkg-en{font-size:14px;color:var(--text-light);font-weight:500;letter-spacing:0.5px;margin-bottom:16px}
+.featured-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.featured-left{background:var(--white);border-radius:24px;padding:40px;box-shadow:0 4px 20px rgba(11,31,58,0.05);border:1px solid rgba(11,31,58,0.05);position:relative;overflow:hidden}
+.featured-left::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),rgba(0,201,167,0.2))}
+.featured-text{font-size:15px;color:var(--text-gray);line-height:1.85;margin-bottom:28px}
+.featured-label{font-size:13px;font-weight:700;color:var(--deep-blue);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.featured-label .fl-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.featured-list{list-style:none;margin-bottom:28px}
+.featured-list li{font-size:14px;color:var(--text-gray);padding:6px 0;border-bottom:1px solid rgba(11,31,58,0.04);display:flex;align-items:center;gap:10px;line-height:1.5}
+.featured-list li:last-child{border-bottom:none}
+.featured-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.featured-tech{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.featured-tech-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-gray);line-height:1.5}
+.featured-tech-item svg{width:16px;height:16px;color:var(--teal);flex-shrink:0;margin-top:2px}
+.featured-right{border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(11,31,58,0.10)}
+.featured-right img{width:100%;height:100%;object-fit:cover;min-height:400px}
+
+/* ===== 6. Featured Package: Nano ===== */
+.nano-pkg{padding:80px 0;background:var(--white);position:relative}
+.nano-pkg::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#FFFFFF 0%,#F5F9FF 50%,#EBF4FF 100%);pointer-events:none}
+.nano-pkg>.container{position:relative;z-index:2}
+.nano-pkg-header{margin-bottom:40px}
+.nano-pkg-en{font-size:14px;color:var(--text-light);font-weight:500;letter-spacing:0.5px;margin-bottom:16px}
+.nano-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.nano-right{background:var(--white);border-radius:24px;padding:40px;box-shadow:0 4px 20px rgba(11,31,58,0.05);border:1px solid rgba(11,31,58,0.05);position:relative;overflow:hidden}
+.nano-right::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary-blue),rgba(26,86,219,0.2))}
+.nano-text{font-size:15px;color:var(--text-gray);line-height:1.85;margin-bottom:28px}
+.nano-left{border-radius:24px;overflow:hidden;box-shadow:0 8px 32px rgba(11,31,58,0.10)}
+.nano-left img{width:100%;height:100%;object-fit:cover;min-height:400px}
+
+/* ===== 7. Kit Gallery ===== */
+.kit-gallery{padding:80px 0;background:var(--white)}
+.kit-gallery-header{text-align:center;max-width:700px;margin:0 auto 48px}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.gallery-card{background:var(--white);border-radius:20px;overflow:hidden;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05);transition:transform var(--transition),box-shadow var(--transition);cursor:pointer}
+.gallery-card:hover{transform:translateY(-4px);box-shadow:var(--card-shadow-hover)}
+.gallery-card-img{height:240px;overflow:hidden;background:var(--light-bg)}
+.gallery-card-img img{width:100%;height:100%;object-fit:cover;transition:transform var(--transition)}
+.gallery-card:hover .gallery-card-img img{transform:scale(1.03)}
+.gallery-card-body{padding:24px}
+.gallery-card-title{font-size:17px;font-weight:700;color:var(--deep-blue);margin-bottom:8px}
+.gallery-card-desc{font-size:13px;color:var(--text-gray);line-height:1.7}
+
+/* ===== Lightbox ===== */
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(11,31,58,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:40px;cursor:pointer}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90%;max-height:85vh;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.lightbox-close{position:absolute;top:24px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s}
+.lightbox-close:hover{background:rgba(255,255,255,0.3)}
+.lightbox-close svg{width:20px;height:20px;color:var(--white)}
+
+/* ===== 8. Catalog ===== */
+.catalog{padding:80px 0;background:linear-gradient(180deg,#F8FBFF,#F0F6FF)}
+.catalog-header{text-align:center;max-width:700px;margin:0 auto 48px}
+.catalog-tabs{display:flex;justify-content:center;gap:12px;margin-bottom:36px;flex-wrap:wrap}
+.catalog-tab{font-size:14px;font-weight:600;padding:10px 24px;border-radius:100px;background:var(--white);color:var(--text-gray);border:1.5px solid rgba(11,31,58,0.08);cursor:pointer;transition:all var(--transition)}
+.catalog-tab.active{background:var(--teal);color:var(--white);border-color:var(--teal)}
+.catalog-tab:hover:not(.active){border-color:rgba(0,201,167,0.3);color:var(--teal-dark)}
+.catalog-panel{display:none}
+.catalog-panel.active{display:block}
+.catalog-card{background:var(--white);border-radius:20px;padding:36px;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05)}
+.catalog-category{font-size:18px;font-weight:700;color:var(--deep-blue);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.catalog-category .cat-dot{width:10px;height:10px;border-radius:50%;background:var(--teal)}
+.catalog-items{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.catalog-item{display:flex;align-items:center;gap:10px;padding:14px 18px;background:var(--light-bg);border-radius:12px;font-size:14px;color:var(--text-gray);transition:background 0.2s}
+.catalog-item:hover{background:#E8F2FF}
+.catalog-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+/* ===== 9. Delivery ===== */
+.delivery{padding:80px 0;background:var(--white)}
+.delivery-header{text-align:center;max-width:700px;margin:0 auto 48px}
+.delivery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.delivery-card{text-align:center;background:var(--white);border-radius:20px;padding:36px 28px;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05);transition:transform var(--transition),box-shadow var(--transition)}
+.delivery-card:hover{transform:translateY(-4px);box-shadow:var(--card-shadow)}
+.delivery-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(0,201,167,0.12),rgba(0,201,167,0.04));display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px;color:var(--teal)}
+.delivery-card h3{font-size:17px;font-weight:700;color:var(--deep-blue);margin-bottom:8px}
+.delivery-card p{font-size:13px;color:var(--text-gray);line-height:1.7}
+
+/* ===== 10. Scenarios ===== */
+.scenarios{padding:80px 0;background:linear-gradient(180deg,#F8FBFF,#F0F6FF)}
+.scenarios-header{text-align:center;max-width:700px;margin:0 auto 48px}
+.scenarios-split{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.scenarios-col h3{font-size:18px;font-weight:700;color:var(--deep-blue);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.scenarios-col h3 svg{width:20px;height:20px;color:var(--teal)}
+.scenarios-list{display:flex;flex-direction:column;gap:10px}
+.scenarios-list-item{display:flex;align-items:center;gap:12px;padding:14px 20px;background:var(--white);border-radius:12px;box-shadow:0 1px 6px rgba(11,31,58,0.03);font-size:14px;color:var(--text-gray);transition:transform 0.2s,box-shadow 0.2s}
+.scenarios-list-item:hover{transform:translateX(4px);box-shadow:0 4px 12px rgba(11,31,58,0.06)}
+.scenarios-list-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.scenarios-list-item span{font-weight:600;color:var(--deep-blue);min-width:140px;flex-shrink:0}
+
+/* ===== 11. CTA ===== */
+.kits-cta{padding:100px 0;background:linear-gradient(135deg,var(--deep-blue) 0%,#0D2847 100%);position:relative;overflow:hidden}
+.kits-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(0,201,167,0.12),transparent 55%);pointer-events:none}
+.cta-inner{text-align:center;position:relative;z-index:2}
+.cta-inner .section-title{color:var(--white)}
+.cta-inner .section-sub{color:rgba(255,255,255,0.6);margin:0 auto 32px}
+.cta-coop{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:32px}
+.cta-coop-tag{font-size:12px;padding:6px 16px;border-radius:100px;background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);border:1px solid rgba(255,255,255,0.1);transition:background 0.2s,border-color 0.2s}
+.cta-coop-tag:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.25)}
+
+/* ===== Buttons (shared) ===== */
+.btn-primary{background:var(--teal);color:var(--white);padding:13px 28px;border-radius:100px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background var(--transition),box-shadow var(--transition),transform var(--transition)}
+.btn-primary:hover{background:var(--teal-dark);box-shadow:0 6px 24px rgba(0,201,167,0.3);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--deep-blue);border:1.5px solid rgba(11,31,58,0.15);padding:13px 28px;border-radius:100px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:all var(--transition)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.cta-buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-cta{background:var(--teal);color:var(--white)!important;padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background var(--transition),box-shadow var(--transition),transform 0.2s}
+.btn-cta:hover{background:var(--teal-dark)!important;box-shadow:0 6px 24px rgba(0,201,167,0.35);transform:translateY(-2px)}
+.btn-cta-ghost{background:transparent;color:var(--white)!important;border:1.5px solid rgba(255,255,255,0.35);padding:14px 32px;border-radius:100px;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:border-color var(--transition),background var(--transition),transform 0.2s}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.08);transform:translateY(-2px)}
+
+/* ===== Footer ===== */
+#footer{background:#071526;padding:60px 0 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand .footer-logo-text{font-size:18px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand .footer-logo-sub{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:16px}
+.footer-brand-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;max-width:280px}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.4);transition:color var(--transition)}
+.footer-links a:hover{color:var(--teal)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 0;flex-wrap:wrap;gap:12px}
+.footer-copyright{font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-icp{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* ===== Back to Top ===== */
+#back-to-top{position:fixed;bottom:32px;right:32px;z-index:999;width:44px;height:56px;background:var(--teal);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity var(--transition),transform var(--transition),background var(--transition);box-shadow:0 4px 16px rgba(0,201,167,0.3)}
+#back-to-top.show{opacity:1;pointer-events:all}
+#back-to-top:hover{background:var(--teal-dark);transform:translateY(-3px)}
+#back-to-top svg{width:18px;height:18px;color:var(--white)}
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){
+  .data-grid{grid-template-columns:repeat(3,1fr)}
+  .directions-grid,.delivery-grid{grid-template-columns:1fr 1fr}
+  .featured-split,.nano-split{grid-template-columns:1fr}
+  .featured-right img,.nano-left img{min-height:300px}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .catalog-items{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
+  .platform-pos{min-height:60vh}
+}
+@media(max-width:768px){
+  .kits-hero{min-height:70vh;background-position:center 30%}
+  .hero-inner{padding:120px 20px 60px}
+  .hero-title{font-size:30px}
+  .hero-en{font-size:13px}
+  .hero-desc{font-size:15px}
+  .platform-pos{min-height:auto;padding:60px 0;background-position:center 40%}
+  .platform-pos-text-box{padding:20px 24px;margin-left:16px;margin-right:16px}
+  .data-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .data-card{padding:20px 12px}
+  .data-card-num{font-size:26px}
+  .platform-cards{grid-template-columns:1fr}
+  .platform-card{padding:28px 20px}
+  .directions-grid,.delivery-grid{grid-template-columns:1fr}
+  .featured-split,.nano-split{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .catalog-items{grid-template-columns:1fr}
+  .scenarios-split{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .cta-buttons{flex-direction:column;align-items:center}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="权生医药"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">公司介绍</a></li>
+      <li><a href="research-service.html">科研服务平台</a></li>
+      <li><a href="kits.html" class="active">预制包/技术包</a></li>
+      <li><a href="index.html#pipeline">新药管线</a></li>
+      <li><a href="medaes.html">医美转化</a></li>
+      <li><a href="index.html#cooperation">合作与投资</a></li>
+      <li><a href="index.html#contact" class="nav-cta">联系我们</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">首页</a><a href="about.html">公司介绍</a><a href="research-service.html">科研服务平台</a><a href="kits.html" class="active">预制包/技术包</a><a href="index.html#pipeline">新药管线</a><a href="medaes.html">医美转化</a><a href="index.html#cooperation">合作与投资</a><a href="index.html#contact">联系我们</a>
+  </div>
+</nav>
+
+<!-- ===== 1. HERO BANNER ===== -->
+<section class="kits-hero">
+  <div class="hero-inner">
+    <div class="section-tag fade-in">
+      <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="#00C9A7"/></svg>
+      标准化研究工具
+    </div>
+    <h1 class="hero-title fade-in fade-in-delay-1">预制包 / 技术包</h1>
+    <div class="hero-en fade-in fade-in-delay-2">Ready-to-use Research Kits &amp; Technology Packages</div>
+    <p class="hero-desc fade-in fade-in-delay-2">标准化、即用型科研工具产品，覆盖线粒体研究、细胞功能评价、纳米粒制备与透皮递送等前沿方向，助力科研项目快速启动与稳定复现。</p>
+    <div class="hero-btns fade-in fade-in-delay-3">
+      <a href="#catalog" class="btn-hero-primary">查看试剂盒目录</a>
+      <a href="#directions" class="btn-hero-outline">了解技术包方案</a>
+      <a href="index.html#contact" class="btn-hero-outline">咨询定制服务</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. PLATFORM POSITIONING ===== -->
+<section class="platform-pos" id="positioning">
+  <div class="container">
+    <div class="platform-pos-inner fade-in">
+      <div class="section-tag">平台定位</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">从项目执行走向技术产品化</h2>
+      <p class="section-sub center">将复杂研发能力切片封装为标准化技术产品，覆盖线粒体研究、细胞功能研究、纳米粒制备与透皮递送等前沿方向，助力科研项目快速启动、稳定复现与高效推进。</p>
+    </div>
+    <div class="platform-pos-text-box fade-in">
+      <p class="platform-pos-text">权生医药依托全生物活性物质开发体系，将长期积累的线粒体研究、纳米递送、细胞功能评价和透皮技术开发能力，沉淀为"试剂盒 + SOP + 技术文档 + 应用指导"的标准化预制包/技术包。该平台不仅面向科研人员和临床医生提供项目执行支持，也面向企业客户提供技术升级、产品方案与验证支持，是公司"研发服务化"与"技术产品化"的重要承载。</p>
+    </div>
+    <div class="platform-cards">
+      <div class="platform-card fade-in fade-in-delay-1">
+        <div class="platform-card-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="14" r="6"/><path d="M8 30C8 24,12 20,18 20C24 20,28 24,28 30"/><path d="M14 14l4-3 4 3"/></svg>
+        </div>
+        <h3>面向临床医生与科研人员</h3>
+        <p>提供科研解决方案、实验执行支持、标准化试剂盒和数据验证服务。</p>
+      </div>
+      <div class="platform-card fade-in fade-in-delay-2">
+        <div class="platform-card-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="8" width="28" height="20" rx="3"/><path d="M4 14h28"/><path d="M12 20h4M20 20h4"/></svg>
+        </div>
+        <h3>面向企业客户</h3>
+        <p>提供技术升级、产品开发、工艺验证、功效评价和技术文档支持。</p>
+      </div>
+      <div class="platform-card fade-in fade-in-delay-3">
+        <div class="platform-card-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 28L8 12L20 4L32 12L32 28L20 36Z"/><path d="M14 28V18h12v10"/><circle cx="20" cy="24" r="2"/></svg>
+        </div>
+        <h3>高频需求产品化</h3>
+        <p>将成熟技术沉淀为试剂盒、SOP和预制包，提高复用率和交付效率。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. CORE DATA ===== -->
+<section class="data-section" id="data">
+  <div class="container">
+    <div class="data-grid">
+      <div class="data-card fade-in"><div class="data-card-num">47<span>款</span></div><div class="data-card-label">科研试剂盒产品</div></div>
+      <div class="data-card fade-in fade-in-delay-1"><div class="data-card-num">17<span>款</span></div><div class="data-card-label">线粒体相关试剂盒</div></div>
+      <div class="data-card fade-in fade-in-delay-2"><div class="data-card-num">16<span>款</span></div><div class="data-card-label">细胞相关试剂盒</div></div>
+      <div class="data-card fade-in fade-in-delay-3"><div class="data-card-num">14<span>款</span></div><div class="data-card-label">纳米粒相关试剂盒</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. THREE DIRECTIONS ===== -->
+<section class="directions" id="directions">
+  <div class="container">
+    <div class="directions-header fade-in">
+      <div class="section-tag">产品方向</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">三大标准化产品方向</h2>
+      <p class="section-sub center">覆盖线粒体研究、细胞功能评价、纳米粒制备与透皮递送等核心科研方向</p>
+    </div>
+    <div class="directions-grid">
+      <div class="direction-card fade-in fade-in-delay-1">
+        <div class="direction-card-head">
+          <h3>线粒体研究预制包</h3>
+          <div class="dir-en">Mitochondria Research Package</div>
+        </div>
+        <div class="direction-card-body">
+          <div class="direction-keywords">
+            <span class="direction-kw">线粒体分离</span><span class="direction-kw">长效保存</span><span class="direction-kw">活性检测</span><span class="direction-kw">膜电位检测</span><span class="direction-kw">ROS检测</span><span class="direction-kw">Mito-Tracker</span><span class="direction-kw">体外扩增</span>
+          </div>
+          <p class="direction-desc">面向线粒体功能研究、细胞器治疗研究、急性损伤模型研究等场景，提供从样本处理、线粒体分离、保存、活性检测到功能评价的一体化工具包。</p>
+        </div>
+      </div>
+      <div class="direction-card fade-in fade-in-delay-2">
+        <div class="direction-card-head">
+          <h3>细胞功能研究预制包</h3>
+          <div class="dir-en">Cell Function Research Package</div>
+        </div>
+        <div class="direction-card-body">
+          <div class="direction-keywords">
+            <span class="direction-kw">CCK-8</span><span class="direction-kw">BCA</span><span class="direction-kw">细胞活性检测</span><span class="direction-kw">细胞分离</span><span class="direction-kw">细胞表面修饰</span><span class="direction-kw">功能评价</span>
+          </div>
+          <p class="direction-desc">面向细胞活性、增殖、损伤、修复、炎症及细胞膜相关研究，提供标准化检测工具和实验流程。</p>
+        </div>
+      </div>
+      <div class="direction-card fade-in fade-in-delay-3">
+        <div class="direction-card-head">
+          <h3>纳米粒与透皮递送技术包</h3>
+          <div class="dir-en">Nano &amp; Transdermal Package</div>
+        </div>
+        <div class="direction-card-body">
+          <div class="direction-keywords">
+            <span class="direction-kw">PLA纳米粒</span><span class="direction-kw">PLGA纳米粒</span><span class="direction-kw">ICG纳米粒</span><span class="direction-kw">线粒体修饰</span><span class="direction-kw">高透皮递送</span><span class="direction-kw">载体制备</span>
+          </div>
+          <p class="direction-desc">面向纳米药物递送、透皮递送、医美功效成分递送和实验室制剂开发，提供载体制备、修饰、检测和验证方案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. FEATURED: MITOCHONDRIA ===== -->
+<section class="featured-pkg" id="mitochondria">
+  <div class="container">
+    <div class="featured-pkg-header fade-in">
+      <div class="section-tag">重点预制包</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">线粒体研究预制包</h2>
+      <div class="featured-pkg-en">Mitochondria Research Package</div>
+    </div>
+    <div class="featured-split">
+      <div class="featured-left fade-in">
+        <p class="featured-text">线粒体是细胞能量代谢、细胞凋亡、氧化应激和损伤修复研究的重要对象。随着线粒体治疗、细胞器药物和急性器官损伤研究的发展，科研机构、医院和生物技术公司对线粒体分离、保存、染色、膜电位检测和活性评价的需求持续增加。权生医药基于自身功能增强型线粒体技术积累，开发了覆盖线粒体研究全流程的标准化预制包。</p>
+        <div class="featured-label"><span class="fl-dot"></span>核心产品</div>
+        <ul class="featured-list">
+          <li>组织线粒体分离试剂盒</li>
+          <li>小鼠肝脏线粒体分离试剂盒</li>
+          <li>小鼠心脏线粒体分离试剂盒</li>
+          <li>小鼠脾脏单个核细胞分离液试剂盒</li>
+          <li>线粒体保存液</li>
+          <li>线粒体活性检测试剂盒</li>
+          <li>增强型线粒体膜电位检测试剂盒（JC-1法）</li>
+          <li>Mito-Tracker Red染色液</li>
+          <li>ROS检测试剂盒</li>
+        </ul>
+        <div class="featured-label"><span class="fl-dot"></span>技术特色</div>
+        <div class="featured-tech">
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>支持高活性线粒体分离</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>支持线粒体长效保存</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>膜电位、ROS、染色全覆盖</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>标准化SOP提升重复性</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>试剂盒化降低实验门槛</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>灵敏度和性价比具优势</span></div>
+        </div>
+      </div>
+      <div class="featured-right fade-in fade-in-delay-2">
+        <img src="images/kit-mitochondria-series.png" alt="线粒体研究试剂盒系列">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. FEATURED: NANO ===== -->
+<section class="nano-pkg" id="nano-delivery">
+  <div class="container">
+    <div class="nano-pkg-header fade-in">
+      <div class="section-tag">重点预制包</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">纳米粒与透皮递送技术包</h2>
+      <div class="nano-pkg-en">Nanoparticle &amp; Transdermal Delivery Technology Package</div>
+    </div>
+    <div class="nano-split">
+      <div class="nano-left fade-in">
+        <img src="images/kit-nano-series-new.png" alt="纳米粒制备与透皮递送系列">
+      </div>
+      <div class="nano-right fade-in fade-in-delay-2">
+        <p class="nano-text">权生医药依托纳米递送与高透皮技术平台，将纳米粒制备、载体修饰、活性成分负载、透皮效率评价和功效验证流程标准化，形成面向科研与企业转化的技术包。该技术包可支持纳米药物递送、医美功效成分递送、细胞器递送和大分子活性物质递送研究。</p>
+        <div class="featured-label"><span class="fl-dot"></span>核心方向</div>
+        <ul class="featured-list">
+          <li>PLA纳米粒制备</li>
+          <li>PLGA纳米粒制备</li>
+          <li>ICG纳米粒制备</li>
+          <li>PLGA-DiD纳米粒</li>
+          <li>线粒体修饰纳米粒</li>
+          <li>中性粒细胞膜修饰纳米粒</li>
+          <li>透皮递送技术开发</li>
+          <li>功效成分负载与释放评价</li>
+        </ul>
+        <div class="featured-label"><span class="fl-dot"></span>技术特色</div>
+        <div class="featured-tech">
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>支持纳米载体制备与修饰</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>支持活性分子负载</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>递送效率评价</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>透皮深度与吸收验证</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>企业医美项目技术升级</span></div>
+          <div class="featured-tech-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8L7 11L12 5"/></svg><span>复杂技术标准化交付</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. KIT GALLERY ===== -->
+<section class="kit-gallery" id="gallery">
+  <div class="container">
+    <div class="kit-gallery-header fade-in">
+      <div class="section-tag">产品展示</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">自研试剂盒产品展示</h2>
+      <div style="font-size:14px;color:var(--text-light);letter-spacing:0.5px;margin-bottom:16px">In-house Research Kit Products</div>
+      <p class="section-sub center">权生医药自主研发的标准化科研试剂盒与配套试剂产品</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card fade-in fade-in-delay-1" onclick="openLightbox(this)">
+        <div class="gallery-card-img"><img src="images/kit-mitochondria-series.png" alt="线粒体研究试剂盒系列"></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">线粒体研究试剂盒系列</div>
+          <div class="gallery-card-desc">覆盖线粒体分离、保存、染色、活性检测和膜电位检测等实验场景。</div>
+        </div>
+      </div>
+      <div class="gallery-card fade-in fade-in-delay-2" onclick="openLightbox(this)">
+        <div class="gallery-card-img"><img src="images/kit-cell-series.png" alt="细胞功能检测系列"></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">细胞功能检测系列</div>
+          <div class="gallery-card-desc">覆盖CCK-8、BCA、ROS、细胞活性和功能评价等常规高频实验。</div>
+        </div>
+      </div>
+      <div class="gallery-card fade-in fade-in-delay-3" onclick="openLightbox(this)">
+        <div class="gallery-card-img"><img src="images/kit-nano-series-new.png" alt="纳米粒制备与分离系列"></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-title">纳米粒制备与分离系列</div>
+          <div class="gallery-card-desc">覆盖PLA、PLGA、ICG、膜修饰纳米粒及相关制备验证流程。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. CATALOG ===== -->
+<section class="catalog" id="catalog">
+  <div class="container">
+    <div class="catalog-header fade-in">
+      <div class="section-tag">产品目录</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">科研试剂盒产品目录</h2>
+      <p class="section-sub center">47款标准化试剂盒产品，覆盖线粒体、细胞、纳米粒三大研究方向</p>
+    </div>
+    <div class="catalog-tabs fade-in">
+      <div class="catalog-tab active" onclick="switchTab('mito',this)">线粒体系列</div>
+      <div class="catalog-tab" onclick="switchTab('cell',this)">细胞系列</div>
+      <div class="catalog-tab" onclick="switchTab('nano',this)">纳米粒系列</div>
+    </div>
+    <div class="catalog-panel active" id="panel-mito">
+      <div class="catalog-card">
+        <div class="catalog-category"><span class="cat-dot"></span>A. 线粒体系列</div>
+        <div class="catalog-items">
+          <div class="catalog-item">线粒体分离试剂盒</div>
+          <div class="catalog-item">小鼠肝脏线粒体分离试剂盒</div>
+          <div class="catalog-item">小鼠心脏线粒体分离试剂盒</div>
+          <div class="catalog-item">线粒体保存液</div>
+          <div class="catalog-item">线粒体活性检测试剂盒</div>
+          <div class="catalog-item">线粒体膜电位检测试剂盒</div>
+          <div class="catalog-item">Mito-Tracker Red染色液</div>
+          <div class="catalog-item">ROS检测试剂盒</div>
+          <div class="catalog-item">线粒体体外扩增相关技术包</div>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-panel" id="panel-cell">
+      <div class="catalog-card">
+        <div class="catalog-category"><span class="cat-dot"></span>B. 细胞系列</div>
+        <div class="catalog-items">
+          <div class="catalog-item">CCK-8检测试剂盒</div>
+          <div class="catalog-item">BCA蛋白浓度检测试剂盒</div>
+          <div class="catalog-item">细胞活性检测</div>
+          <div class="catalog-item">细胞分离试剂盒</div>
+          <div class="catalog-item">小鼠脾脏单个核细胞分离液试剂盒</div>
+          <div class="catalog-item">血小板膜提取试剂盒</div>
+          <div class="catalog-item">中性粒细胞膜相关技术包</div>
+        </div>
+      </div>
+    </div>
+    <div class="catalog-panel" id="panel-nano">
+      <div class="catalog-card">
+        <div class="catalog-category"><span class="cat-dot"></span>C. 纳米粒系列</div>
+        <div class="catalog-items">
+          <div class="catalog-item">PLA纳米粒制备</div>
+          <div class="catalog-item">PLGA纳米粒制备</div>
+          <div class="catalog-item">ICG纳米粒制备</div>
+          <div class="catalog-item">PLGA-DiD纳米粒</div>
+          <div class="catalog-item">膜修饰纳米粒</div>
+          <div class="catalog-item">线粒体修饰纳米粒</div>
+          <div class="catalog-item">中性粒细胞膜修饰纳米粒</div>
+          <div class="catalog-item">透皮递送开发包</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. DELIVERY ===== -->
+<section class="delivery" id="delivery">
+  <div class="container">
+    <div class="delivery-header fade-in">
+      <div class="section-tag">交付内容</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">每个技术包交付什么？</h2>
+      <p class="section-sub center">试剂盒 + SOP + 技术文档 + 应用指导，标准交付内容保障项目执行</p>
+    </div>
+    <div class="delivery-grid">
+      <div class="delivery-card fade-in fade-in-delay-1">
+        <div class="delivery-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="4" width="24" height="28" rx="4"/><path d="M12 12h12M12 18h12M12 24h8"/></svg>
+        </div>
+        <h3>标准化试剂盒</h3>
+        <p>即用型试剂、关键组分和配套耗材。</p>
+      </div>
+      <div class="delivery-card fade-in fade-in-delay-2">
+        <div class="delivery-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6h10v10H6zM20 6h10v10H20zM6 20h10v10H6zM20 20h10v10H20z"/></svg>
+        </div>
+        <h3>SOP操作流程</h3>
+        <p>提供标准化实验步骤，降低实验摸索成本。</p>
+      </div>
+      <div class="delivery-card fade-in fade-in-delay-3">
+        <div class="delivery-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 4v28M8 10l10-6 10 6"/><rect x="6" y="18" width="24" height="14" rx="3"/><path d="M12 22h12M12 26h8"/></svg>
+        </div>
+        <h3>技术文档</h3>
+        <p>包含原理说明、适用范围、注意事项和结果判读方式。</p>
+      </div>
+      <div class="delivery-card fade-in fade-in-delay-1">
+        <div class="delivery-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="18" cy="14" r="6"/><path d="M8 30C8 24,12 20,18 20C24 20,28 24,28 30"/><path d="M14 8l4-3 4 3"/></svg>
+        </div>
+        <h3>应用指导</h3>
+        <p>提供项目启动、实验设计和关键步骤咨询。</p>
+      </div>
+      <div class="delivery-card fade-in fade-in-delay-2">
+        <div class="delivery-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 28l8-8 6 6 8-10 6 6"/><circle cx="18" cy="12" r="4"/></svg>
+        </div>
+        <h3>验证数据</h3>
+        <p>提供性能验证、应用案例和质量控制数据。</p>
+      </div>
+      <div class="delivery-card fade-in fade-in-delay-3">
+        <div class="delivery-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6v24"/><path d="M6 18h24"/><circle cx="18" cy="18" r="8"/><path d="M14 14l8 8M22 14l-8 8"/></svg>
+        </div>
+        <h3>定制服务</h3>
+        <p>可根据样本类型、研究方向和企业需求进行定制开发。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. SCENARIOS ===== -->
+<section class="scenarios" id="scenarios">
+  <div class="container">
+    <div class="scenarios-header fade-in">
+      <div class="section-tag">应用价值</div>
+      <h2 class="section-title" style="color:var(--deep-blue)">应用场景与客户价值</h2>
+      <p class="section-sub center">面向高校、医院、科研机构和企业客户的标准化科研工具</p>
+    </div>
+    <div class="scenarios-split">
+      <div class="scenarios-col fade-in">
+        <h3>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v8M7 9h6"/></svg>
+          应用场景
+        </h3>
+        <div class="scenarios-list">
+          <div class="scenarios-list-item">线粒体功能研究</div>
+          <div class="scenarios-list-item">急性器官损伤机制研究</div>
+          <div class="scenarios-list-item">细胞活性与细胞损伤研究</div>
+          <div class="scenarios-list-item">纳米药物递送研究</div>
+          <div class="scenarios-list-item">医美透皮递送验证</div>
+          <div class="scenarios-list-item">细胞器药物开发</div>
+          <div class="scenarios-list-item">科研论文实验</div>
+          <div class="scenarios-list-item">企业产品验证</div>
+        </div>
+      </div>
+      <div class="scenarios-col fade-in fade-in-delay-2">
+        <h3>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 16L4 8L10 4L16 8L16 16L10 20Z"/><path d="M7 16V12h6v4"/></svg>
+          客户价值
+        </h3>
+        <div class="scenarios-list">
+          <div class="scenarios-list-item">降低实验门槛</div>
+          <div class="scenarios-list-item">缩短项目启动周期</div>
+          <div class="scenarios-list-item">提高实验复现性</div>
+          <div class="scenarios-list-item">降低试错成本</div>
+          <div class="scenarios-list-item">支撑论文与课题申报</div>
+          <div class="scenarios-list-item">支持企业技术验证</div>
+          <div class="scenarios-list-item">支持科研服务到产品转化</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11. CTA ===== -->
+<section class="kits-cta" id="contact">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <h2 class="section-title">获取标准化科研工具，加速项目启动</h2>
+      <p class="section-sub" style="max-width:720px">权生医药面向高校、医院、科研机构和企业客户提供试剂盒、预制包、技术包和定制化科研服务，支持标准产品采购、项目合作和技术定制开发。</p>
+      <div class="cta-buttons">
+        <a href="#catalog" class="btn-cta">获取试剂盒目录</a>
+        <a href="#directions" class="btn-cta-ghost">咨询技术包方案</a>
+        <a href="index.html#contact" class="btn-cta-ghost">联系定制服务</a>
+      </div>
+      <div class="cta-coop">
+        <span class="cta-coop-tag">试剂盒采购</span>
+        <span class="cta-coop-tag">技术包授权</span>
+        <span class="cta-coop-tag">项目委托开发</span>
+        <span class="cta-coop-tag">横向课题合作</span>
+        <span class="cta-coop-tag">企业产品验证</span>
+        <span class="cta-coop-tag">定制化SOP开发</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-text">重庆权生医药科技有限公司</div>
+        <div class="footer-logo-sub">QUANSHENG PHARMA</div>
+        <p class="footer-brand-desc">以全生物活性物质开发体系为核心的生物医药转化平台，专注多肽递送、线粒体治疗与创新药研发。</p>
+      </div>
+      <div>
+        <div class="footer-col-title">科研服务平台</div>
+        <ul class="footer-links">
+          <li><a href="research-service.html#rs-omics">组学检测平台</a></li>
+          <li><a href="research-service.html#rs-bioinfo">生物信息学分析</a></li>
+          <li><a href="research-service.html#rs-cell">细胞分子实验</a></li>
+          <li><a href="research-service.html#rs-animal">动物实验平台</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">业务板块</div>
+        <ul class="footer-links">
+          <li><a href="kits.html">预制包/技术包</a></li>
+          <li><a href="index.html#pipeline">新药管线</a></li>
+          <li><a href="research-service.html">科研服务平台</a></li>
+          <li><a href="medaes.html">医美转化</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">联系</div>
+        <ul class="footer-links">
+          <li><a href="index.html#cooperation">合作与投资</a></li>
+          <li><a href="index.html#contact">联系我们</a></li>
+          <li><a href="mailto:contact@quansheng-pharma.com">contact@quansheng-pharma.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 重庆权生医药科技有限公司. All rights reserved.</div>
+      <div class="footer-icp">渝ICP备XXXXXXXX号</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<div id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M9 14 L9 4 M5 8 L9 4 L13 8"/>
+  </svg>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
+  </div>
+  <img id="lightbox-img" src="" alt="产品大图">
+</div>
+
+<script>
+/* ===== Navbar scroll ===== */
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('back-to-top').classList.toggle('show', window.scrollY > 400);
+});
+hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+/* ===== Catalog tabs ===== */
+function switchTab(tab, el) {
+  document.querySelectorAll('.catalog-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.catalog-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  el.classList.add('active');
+}
+
+/* ===== Lightbox ===== */
+function openLightbox(card) {
+  const img = card.querySelector('img');
+  if (img) {
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+/* ===== Fade-in observer ===== */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+/* ===== Smooth anchor scroll ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) { e.preventDefault(); window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
