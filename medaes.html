@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医美转化与功效产品开发 | 重庆权生医药科技有限公司</title>
+<meta name="description" content="权生医药依托高透皮纳米递送系统、天然活性成分库和功效验证平台，为医美、功效护肤、大健康产品提供一体化技术解决方案。">
+<style>
+/* ===== CSS Reset & Variables ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --deep-blue:#0B1F3A;--primary-blue:#1A56DB;--teal:#00C9A7;--teal-dark:#00A389;
+  --light-bg:#F0F6FF;--white:#FFFFFF;--text-gray:#4A5568;--text-light:#A0AEC0;
+  --card-shadow:0 4px 24px rgba(11,31,58,0.08);
+  --card-shadow-hover:0 12px 40px rgba(11,31,58,0.14);
+  --radius:16px;--radius-sm:8px;
+  --font-cn:'Source Han Sans CN','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;
+  --transition:0.32s cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-cn);color:var(--text-gray);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;display:block}button{cursor:pointer;border:none;outline:none;font-family:inherit}
+section{position:relative;overflow:hidden}
+
+/* ===== Utility ===== */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal);padding:6px 14px;border:1.5px solid var(--teal);border-radius:100px;margin-bottom:16px}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.2;margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--text-gray);line-height:1.8;max-width:560px}
+.fade-in{opacity:0;transform:translateY(32px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.fade-in-delay-1{transition-delay:0.1s}.fade-in-delay-2{transition-delay:0.2s}
+.fade-in-delay-3{transition-delay:0.3s}.fade-in-delay-4{transition-delay:0.4s}
+
+/* ===== Navbar - Shared via nav.css ===== */
+
+/* ===== Hero Banner ===== */
+.medaes-banner{position:relative;min-height:78vh;display:flex;align-items:center;background-image:url('images/medaes-hero-bg.png');background-size:cover;background-position:center right;background-repeat:no-repeat;overflow:hidden}
+.medaes-banner::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(105deg,rgba(255,255,255,0.92) 0%,rgba(255,255,255,0.78) 40%,rgba(240,246,255,0.55) 70%,rgba(235,244,255,0.35) 100%);z-index:1;pointer-events:none}
+.banner-deco{display:none}
+.banner-content{position:relative;z-index:2;max-width:680px;padding-top:80px}
+.banner-content .section-title{color:var(--deep-blue);font-size:clamp(32px,5vw,48px);font-weight:800}
+.banner-en{font-size:15px;color:var(--text-light);letter-spacing:1px;font-weight:500;margin-top:8px}
+.banner-content .section-sub{color:var(--text-gray);font-size:16px;line-height:1.7;margin-top:16px;max-width:800px}
+.banner-intro{position:relative;z-index:2;max-width:680px;color:var(--text-gray);font-size:14.5px;line-height:1.85;margin-top:28px;border-left:3px solid var(--teal);padding-left:20px}
+.banner-btns{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;position:relative;z-index:2}
+.banner-btns a{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:13px 28px;border-radius:100px;transition:background var(--transition),box-shadow var(--transition),transform var(--transition)}
+.btn-primary{background:var(--teal);color:var(--white)}
+.btn-primary:hover{background:var(--teal-dark);box-shadow:0 6px 24px rgba(0,201,167,0.3);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--deep-blue);border:1.5px solid rgba(11,31,58,0.15)}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.btn-ghost{background:rgba(11,31,58,0.04);color:var(--deep-blue)}
+.btn-ghost:hover{background:rgba(11,31,58,0.08);transform:translateY(-2px)}
+
+/* ===== Core Positioning ===== */
+.core-pos{position:relative;padding:100px 0;min-height:60vh;display:flex;align-items:center;background-image:url('images/medaes-corepos-bg.png');background-size:cover;background-position:center;background-repeat:no-repeat;overflow:hidden}
+.core-pos::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,rgba(255,255,255,0.88) 0%,rgba(240,246,255,0.80) 50%,rgba(235,244,255,0.72) 100%);z-index:1;pointer-events:none}
+.core-pos-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.core-pos-text{font-size:17px;color:var(--text-gray);line-height:2;margin-bottom:32px}
+.core-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.core-tag{font-size:13.5px;font-weight:600;color:var(--deep-blue);padding:10px 22px;background:rgba(255,255,255,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1.5px solid rgba(0,201,167,0.3);border-radius:100px;transition:background var(--transition),border-color var(--transition)}
+.core-tag:hover{background:rgba(0,201,167,0.12);border-color:rgba(0,201,167,0.35)}
+
+/* ===== Tech Area 1: Transdermal ===== */
+.tech-area{padding:80px 0}
+.tech-area:nth-child(even){background:linear-gradient(180deg,#FAFCFF,#F5F9FF)}
+.tech-area-header{margin-bottom:40px}
+.tech-area-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal-dark);background:rgba(0,201,167,0.08);border:1px solid rgba(0,201,167,0.18);padding:5px 16px;border-radius:100px;margin-bottom:14px}
+.tech-area-title{font-size:clamp(22px,3.5vw,30px);font-weight:800;color:var(--deep-blue);line-height:1.3;margin-bottom:6px}
+.tech-area-en{font-size:14px;color:var(--text-light);font-weight:500;letter-spacing:0.5px;margin-bottom:16px}
+.tech-area-desc{color:var(--text-gray);font-size:14.5px;line-height:1.75;max-width:900px}
+.tech-split{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-top:36px;align-items:start}
+.tech-left-card,.tech-right-card{background:var(--white);border-radius:20px;padding:32px;box-shadow:0 4px 20px rgba(11,31,58,0.05);border:1px solid rgba(11,31,58,0.05);position:relative;overflow:hidden}
+.tech-left-card::before,.tech-right-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),rgba(0,201,167,0.2));border-radius:20px 20px 0 0}
+.tech-card-title{font-size:17px;font-weight:700;color:var(--deep-blue);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.tech-card-title .tc-icon{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,rgba(0,201,167,0.12),rgba(0,201,167,0.04));color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+.tech-list{list-style:none;padding:0}
+.tech-list li{font-size:14px;color:var(--text-gray);padding:7px 0;border-bottom:1px solid rgba(11,31,58,0.04);display:flex;align-items:flex-start;gap:10px;line-height:1.65}
+.tech-list li:last-child{border-bottom:none}
+.tech-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:9px}
+.tech-data-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.tech-data-item{background:#F8FBFF;border-radius:12px;padding:16px 18px;text-align:center;border:1px solid rgba(11,31,58,0.04)}
+.tech-data-num{font-size:22px;font-weight:800;color:var(--deep-blue);line-height:1;margin-bottom:4px}
+.tech-data-label{font-size:12px;color:var(--text-light);font-weight:500}
+
+/* ===== Marubi Case ===== */
+.marubi-section{padding:80px 0;background:var(--white);position:relative}
+.marubi-badge-row{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.marubi-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--deep-blue);background:rgba(11,31,58,0.06);border:1px solid rgba(11,31,58,0.1);padding:6px 18px;border-radius:100px}
+.marubi-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:32px}
+.marubi-intro{font-size:15px;color:var(--text-gray);line-height:1.9;margin-bottom:28px}
+.marubi-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px}
+.marubi-stat{background:var(--white);border-radius:16px;padding:24px;text-align:center;box-shadow:0 4px 20px rgba(11,31,58,0.06);border:1px solid rgba(11,31,58,0.05)}
+.marubi-stat-num{font-size:32px;font-weight:800;color:var(--deep-blue);line-height:1;margin-bottom:4px}
+.marubi-stat-unit{font-size:14px;font-weight:600;color:var(--teal)}
+.marubi-stat-label{font-size:12px;color:var(--text-light);margin-top:4px}
+.marubi-results{display:flex;flex-direction:column;gap:10px}
+.marubi-result-item{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F8FBFF;border-radius:12px;border:1px solid rgba(11,31,58,0.04)}
+.marubi-result-item svg{width:18px;height:18px;color:var(--teal);flex-shrink:0}
+.marubi-result-item span{font-size:14px;color:var(--text-gray);font-weight:500}
+.marubi-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.marubi-img{border-radius:14px;overflow:hidden;box-shadow:0 4px 16px rgba(11,31,58,0.06);border:1px solid rgba(11,31,58,0.05)}
+.marubi-img img{width:100%;height:200px;object-fit:cover;transition:transform var(--transition)}
+.marubi-img:hover img{transform:scale(1.03)}
+.marubi-img.span-2{grid-column:span 2}
+.marubi-img.span-2 img{height:240px}
+
+/* ===== Tech Area 2: Plant Active ===== */
+.plant-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.plant-card{background:var(--white);border-radius:16px;padding:28px 24px;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.04);transition:transform var(--transition),box-shadow var(--transition);text-align:center}
+.plant-card:hover{transform:translateY(-5px);box-shadow:0 8px 32px rgba(11,31,58,0.08)}
+.plant-card-icon{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(0,201,167,0.12),rgba(0,201,167,0.04));display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;color:var(--teal)}
+.plant-card-name{font-size:16px;font-weight:700;color:var(--deep-blue);margin-bottom:8px}
+.plant-card-desc{font-size:13px;color:var(--text-gray);line-height:1.6}
+
+/* ===== Product Cases ===== */
+.product-section{padding:80px 0;background:var(--white)}
+.product-featured{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:40px;background:linear-gradient(135deg,#F8FBFF,#F0F6FF);border-radius:24px;padding:40px;border:1px solid rgba(11,31,58,0.05)}
+.product-featured-img{border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(11,31,58,0.08)}
+.product-featured-img img{width:100%;height:320px;object-fit:cover}
+.product-featured-info .pf-tag{display:inline-block;font-size:11px;font-weight:700;color:var(--white);background:var(--teal);padding:5px 14px;border-radius:100px;margin-bottom:14px}
+.product-featured-info .pf-title{font-size:24px;font-weight:800;color:var(--deep-blue);margin-bottom:8px}
+.product-featured-info .pf-desc{font-size:14.5px;color:var(--text-gray);line-height:1.75;margin-bottom:20px}
+.product-featured-info .pf-meta{display:flex;flex-direction:column;gap:8px}
+.pf-meta-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text-gray)}
+.pf-meta-item svg{width:16px;height:16px;color:var(--teal);flex-shrink:0}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.product-card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05);transition:transform var(--transition),box-shadow var(--transition)}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(11,31,58,0.08)}
+.product-card-img{background:linear-gradient(135deg,#EBF4FF,#F0F6FF);height:180px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.product-card-img img{width:100%;height:100%;object-fit:cover}
+.product-card-body{padding:24px}
+.product-card-badge{display:inline-block;font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;margin-bottom:10px;letter-spacing:0.5px}
+.badge-green{background:rgba(0,201,167,0.1);color:var(--teal-dark);border:1px solid rgba(0,201,167,0.18)}
+.badge-blue{background:rgba(26,86,219,0.08);color:var(--primary-blue);border:1px solid rgba(26,86,219,0.15)}
+.badge-gray{background:rgba(11,31,58,0.04);color:var(--text-gray);border:1px solid rgba(11,31,58,0.08)}
+.product-card-title{font-size:17px;font-weight:700;color:var(--deep-blue);margin-bottom:6px;line-height:1.4}
+.product-card-desc{font-size:13px;color:var(--text-gray);line-height:1.6;margin-bottom:14px}
+.product-card-tags{display:flex;flex-wrap:wrap;gap:6px}
+.product-card-tags span{font-size:11px;padding:3px 10px;border-radius:100px;background:#F0F6FF;color:var(--text-gray);font-weight:500}
+.project-list{margin-top:40px}
+.product-category-label{font-size:14px;font-weight:700;color:var(--deep-blue);padding:8px 18px;background:linear-gradient(135deg,#F0F6FF,#EBF4FF);border-radius:10px;display:inline-block;border-left:3px solid var(--teal);margin-bottom:20px;letter-spacing:0.5px}
+.project-list-title{font-size:18px;font-weight:700;color:var(--deep-blue);margin-bottom:20px}
+.project-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05)}
+.project-table thead{background:linear-gradient(135deg,#F0F6FF,#EBF4FF)}
+.project-table th{padding:14px 20px;font-size:12px;font-weight:700;color:var(--deep-blue);text-align:left;letter-spacing:0.5px}
+.project-table td{padding:14px 20px;font-size:13px;color:var(--text-gray);border-bottom:1px solid rgba(11,31,58,0.04)}
+.project-table tr:last-child td{border-bottom:none}
+.project-table tr:hover td{background:#FAFCFF}
+.project-amount{font-weight:700;color:var(--deep-blue)}
+
+/* ===== Solutions ===== */
+.solutions-section{padding:80px 0;background:linear-gradient(180deg,#F5F9FF,#EBF4FF 50%,#F8FBFF)}
+.solutions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.solution-card{background:var(--white);border-radius:20px;padding:36px 32px;box-shadow:0 2px 12px rgba(11,31,58,0.04);border:1px solid rgba(11,31,58,0.05);transition:transform var(--transition),box-shadow var(--transition);position:relative;overflow:hidden}
+.solution-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),rgba(0,201,167,0.2));border-radius:20px 20px 0 0;transform:scaleX(0);transform-origin:left;transition:transform var(--transition)}
+.solution-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(11,31,58,0.08)}
+.solution-card:hover::before{transform:scaleX(1)}
+.solution-icon{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(0,201,167,0.12),rgba(0,201,167,0.04));display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:24px;color:var(--teal)}
+.solution-title{font-size:18px;font-weight:700;color:var(--deep-blue);margin-bottom:8px}
+.solution-flow{font-size:12.5px;color:var(--teal-dark);font-weight:600;margin-bottom:10px;letter-spacing:0.3px}
+.solution-desc{font-size:14px;color:var(--text-gray);line-height:1.75}
+
+/* ===== Customer Value ===== */
+.value-section{padding:80px 0;background:var(--white)}
+.value-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.value-card{background:#FAFCFF;border-radius:16px;padding:28px 24px;text-align:center;border:1px solid rgba(11,31,58,0.04);transition:transform var(--transition),box-shadow var(--transition)}
+.value-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(11,31,58,0.07)}
+.value-card-icon{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,rgba(0,201,167,0.12),rgba(0,201,167,0.04));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:22px;color:var(--teal)}
+.value-card-title{font-size:15px;font-weight:700;color:var(--deep-blue);margin-bottom:12px;line-height:1.4}
+.value-card-list{text-align:left}
+.value-card-list li{font-size:13px;color:var(--text-gray);padding:4px 0;display:flex;align-items:center;gap:8px}
+.value-card-list li::before{content:'\2713';color:var(--teal);font-weight:700;font-size:12px}
+
+/* ===== CTA ===== */
+.medaes-cta{padding:80px 0 100px;text-align:center;background:linear-gradient(135deg,var(--deep-blue) 0%,#122D52 50%,#0B1F3A 100%);position:relative;overflow:hidden}
+.medaes-cta::before{content:'';position:absolute;top:-80px;left:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(0,201,167,0.08) 0%,transparent 70%);pointer-events:none}
+.cta-inner{position:relative;z-index:2}
+.cta-title{font-size:clamp(24px,4vw,36px);font-weight:800;color:var(--white);margin-bottom:14px}
+.cta-sub{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8;max-width:700px;margin:0 auto 32px}
+.cta-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:36px}
+.cta-tag{font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);padding:8px 20px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.04);transition:background var(--transition),border-color var(--transition)}
+.cta-tag:hover{background:rgba(0,201,167,0.1);border-color:rgba(0,201,167,0.3);color:var(--teal)}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;padding:15px 36px;border-radius:100px;transition:background var(--transition),box-shadow var(--transition),transform var(--transition)}
+.cta-btn-primary{background:var(--teal);color:var(--white);text-decoration:none}
+.cta-btn-primary:hover{background:var(--teal-dark);box-shadow:0 6px 28px rgba(0,201,167,0.35);transform:translateY(-2px)}
+.cta-btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.2);text-decoration:none}
+.cta-btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* ===== Footer ===== */
+#footer{background:#071526;padding:60px 0 0}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand .footer-logo-text{font-size:18px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand .footer-logo-sub{font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:1px;margin-bottom:16px}
+.footer-brand-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.8;max-width:280px}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--white);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px}
+.footer-links{display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,0.4);transition:color var(--transition)}
+.footer-links a:hover{color:var(--teal)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 0;flex-wrap:wrap;gap:12px}
+.footer-copyright{font-size:12px;color:rgba(255,255,255,0.25)}
+.footer-icp{font-size:12px;color:rgba(255,255,255,0.2)}
+
+/* ===== Back to Top ===== */
+#back-to-top{position:fixed;bottom:32px;right:32px;z-index:999;width:44px;height:44px;background:var(--teal);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity var(--transition),transform var(--transition),background var(--transition);box-shadow:0 4px 16px rgba(0,201,167,0.3)}
+#back-to-top.show{opacity:1;pointer-events:all}
+#back-to-top:hover{background:var(--teal-dark);transform:translateY(-3px)}
+#back-to-top svg{width:18px;height:18px;color:var(--white)}
+
+/* ===== Responsive ===== */
+@media(max-width:1024px){
+  .tech-split,.marubi-split,.product-featured{grid-template-columns:1fr}
+  .plant-flow,.value-grid{grid-template-columns:repeat(2,1fr)}
+  .solutions-grid,.product-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:36px}
+  .medaes-banner{min-height:65vh}
+  .banner-content{max-width:100%}
+  .banner-intro{max-width:100%}
+}
+@media(max-width:768px){
+  .marubi-stats{grid-template-columns:1fr 1fr}
+  .plant-flow,.product-grid,.solutions-grid{grid-template-columns:1fr}
+  .value-grid{grid-template-columns:1fr}
+  .product-featured{padding:24px;flex-direction:column}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .project-table{font-size:12px}
+  .project-table th,.project-table td{padding:10px 12px}
+  .medaes-banner{min-height:85vh;background-position:center}
+  .medaes-banner::before{background:rgba(255,255,255,0.88)}
+  .banner-content{max-width:100%;padding-top:60px}
+  .banner-content .section-title{font-size:28px}
+  .banner-intro{max-width:100%}
+  .banner-btns{flex-direction:column}
+  .banner-btns a{justify-content:center}
+  .core-pos{min-height:auto;padding:60px 0;background-position:center}
+  .core-pos::before{background:rgba(255,255,255,0.90)}
+  .core-pos-text{font-size:15px}
+}
+</style>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="权生医药"></a>
+    <ul class="nav-menu">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">公司介绍</a></li>
+      <li><a href="research-service.html">科研服务平台</a></li>
+      <li><a href="kits.html">预制包/技术包</a></li>
+      <li><a href="index.html#pipeline">新药管线</a></li>
+      <li><a href="medaes.html" class="active">医美转化</a></li>
+      <li><a href="index.html#cooperation">合作与投资</a></li>
+      <li><a href="index.html#contact" class="nav-cta">联系我们</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">首页</a><a href="about.html">公司介绍</a><a href="research-service.html">科研服务平台</a><a href="kits.html">预制包/技术包</a><a href="index.html#pipeline">新药管线</a><a href="medaes.html" class="active">医美转化</a><a href="index.html#cooperation">合作与投资</a><a href="index.html#contact">联系我们</a>
+  </div>
+</nav>
+
+<!-- ===== 1. BANNER ===== -->
+<section class="medaes-banner">
+  <div class="container">
+    <div class="banner-content fade-in">
+      <div class="section-tag">医美转化</div>
+      <h1 class="section-title">医美转化与功效产品开发</h1>
+      <div class="banner-en">Aesthetic Medicine Translation & Functional Product Development</div>
+      <p class="section-sub">依托高透皮纳米递送系统、天然活性成分库和功效验证平台，为医美、功效护肤与大健康产品提供从概念设计、配方开发、功效验证到产品转化的一体化技术解决方案。</p>
+    </div>
+    <div class="banner-intro fade-in">权生医药专注天然活性成分的创新型技术赋能，围绕"透皮技术专利 + 植物资源开发 + 功效验证 + 产品落地"构建医美产品转化平台，推动医美及功效护肤产品从传统单一功效诉求，升级为科技型、多维复合功效和高附加值产品。</div>
+    <div class="banner-btns fade-in">
+      <a href="#marubi" class="btn-primary">查看丸美合作案例</a>
+      <a href="#tech-transdermal" class="btn-outline">了解技术平台</a>
+      <a href="index.html#contact" class="btn-ghost">联系合作开发</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. CORE POSITIONING ===== -->
+<section class="core-pos">
+  <div class="container">
+    <div class="core-pos-inner fade-in">
+      <h2 class="section-title" style="color:var(--deep-blue)">从科研技术到功效产品落地</h2>
+      <p class="core-pos-text">权生医药通过"研发服务化"模式与"技术产品化"路径，将生物活性物质、透皮递送技术、天然植物活性分子和功效验证体系转化为可服务品牌客户的产品开发能力。公司可为医美、功效护肤、大健康产品提供从需求分析、概念提案、配方设计、打样测试、功效验证、技术文档到产品上市支持的全流程服务。</p>
+      <div class="core-tags">
+        <span class="core-tag">高透皮递送</span>
+        <span class="core-tag">天然活性成分</span>
+        <span class="core-tag">功效验证</span>
+        <span class="core-tag">产品转化</span>
+        <span class="core-tag">CRO/CDMO</span>
+        <span class="core-tag">ODM/OEM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. TECH AREA 1: TRANSDERMAL ===== -->
+<section class="tech-area" id="tech-transdermal">
+  <div class="container">
+    <div class="tech-area-header fade-in">
+      <div class="tech-area-tag">技术领域 1</div>
+      <h2 class="tech-area-title">基于天然成分的超高透皮纳米递送系统</h2>
+      <div class="tech-area-en">Ultra-High Transdermal Nano-Delivery System Based on Natural Components</div>
+      <p class="tech-area-desc">权生医药在经皮给药与功效护肤转化方向，基于天然成分和药用辅料构建超高透皮纳米递送系统。该系统以安全合规、稳定制备、高效负载和深层递送为核心，能够显著提升大分子活性物质、天然活性分子及功效成分的皮肤递送效率，为功效护肤和医美产品升级提供技术支撑。</p>
+    </div>
+    <div class="tech-split fade-in">
+      <div class="tech-left-card">
+        <div class="tech-card-title"><span class="tc-icon">01</span>技术亮点</div>
+        <ul class="tech-list">
+          <li>基于天然成分与安全辅料构建透皮递送体系</li>
+          <li>采用已获FDA认证的药用辅料，如磷脂复合物作为载体</li>
+          <li>构建具有冻干自分散特性的超高透皮纳米系统</li>
+          <li>可实现100 Da–300 KDa范围活性物质负载</li>
+          <li>相比经典壳聚糖纳米制剂，透皮效率可提高约3倍</li>
+          <li>透皮深度可超过300 &mu;m</li>
+          <li>具备pH/酶响应型递送潜力，可实现靶向释放</li>
+          <li>已形成稳定的透皮递送工艺，覆盖小试研究、透皮效应验证和工艺放大</li>
+          <li>系统在细胞、斑马鱼、皮肤局部及小鼠体内表现出良好生物相容性</li>
+          <li>可负载各类活性分子，支持抗氧化、抗炎、促修复、紧致、抗皱等功效验证</li>
+        </ul>
+      </div>
+      <div class="tech-right-card">
+        <div class="tech-card-title"><span class="tc-icon">&#9883;</span>技术成果</div>
+        <div class="tech-data-grid">
+          <div class="tech-data-item"><div class="tech-data-num" style="color:var(--teal)">CN111358955B</div><div class="tech-data-label">中国专利授权</div></div>
+          <div class="tech-data-item"><div class="tech-data-num">3<span style="font-size:14px">款</span></div><div class="tech-data-label">上市护肤品</div></div>
+          <div class="tech-data-item"><div class="tech-data-num">3<span style="font-size:14px">项</span></div><div class="tech-data-label">丸美等横向课题</div></div>
+          <div class="tech-data-item"><div class="tech-data-num" style="color:var(--teal)">~3<span style="font-size:14px">倍</span></div><div class="tech-data-label">透皮效率提升</div></div>
+          <div class="tech-data-item" style="grid-column:span 2"><div class="tech-data-num" style="color:var(--teal)">300+ <span style="font-size:14px">&mu;m</span></div><div class="tech-data-label">透皮深度</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. MARUBI CASE ===== -->
+<section class="marubi-section" id="marubi">
+  <div class="container">
+    <div class="tech-area-header fade-in">
+      <div class="tech-area-tag">重点案例 Landmark Case</div>
+      <h2 class="tech-area-title">丸美合作案例：高透皮胶原蛋白递送技术赋能功效护肤升级</h2>
+      <div class="tech-area-en">MARUBI Collaboration Case: Transdermal Collagen Delivery Technology</div>
+      <div class="marubi-badge-row" style="margin-top:16px">
+        <span class="marubi-badge">&#9889; 技术助力</span>
+        <span class="marubi-badge">&#128200; 商业转化</span>
+        <span class="marubi-badge">&#127942; 品牌升级</span>
+      </div>
+    </div>
+    <div class="marubi-split fade-in">
+      <div class="marubi-left">
+        <p class="marubi-intro">权生医药与广州丸美联合开展高透皮技术递送胶原蛋白研究。该项目围绕大分子活性物质难以透皮吸收的行业痛点，基于纳米透皮促渗技术，为胶原蛋白等大分子活性物质的高效递送提供了切实可行的技术方案，并为具有"日内瓦国际发明金奖"背景的高标准产品线提供技术助力。</p>
+        <p class="marubi-intro">丸美胶原小金针精华围绕重组胶原蛋白、纳米粒包裹渗透和医美术后修护等方向进行产品升级。相关公开传播内容中提到，改性壳聚糖纳米粒包裹重组双胶原，可帮助解决大分子重组胶原蛋白透皮递送难题，突出"科技护肤 + 医美修护"的产品价值。</p>
+        <div class="marubi-stats">
+          <div class="marubi-stat"><div class="marubi-stat-num">4.22<span class="marubi-stat-unit">亿元</span></div><div class="marubi-stat-label">新增销售额</div></div>
+          <div class="marubi-stat"><div class="marubi-stat-num">6737<span class="marubi-stat-unit">万元</span></div><div class="marubi-stat-label">新增利润</div></div>
+          <div class="marubi-stat"><div class="marubi-stat-num">3<span class="marubi-stat-unit">项</span></div><div class="marubi-stat-label">丸美横向合作</div></div>
+        </div>
+        <div class="marubi-results">
+          <div class="marubi-result-item"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9L7.5 12.5L14 5.5"/></svg><span>联合开展高透皮胶原蛋白递送研究</span></div>
+          <div class="marubi-result-item"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9L7.5 12.5L14 5.5"/></svg><span>解决大分子活性物质透皮递送难题</span></div>
+          <div class="marubi-result-item"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9L7.5 12.5L14 5.5"/></svg><span>助力丸美胶原小金针产品技术升级</span></div>
+          <div class="marubi-result-item"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9L7.5 12.5L14 5.5"/></svg><span>为"日内瓦国际发明金奖"背景产品线提供技术助力</span></div>
+          <div class="marubi-result-item"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9L7.5 12.5L14 5.5"/></svg><span>2024.10–2025.11，新增销售额约4.22亿元，利润约6737万元</span></div>
+        </div>
+      </div>
+      <div class="marubi-right">
+        <div class="marubi-gallery">
+          <div class="marubi-img span-2"><img src="images/marubi-conference-stage.png" alt="丸美发布会现场"></div>
+          <div class="marubi-img"><img src="images/marubi-professor-lecture.png" alt="周兴教授演讲"></div>
+          <div class="marubi-img"><img src="images/marubi-collagen-ampoule.png" alt="丸美小金针胶原蛋白安瓶"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. TECH AREA 2: PLANT ACTIVE ===== -->
+<section class="tech-area" id="tech-plant">
+  <div class="container">
+    <div class="tech-area-header fade-in">
+      <div class="tech-area-tag">技术领域 2</div>
+      <h2 class="tech-area-title">稳定的植物资源医美活性筛选技术</h2>
+      <div class="tech-area-en">Stable Plant Resource-Based Aesthetic Active Screening Technology</div>
+      <p class="tech-area-desc">权生医药围绕天然植物活性分子、云南特色植物资源和功效靶点筛选，构建稳定的植物资源医美活性筛选技术。该平台可为功效护肤和大健康产品提供天然活性分子筛选、独家新原料储备、功效验证和产品概念设计支持，帮助品牌构建差异化功效卖点和地域特色技术壁垒。</p>
+    </div>
+    <div class="plant-flow fade-in">
+      <div class="plant-card"><div class="plant-card-icon">&#9883;</div><div class="plant-card-name">天然分子筛选</div><div class="plant-card-desc">100+天然植物来源高活性分子储备，覆盖抗衰、修护、美白等6大功效靶点</div></div>
+      <div class="plant-card"><div class="plant-card-icon">&#9670;</div><div class="plant-card-name">透皮技术加持</div><div class="plant-card-desc">将天然分子与透皮递送技术结合，突破传统植物成分吸收效率瓶颈</div></div>
+      <div class="plant-card"><div class="plant-card-icon">&#127793;</div><div class="plant-card-name">云南特色植物资源</div><div class="plant-card-desc">依托云南特色植物资源优势，开发地域特色活性成分与独家新原料</div></div>
+      <div class="plant-card"><div class="plant-card-icon">&#128300;</div><div class="plant-card-name">功效验证体系</div><div class="plant-card-desc">覆盖体外实验与动物实验的全面功效验证，参与制定植物原料标准4项</div></div>
+      <div class="plant-card"><div class="plant-card-icon">&#128273;</div><div class="plant-card-name">自主专利池</div><div class="plant-card-desc">具备"透皮技术专利 + 植物资源开发"的组合优势，构建技术壁垒</div></div>
+      <div class="plant-card"><div class="plant-card-icon">&#128640;</div><div class="plant-card-name">产品转化赋能</div><div class="plant-card-desc">为品牌构建差异化功效卖点，服务多家一线国货品牌</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. PRODUCTS & PROJECTS ===== -->
+<section class="product-section">
+  <div class="container">
+    <div class="tech-area-header fade-in">
+      <div class="tech-area-tag">转化成果</div>
+      <h2 class="tech-area-title">医美项目与产品转化成果</h2>
+      <div class="tech-area-en">Aesthetic Medicine Projects & Product Translation</div>
+    </div>
+
+    <!-- Featured: Marubi -->
+    <div class="product-featured fade-in">
+      <div class="product-featured-img"><img src="images/marubi-collagen-ampoule.png" alt="丸美小金针高透皮精华"></div>
+      <div class="product-featured-info">
+        <div class="pf-tag">标杆案例</div>
+        <div class="pf-title">丸美小金针高透皮精华</div>
+        <div class="pf-desc">依托高透皮纳米递送技术，助力重组胶原蛋白等大分子活性物质递送与功效升级。改性壳聚糖纳米粒包裹重组双胶原，解决大分子重组胶原蛋白透皮递送难题。</div>
+        <div class="pf-meta">
+          <div class="pf-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="12" height="10" rx="1"/></svg><span>类型：护肤品 · 上市销售</span></div>
+          <div class="pf-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="6"/></svg><span>合作：广州丸美生物</span></div>
+          <div class="pf-meta-item"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 2 L10 6 L14 7 L11 10 L12 14 L8 12 L4 14 L5 10 L2 7 L6 6 Z"/></svg><span>技术：高透皮胶原蛋白递送 / 功效护肤</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category: 已转化产品 -->
+    <div class="product-category-label fade-in">已转化产品</div>
+
+    <!-- Other Products -->
+    <div class="product-grid">
+      <div class="product-card fade-in fade-in-delay-1">
+        <div class="product-card-img"><img src="images/marubi-collagen-ampoule.png" alt="丸美小金针高透皮精华"></div>
+        <div class="product-card-body">
+          <span class="product-card-badge badge-green">上市销售</span>
+          <div class="product-card-title">丸美小金针高透皮精华</div>
+          <div class="product-card-desc">护肤品 · 依托高透皮纳米递送技术，助力重组胶原蛋白递送与功效升级</div>
+          <div class="product-card-meta" style="font-size:12px;color:var(--text-light);margin-bottom:8px">合作：广州丸美生物</div>
+          <div class="product-card-tags"><span>高透皮递送</span><span>重组胶原蛋白</span><span>功效护肤</span></div>
+        </div>
+      </div>
+      <div class="product-card fade-in fade-in-delay-2">
+        <div class="product-card-img"><img src="images/product-rsk-nano-umbilical.png" alt="RSK纳米脐带精华液"></div>
+        <div class="product-card-body">
+          <span class="product-card-badge badge-green">获得化妆品批文</span>
+          <div class="product-card-title">RSK纳米脐带精华液</div>
+          <div class="product-card-desc">护肤品 · 纳米技术结合细胞衍生物应用，面向功效护肤领域</div>
+          <div class="product-card-meta" style="font-size:12px;color:var(--text-light);margin-bottom:8px">合作：重庆福美干细胞</div>
+          <div class="product-card-tags"><span>纳米技术</span><span>细胞衍生物</span><span>功效护肤</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category: 技术开发项目 -->
+    <div class="product-category-label fade-in" style="margin-top:32px">技术开发项目 / Demo成果</div>
+    <div class="product-grid" style="margin-top:20px">
+      <div class="product-card fade-in fade-in-delay-1">
+        <div class="product-card-img"><img src="images/product-anti-wrinkle-demo.png" alt="高透皮抗皱紧致系列Demo"></div>
+        <div class="product-card-body">
+          <span class="product-card-badge badge-blue">已完成Demo开发</span>
+          <div class="product-card-title">高透皮抗皱紧致系列产品</div>
+          <div class="product-card-desc">自有Demo产品 / 技术验证样品，基于高透皮递送技术开发的抗皱紧致方向Demo产品，用于展示公司功效护肤开发能力</div>
+          <div class="product-card-meta" style="font-size:12px;color:var(--text-light);margin-bottom:8px">类型：自有Demo产品</div>
+          <div class="product-card-tags"><span>高透皮递送</span><span>抗皱</span><span>紧致</span><span>技术验证</span></div>
+        </div>
+      </div>
+      <div class="product-card fade-in fade-in-delay-2">
+        <div class="product-card-img"><img src="images/product-photon-mask-design.png" alt="光子美容面膜基材设计"></div>
+        <div class="product-card-body">
+          <span class="product-card-badge badge-gray">已形成设计方案</span>
+          <div class="product-card-title">光子美容面膜基材设计方案</div>
+          <div class="product-card-desc">围绕柔性基材、微型LED光源及红光/蓝光/近红外光疗，探索抗衰、祛痘、修复等功效型面膜产品方案</div>
+          <div class="product-card-meta" style="font-size:12px;color:var(--text-light);margin-bottom:8px">合作：云南橙色光医疗科技</div>
+          <div class="product-card-tags"><span>柔性基材</span><span>LED光疗</span><span>面膜</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Table -->
+    <div class="project-list fade-in">
+      <div class="project-list-title">承接研发项目</div>
+      <table class="project-table">
+        <thead><tr><th>合作单位</th><th>项目类型</th></tr></thead>
+        <tbody>
+          <tr><td>广东丸美生物技术股份有限公司</td><td>医美产品</td></tr>
+          <tr><td>广东丸美生物技术股份有限公司</td><td>医美产品</td></tr>
+          <tr><td>重庆福美干细胞生物科技发展有限公司</td><td>医美产品</td></tr>
+          <tr><td>上海暖友实业有限公司</td><td>热敷理疗产品开发</td></tr>
+          <tr><td>内江商贸商务服务有限责任公司</td><td>特色食品</td></tr>
+          <tr><td>内江市市中区投资促进服务中心</td><td>大健康产品</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. SOLUTIONS ===== -->
+<section class="solutions-section">
+  <div class="container">
+    <div class="tech-area-header fade-in" style="text-align:center">
+      <div class="tech-area-tag">解决方案</div>
+      <h2 class="tech-area-title">从概念到上市的一体化解决方案</h2>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card fade-in fade-in-delay-1">
+        <div class="solution-icon">&#128300;</div>
+        <div class="solution-title">定制化配方开发 CRO/CDMO</div>
+        <div class="solution-flow">需求分析 → 概念提案 → 配方设计 → 打样与测试 → 成本与文档</div>
+        <div class="solution-desc">深入了解客户产品概念、功效、肤感、成本和法规要求，提供从概念到生产的全流程开发服务。</div>
+      </div>
+      <div class="solution-card fade-in fade-in-delay-2">
+        <div class="solution-icon">&#128273;</div>
+        <div class="solution-title">创新原料 / 技术授权与供应</div>
+        <div class="solution-flow">技术资料 · 应用指导 · 样品支持 · 供应保障</div>
+        <div class="solution-desc">提供专业技术文档、样品测试支持和稳定供应体系，帮助客户构建产品核心竞争力。</div>
+      </div>
+      <div class="solution-card fade-in fade-in-delay-3">
+        <div class="solution-icon">&#127970;</div>
+        <div class="solution-title">一站式 ODM/OEM 服务</div>
+        <div class="solution-flow">前期策划 → 研发 → 包装设计 → 生产 → 质控 → 功效测评 → 备案注册</div>
+        <div class="solution-desc">覆盖市场洞察、概念策划、配方开发、包装设计、功效测评、生产制造到备案注册的全流程服务。</div>
+      </div>
+      <div class="solution-card fade-in fade-in-delay-4">
+        <div class="solution-icon">&#128218;</div>
+        <div class="solution-title">技术支持与咨询</div>
+        <div class="solution-flow">技术诊断 · 方案建议 · 实验验证 · 报告输出</div>
+        <div class="solution-desc">针对客户现有产品或开发项目，提供配方优化、功效提升、法规咨询和技术难题解决。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. CUSTOMER VALUE ===== -->
+<section class="value-section">
+  <div class="container">
+    <div class="tech-area-header fade-in" style="text-align:center">
+      <div class="tech-area-tag">客户价值</div>
+      <h2 class="tech-area-title">我们为客户创造什么价值</h2>
+      <div class="tech-area-en">Customer Benefits</div>
+    </div>
+    <div class="value-grid">
+      <div class="value-card fade-in fade-in-delay-1">
+        <div class="value-card-icon">&#127775;</div>
+        <div class="value-card-title">产品创新力提升</div>
+        <ul class="value-card-list"><li>差异化功效开发</li><li>独特肤感设计</li><li>新颖概念创造</li><li>建立品牌技术壁垒</li></ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-2">
+        <div class="value-card-icon">&#128737;</div>
+        <div class="value-card-title">功效与安全双保障</div>
+        <ul class="value-card-list"><li>原料筛选与开发</li><li>全面功效与安全测评</li><li>宣传有据可依</li><li>降低市场风险</li></ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-3">
+        <div class="value-card-icon">&#9889;</div>
+        <div class="value-card-title">开发效率与成本优化</div>
+        <ul class="value-card-list"><li>缩短产品上市周期</li><li>降低研发试错成本</li><li>供应链资源整合</li><li>快速响应市场</li></ul>
+      </div>
+      <div class="value-card fade-in fade-in-delay-4">
+        <div class="value-card-icon">&#128200;</div>
+        <div class="value-card-title">市场竞争力增强</div>
+        <ul class="value-card-list"><li>提升品牌形象</li><li>增强消费者信任</li><li>打造差异化卖点</li><li>实现可持续增长</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. CTA ===== -->
+<section class="medaes-cta">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <h2 class="cta-title">让技术成为产品增长的引擎</h2>
+      <p class="cta-sub">权生医药面向医美、功效护肤、大健康和生物医药企业开放技术合作，支持配方开发、功效验证、技术授权、ODM/OEM、产品升级和联合转化。</p>
+      <div class="cta-tags">
+        <span class="cta-tag">高透皮技术合作</span><span class="cta-tag">天然植物活性成分开发</span><span class="cta-tag">功效护肤产品开发</span><span class="cta-tag">医美产品升级</span><span class="cta-tag">ODM/OEM转化</span><span class="cta-tag">技术授权与供应</span><span class="cta-tag">横向课题合作</span>
+      </div>
+      <div class="cta-buttons">
+        <a href="index.html#contact" class="cta-btn cta-btn-primary">联系医美转化合作</a>
+        <a href="index.html#contact" class="cta-btn cta-btn-outline">获取技术方案</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-text">重庆权生医药科技有限公司</div>
+        <div class="footer-logo-sub">QUANSHENG PHARMA</div>
+        <p class="footer-brand-desc">以全生物活性物质开发体系为核心的生物医药转化平台，专注多肽递送、线粒体治疗与创新药研发。</p>
+      </div>
+      <div><div class="footer-col-title">科研服务平台</div><ul class="footer-links"><li><a href="research-service.html#rs-omics">组学检测平台</a></li><li><a href="research-service.html#rs-bioinfo">生物信息学分析</a></li><li><a href="research-service.html#rs-cell">细胞分子实验</a></li><li><a href="research-service.html#rs-animal">动物实验平台</a></li></ul></div>
+      <div><div class="footer-col-title">业务板块</div><ul class="footer-links"><li><a href="kits.html">预制包/技术包</a></li><li><a href="index.html#pipeline">新药管线</a></li><li><a href="research-service.html">科研服务平台</a></li><li><a href="medaes.html">医美转化</a></li></ul></div>
+      <div><div class="footer-col-title">联系</div><ul class="footer-links"><li><a href="index.html#cooperation">合作与投资</a></li><li><a href="index.html#contact">联系我们</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copyright">&copy; 2026 重庆权生医药科技有限公司. All rights reserved.</div><div class="footer-icp">渝ICP备XXXXXXXX号</div></div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<div id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 14 L9 4 M5 8 L9 4 L13 8"/></svg></div>
+
+<script>
+const navbar=document.getElementById('navbar'),hamburger=document.getElementById('nav-hamburger'),mobileMenu=document.getElementById('mobile-menu');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);const b=document.getElementById('back-to-top');b.classList.toggle('show',window.scrollY>400)});
+hamburger.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+const fadeEls=document.querySelectorAll('.fade-in'),obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}}),{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+fadeEls.forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
