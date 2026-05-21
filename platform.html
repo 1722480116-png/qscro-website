@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技术平台 | 重庆权生医药科技有限公司</title>
+<meta name="description" content="重庆权生医药科技有限公司六大核心技术平台，覆盖组学检测、生物信息学、细胞分子实验、动物实验、病理实验、药物分析，构建生物医药研发全链条服务能力。">
+<style>
+/* ===== CSS Reset & Variables ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --deep-blue: #0B1F3A;
+  --teal: #00C9A7;
+  --teal-dark: #00A389;
+  --light-bg: #F0F6FF;
+  --white: #FFFFFF;
+  --text-gray: #4A5568;
+  --text-light: #A0AEC0;
+  --border-light: rgba(255,255,255,0.12);
+  --card-shadow: 0 4px 24px rgba(11,31,58,0.10);
+  --card-shadow-hover: 0 12px 40px rgba(11,31,58,0.18);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --font-cn: 'Source Han Sans CN', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-en: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-cn);
+  color: var(--text-gray);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+section { position: relative; overflow: hidden; }
+
+/* ===== Utility ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--teal);
+  padding: 6px 14px; border: 1.5px solid var(--teal);
+  border-radius: 100px; margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+  line-height: 1.2; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 16px; color: var(--text-gray);
+  line-height: 1.8; max-width: 560px;
+}
+.fade-in {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in-delay-5 { transition-delay: 0.5s; }
+
+/* ===== Navbar - Shared via nav.css ===== */
+
+/* ===== Hero Banner ===== */
+#banner {
+  background-image: url('images/platform-hero-bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 100px 24px 60px;
+}
+/* Blue/dark-blue semi-transparent overlay for text readability */
+#banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,31,58,0.55) 0%, rgba(11,31,58,0.40) 50%, rgba(11,31,58,0.50) 100%);
+  pointer-events: none; z-index: 1;
+}
+/* Bottom gradient for smooth transition */
+#banner::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, rgba(11,31,58,0.30));
+  pointer-events: none; z-index: 1;
+}
+#banner-canvas { display: none; }
+.banner-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  max-width: 800px;
+}
+.banner-title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 800; color: var(--white);
+  margin-bottom: 18px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+}
+.banner-sub {
+  font-size: 18px; color: rgba(255,255,255,0.80);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.2);
+}
+.banner-deco { display: none; }
+
+/* ===== Core Platforms Section ===== */
+#platforms {
+  background: var(--white);
+  padding: 100px 0;
+}
+.platforms-header {
+  text-align: center; max-width: 600px;
+  margin: 0 auto 64px;
+}
+.platforms-header .section-sub { margin: 0 auto; }
+.platform-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.platform-card {
+  background: var(--white);
+  border: 1.5px solid rgba(11,31,58,0.07);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+  position: relative; overflow: hidden;
+}
+.platform-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-dark));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.platform-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(0,201,167,0.18);
+  transform: translateY(-6px);
+}
+.platform-card:hover::before { transform: scaleX(1); }
+.platform-icon {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, rgba(0,201,167,0.12), rgba(0,201,167,0.04));
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+}
+.platform-icon svg { width: 32px; height: 32px; }
+.platform-title {
+  font-size: 20px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 12px;
+}
+.platform-desc {
+  font-size: 14px; color: var(--text-gray);
+  line-height: 1.85; margin-bottom: 20px;
+}
+.platform-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-size: 11px; font-weight: 600;
+  padding: 4px 12px; border-radius: 100px;
+  background: rgba(0,201,167,0.08); color: var(--teal-dark);
+  border: 1px solid rgba(0,201,167,0.18); letter-spacing: 0.5px;
+}
+
+/* ===== Tech Kits Section ===== */
+#kits {
+  background: var(--light-bg);
+  padding: 100px 0;
+}
+.kits-header { text-align: center; max-width: 600px; margin: 0 auto 56px; }
+.kits-header .section-sub { margin: 0 auto; }
+.kits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.kit-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 0; overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+  display: flex; flex-direction: column;
+}
+.kit-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+.kit-card-head {
+  background: var(--deep-blue);
+  padding: 28px 28px 24px;
+  position: relative;
+}
+.kit-badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 100px;
+  background: var(--teal); color: var(--deep-blue);
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.kit-badge.new { background: #FF6B6B; color: var(--white); }
+.kit-card-title {
+  font-size: 20px; font-weight: 700; color: var(--white);
+  margin-bottom: 4px;
+}
+.kit-card-sub {
+  font-size: 13px; color: rgba(255,255,255,0.45);
+  margin-top: 4px;
+}
+.kit-card-body { padding: 28px; flex: 1; }
+.kit-section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+  color: var(--teal-dark); text-transform: uppercase;
+  margin-bottom: 10px; margin-top: 20px;
+}
+.kit-section-label:first-child { margin-top: 0; }
+.kit-items { display: flex; flex-direction: column; gap: 6px; }
+.kit-item {
+  font-size: 13px; color: var(--text-gray);
+  display: flex; align-items: flex-start; gap: 8px; line-height: 1.5;
+}
+.kit-item::before {
+  content: ''; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--teal);
+  margin-top: 6px; flex-shrink: 0;
+}
+.kit-scenarios { display: flex; flex-wrap: wrap; gap: 7px; }
+.kit-scenario {
+  font-size: 11px; color: var(--text-gray);
+  background: var(--light-bg); padding: 4px 10px;
+  border-radius: 100px; border: 1px solid rgba(11,31,58,0.07);
+}
+.kit-card-foot { padding: 0 28px 28px; }
+.btn-kit {
+  width: 100%; padding: 12px 20px;
+  background: transparent; border: 1.5px solid var(--teal);
+  border-radius: 100px; color: var(--teal);
+  font-size: 14px; font-weight: 600;
+  transition: background var(--transition), color var(--transition), transform 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.btn-kit:hover {
+  background: var(--teal); color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ===== Innovation Highlights ===== */
+#innovation {
+  background: var(--deep-blue);
+  padding: 100px 0;
+  position: relative;
+}
+.innovation-header {
+  text-align: center; max-width: 600px;
+  margin: 0 auto 60px;
+}
+.innovation-header .section-title { color: var(--white); }
+.innovation-header .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto; }
+.innovation-header .section-tag { color: var(--teal); border-color: var(--teal); }
+.innovation-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+.innovation-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+}
+.innovation-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(0,201,167,0.25);
+  transform: translateY(-4px);
+}
+.innovation-icon {
+  width: 64px; height: 64px;
+  background: rgba(0,201,167,0.12);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px;
+}
+.innovation-icon svg { width: 36px; height: 36px; }
+.innovation-title {
+  font-size: 22px; font-weight: 700; color: var(--white);
+  margin-bottom: 16px;
+}
+.innovation-list {
+  display: flex; flex-direction: column; gap: 12px;
+}
+.innovation-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14px; color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+.innovation-item::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  margin-top: 7px; flex-shrink: 0;
+}
+.innovation-tag {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 12px; font-weight: 600;
+  padding: 6px 14px; border-radius: 100px;
+  background: rgba(0,201,167,0.12); color: var(--teal);
+  border: 1px solid rgba(0,201,167,0.22);
+}
+
+/* ===== Contact CTA ===== */
+#cta {
+  background: var(--deep-blue);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-inner {
+  text-align: center;
+  position: relative; z-index: 2;
+}
+.cta-inner .section-title { color: var(--white); margin-bottom: 24px; }
+.cta-inner .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto 36px; max-width: 480px; }
+.btn-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--teal); color: var(--white);
+  padding: 15px 36px; border-radius: 100px;
+  font-size: 15px; font-weight: 700;
+  transition: background var(--transition), box-shadow var(--transition), transform 0.2s;
+}
+.btn-cta:hover {
+  background: var(--teal-dark);
+  box-shadow: 0 8px 32px rgba(0,201,167,0.4);
+  transform: translateY(-2px);
+}
+
+/* ===== Footer ===== */
+#footer {
+  background: #071526;
+  padding: 60px 0 0;
+}
+.footer-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-brand .footer-logo-text {
+  font-size: 18px; font-weight: 700; color: var(--white);
+  margin-bottom: 4px;
+}
+.footer-brand .footer-logo-sub { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; margin-bottom: 16px; }
+.footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
+.footer-col-title {
+  font-size: 13px; font-weight: 700; color: var(--white);
+  letter-spacing: 0.5px; margin-bottom: 18px;
+  text-transform: uppercase; font-size: 11px; letter-spacing: 1.5px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; flex-wrap: wrap; gap: 12px;
+}
+.footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-icp { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+/* ===== Back to Top ===== */
+#back-to-top {
+  position: fixed; bottom: 32px; right: 32px; z-index: 999;
+  width: 44px; height: 56px;
+  background: var(--teal); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition), background var(--transition);
+  box-shadow: 0 4px 16px rgba(0,201,167,0.3);
+}
+#back-to-top.show { opacity: 1; pointer-events: all; }
+#back-to-top:hover { background: var(--teal-dark); transform: translateY(-3px); }
+#back-to-top svg { width: 18px; height: 18px; color: var(--white); }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .platform-cards { grid-template-columns: 1fr 1fr; }
+  .kits-grid { grid-template-columns: 1fr 1fr; }
+  .innovation-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 768px) {
+  .platform-cards { grid-template-columns: 1fr; }
+  .kits-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .banner-title { font-size: 32px; }
+  .banner-sub { font-size: 16px; }
+}
+</style>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="权生医药 Quansheng Pharm">
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">公司介绍</a></li>
+      <li><a href="research-service.html" class="active">科研服务平台</a></li>
+      <li><a href="kits.html">预制包/技术包</a></li>
+      <li><a href="index.html#pipeline">新药管线</a></li>
+      <li><a href="medaes.html">医美转化</a></li>
+      <li><a href="index.html#cooperation">合作与投资</a></li>
+      <li><a href="index.html#contact" class="nav-cta">联系我们</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">首页</a>
+    <a href="about.html">公司介绍</a>
+    <a href="research-service.html" class="active">科研服务平台</a>
+    <a href="kits.html">预制包/技术包</a>
+    <a href="index.html#pipeline">新药管线</a>
+    <a href="medaes.html">医美转化</a>
+    <a href="index.html#cooperation">合作与投资</a>
+    <a href="index.html#contact">联系我们</a>
+  </div>
+</nav>
+
+<!-- ===== HERO BANNER ===== -->
+<section id="banner">
+  <canvas id="banner-canvas"></canvas>
+  <div class="banner-deco banner-deco-1"></div>
+  <div class="banner-deco banner-deco-2"></div>
+  <div class="banner-inner">
+    <h1 class="banner-title fade-in">技术平台</h1>
+    <p class="banner-sub fade-in fade-in-delay-1">六大核心技术平台，构建生物医药研发全链条服务能力</p>
+  </div>
+</section>
+
+<!-- ===== CORE PLATFORMS ===== -->
+<section id="platforms">
+  <div class="container">
+    <div class="platforms-header fade-in">
+      <div class="section-tag">核心业务</div>
+      <h2 class="section-title" style="color: var(--deep-blue);">核心业务平台</h2>
+      <p class="section-sub">覆盖生命科学研究与生物医药开发全流程，为科研机构与企业提供一站式技术服务</p>
+    </div>
+    <div class="platform-cards">
+      <!-- Platform 1: 组学检测平台 -->
+      <div class="platform-card fade-in">
+        <div class="platform-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- DNA Double Helix -->
+            <path d="M8 4 C8 4, 14 10, 14 16 C14 22, 8 28, 8 28"/>
+            <path d="M24 4 C24 4, 18 10, 18 16 C18 22, 24 28, 24 28"/>
+            <line x1="9" y1="9" x2="23" y2="9" stroke-dasharray="2 2"/>
+            <line x1="10" y1="16" x2="22" y2="16"/>
+            <line x1="9" y1="23" x2="23" y2="23" stroke-dasharray="2 2"/>
+            <circle cx="8" cy="4" r="2.5" fill="#00C9A7"/>
+            <circle cx="24" cy="4" r="2.5" fill="#00C9A7" opacity="0.5"/>
+            <circle cx="8" cy="28" r="2.5" fill="#00C9A7" opacity="0.5"/>
+            <circle cx="24" cy="28" r="2.5" fill="#00C9A7"/>
+          </svg>
+        </div>
+        <h3 class="platform-title">组学检测平台</h3>
+        <p class="platform-desc">涵盖基因组学、转录组学、蛋白质组学、代谢组学等多维度检测服务，为生命科学研究提供全面数据支撑</p>
+        <div class="platform-tags">
+          <span class="tag">NGS测序</span>
+          <span class="tag">蛋白质组学</span>
+          <span class="tag">代谢组学</span>
+          <span class="tag">单细胞测序</span>
+        </div>
+      </div>
+      <!-- Platform 2: 生物信息学分析平台 -->
+      <div class="platform-card fade-in fade-in-delay-1">
+        <div class="platform-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Data Network Nodes -->
+            <circle cx="16" cy="16" r="4" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="6" cy="8" r="2.5"/>
+            <circle cx="26" cy="8" r="2.5"/>
+            <circle cx="6" cy="24" r="2.5"/>
+            <circle cx="26" cy="24" r="2.5"/>
+            <circle cx="16" cy="4" r="2"/>
+            <circle cx="16" cy="28" r="2"/>
+            <line x1="8" y1="9" x2="13" y2="14"/>
+            <line x1="24" y1="9" x2="19" y2="14"/>
+            <line x1="8" y1="23" x2="13" y2="18"/>
+            <line x1="24" y1="23" x2="19" y2="18"/>
+            <line x1="16" y1="8" x2="16" y2="12"/>
+            <line x1="16" y1="20" x2="16" y2="26"/>
+            <line x1="6" y1="10" x2="6" y2="22"/>
+            <line x1="26" y1="10" x2="26" y2="22"/>
+          </svg>
+        </div>
+        <h3 class="platform-title">生物信息学分析平台</h3>
+        <p class="platform-desc">专业生信团队提供从数据挖掘、差异分析到机器学习建模的全流程生信分析服务</p>
+        <div class="platform-tags">
+          <span class="tag">数据挖掘</span>
+          <span class="tag">机器学习</span>
+          <span class="tag">多组学整合</span>
+          <span class="tag">可视化报告</span>
+        </div>
+      </div>
+      <!-- Platform 3: 细胞分子实验平台 -->
+      <div class="platform-card fade-in fade-in-delay-2">
+        <div class="platform-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Cell/Molecule Structure -->
+            <ellipse cx="16" cy="16" rx="12" ry="8" opacity="0.3"/>
+            <ellipse cx="16" cy="16" rx="8" ry="5" opacity="0.5"/>
+            <circle cx="16" cy="16" r="4" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="8" cy="12" r="2"/>
+            <circle cx="24" cy="12" r="2"/>
+            <circle cx="10" cy="22" r="1.5"/>
+            <circle cx="22" cy="22" r="1.5"/>
+            <circle cx="16" cy="16" r="2" fill="#00C9A7"/>
+            <line x1="10" y1="14" x2="8" y2="12"/>
+            <line x1="22" y1="14" x2="24" y2="12"/>
+          </svg>
+        </div>
+        <h3 class="platform-title">细胞分子实验平台</h3>
+        <p class="platform-desc">覆盖分子克隆、细胞培养、功能验证、荧光检测等基础实验与前沿技术开发</p>
+        <div class="platform-tags">
+          <span class="tag">分子克隆</span>
+          <span class="tag">细胞培养</span>
+          <span class="tag">功能验证</span>
+          <span class="tag">CRISPR</span>
+        </div>
+      </div>
+      <!-- Platform 4: 动物实验平台 -->
+      <div class="platform-card fade-in fade-in-delay-3">
+        <div class="platform-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Lab Mouse Simplified -->
+            <ellipse cx="14" cy="18" rx="8" ry="6"/>
+            <circle cx="20" cy="14" r="4"/>
+            <circle cx="22" cy="12" r="1.5" fill="#00C9A7" opacity="0.6"/>
+            <path d="M22 14 Q24 14, 24 16"/>
+            <ellipse cx="6" cy="14" rx="3" ry="4" opacity="0.6"/>
+            <ellipse cx="24" cy="18" rx="2" ry="3"/>
+            <line x1="10" y1="24" x2="10" y2="28"/>
+            <line x1="18" y1="24" x2="18" y2="28"/>
+            <path d="M4" y1="20" x2="2" y2="18" stroke-dasharray="1 1"/>
+          </svg>
+        </div>
+        <h3 class="platform-title">动物实验平台</h3>
+        <p class="platform-desc">规范化动物实验体系，支持药效学、毒理学及安全性评价研究</p>
+        <div class="platform-tags">
+          <span class="tag">药效学</span>
+          <span class="tag">毒理学</span>
+          <span class="tag">安全性评价</span>
+          <span class="tag">规范化</span>
+        </div>
+      </div>
+      <!-- Platform 5: 病理实验平台 -->
+      <div class="platform-card fade-in fade-in-delay-4">
+        <div class="platform-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Tissue Section -->
+            <rect x="4" y="8" width="24" height="16" rx="2" opacity="0.3"/>
+            <rect x="7" y="11" width="18" height="10" rx="1" opacity="0.5"/>
+            <circle cx="12" cy="16" r="2" fill="#00C9A7" opacity="0.4"/>
+            <circle cx="18" cy="14" r="1.5" fill="#00C9A7" opacity="0.6"/>
+            <circle cx="20" cy="18" r="1" fill="#00C9A7"/>
+            <circle cx="14" cy="13" r="1" fill="#00C9A7" opacity="0.7"/>
+            <line x1="8" y1="20" x2="8" y2="22"/>
+            <line x1="10" y1="20" x2="10" y2="22"/>
+            <line x1="12" y1="20" x2="12" y2="22"/>
+          </svg>
+        </div>
+        <h3 class="platform-title">病理实验平台</h3>
+        <p class="platform-desc">提供组织病理切片制作、免疫组化、特殊染色及病理分析等专业化服务</p>
+        <div class="platform-tags">
+          <span class="tag">免疫组化</span>
+          <span class="tag">特殊染色</span>
+          <span class="tag">病理分析</span>
+          <span class="tag">数字化病理</span>
+        </div>
+      </div>
+      <!-- Platform 6: 药物分析实验平台 -->
+      <div class="platform-card fade-in fade-in-delay-5">
+        <div class="platform-icon">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Molecule/Drug Formula -->
+            <circle cx="10" cy="10" r="3" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="22" cy="10" r="3" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="16" cy="18" r="3" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="8" cy="24" r="2.5" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="24" cy="24" r="2.5" fill="rgba(0,201,167,0.2)"/>
+            <line x1="13" y1="10" x2="19" y2="10"/>
+            <line x1="10" y1="13" x2="14" y2="16"/>
+            <line x1="18" y1="16" x2="22" y2="13"/>
+            <line x1="14" y1="21" x2="10" y2="22"/>
+            <line x1="18" y1="21" x2="22" y2="22"/>
+            <circle cx="10" cy="10" r="1.5" fill="#00C9A7"/>
+            <circle cx="22" cy="10" r="1.5" fill="#00C9A7"/>
+            <circle cx="16" cy="18" r="1.5" fill="#00C9A7"/>
+          </svg>
+        </div>
+        <h3 class="platform-title">药物分析实验平台</h3>
+        <p class="platform-desc">涵盖药物分析方法开发、制剂研究、质量控制等药物研发全流程支持</p>
+        <div class="platform-tags">
+          <span class="tag">分析方法</span>
+          <span class="tag">制剂研究</span>
+          <span class="tag">质量控制</span>
+          <span class="tag">GMP规范</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH KITS ===== -->
+<section id="kits">
+  <div class="container">
+    <div class="kits-header fade-in">
+      <div class="section-tag">产品矩阵</div>
+      <h2 class="section-title" style="color: var(--deep-blue);">预制包 / 技术包</h2>
+      <p class="section-sub">标准化、即用型研究工具产品，助力研究加速</p>
+    </div>
+    <div class="kits-grid">
+      <!-- Kit 1 -->
+      <div class="kit-card fade-in">
+        <div class="kit-card-head">
+          <div class="kit-badge">热门产品</div>
+          <div class="kit-card-title">线粒体研究预制包</div>
+          <div class="kit-card-sub">Mitochondria Research Kit</div>
+        </div>
+        <div class="kit-card-body">
+          <div class="kit-section-label">包含内容</div>
+          <ul class="kit-items">
+            <li class="kit-item">线粒体提取试剂</li>
+            <li class="kit-item">功能检测探针</li>
+            <li class="kit-item">线粒体转染试剂</li>
+            <li class="kit-item">质控标准品</li>
+          </ul>
+          <div class="kit-section-label">适用场景</div>
+          <div class="kit-scenarios">
+            <span class="kit-scenario">细胞代谢研究</span>
+            <span class="kit-scenario">线粒体功能评估</span>
+            <span class="kit-scenario">线粒体移植研究</span>
+          </div>
+        </div>
+        <div class="kit-card-foot">
+          <button class="btn-kit">
+            查看详情
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- Kit 2 -->
+      <div class="kit-card fade-in fade-in-delay-1">
+        <div class="kit-card-head">
+          <div class="kit-card-title" style="margin-top:26px;">高透皮技术开发包</div>
+          <div class="kit-card-sub">Transdermal Technology Kit</div>
+        </div>
+        <div class="kit-card-body">
+          <div class="kit-section-label">包含内容</div>
+          <ul class="kit-items">
+            <li class="kit-item">透皮促渗剂体系</li>
+            <li class="kit-item">皮肤屏障模型</li>
+            <li class="kit-item">渗透性检测工具</li>
+            <li class="kit-item">配方优化支持</li>
+          </ul>
+          <div class="kit-section-label">适用场景</div>
+          <div class="kit-scenarios">
+            <span class="kit-scenario">透皮给药研究</span>
+            <span class="kit-scenario">医美活性物递送</span>
+            <span class="kit-scenario">皮肤科学研究</span>
+          </div>
+        </div>
+        <div class="kit-card-foot">
+          <button class="btn-kit">
+            查看详情
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <!-- Kit 3 -->
+      <div class="kit-card fade-in fade-in-delay-2">
+        <div class="kit-card-head">
+          <div class="kit-badge new">新品上市</div>
+          <div class="kit-card-title">纳米递送技术包</div>
+          <div class="kit-card-sub">Nano Delivery Technology Kit</div>
+        </div>
+        <div class="kit-card-body">
+          <div class="kit-section-label">包含内容</div>
+          <ul class="kit-items">
+            <li class="kit-item">脂质纳米颗粒制备套装</li>
+            <li class="kit-item">粒径检测标准品</li>
+            <li class="kit-item">包封率评估试剂</li>
+            <li class="kit-item">体外释放模型</li>
+          </ul>
+          <div class="kit-section-label">适用场景</div>
+          <div class="kit-scenarios">
+            <span class="kit-scenario">mRNA递送研究</span>
+            <span class="kit-scenario">核酸药物开发</span>
+            <span class="kit-scenario">靶向递送研究</span>
+          </div>
+        </div>
+        <div class="kit-card-foot">
+          <button class="btn-kit">
+            查看详情
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INNOVATION HIGHLIGHTS ===== -->
+<section id="innovation">
+  <div class="container">
+    <div class="innovation-header fade-in">
+      <div class="section-tag">创新技术</div>
+      <h2 class="section-title">创新技术亮点</h2>
+      <p class="section-sub">聚焦前沿生物医药技术方向，推动创新成果转化</p>
+    </div>
+    <div class="innovation-grid">
+      <!-- Innovation 1 -->
+      <div class="innovation-card fade-in">
+        <div class="innovation-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Oral Drug Delivery -->
+            <ellipse cx="18" cy="18" rx="14" ry="6" opacity="0.3"/>
+            <ellipse cx="18" cy="18" rx="10" ry="4"/>
+            <rect x="12" y="14" width="12" height="8" rx="2" fill="rgba(0,201,167,0.15)"/>
+            <path d="M14 16 L22 16"/>
+            <path d="M14 18 L20 18"/>
+            <path d="M14 20 L18 20"/>
+            <circle cx="26" cy="10" r="2" fill="#00C9A7" opacity="0.5"/>
+            <path d="M28 12 L30 14" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <h3 class="innovation-title">多肽药物口服递送平台</h3>
+        <div class="innovation-list">
+          <div class="innovation-item">突破多肽药物口服生物利用度瓶颈</div>
+          <div class="innovation-item">开发特异性肠道吸收增强技术</div>
+          <div class="innovation-item">口服司美格鲁肽项目推进中</div>
+        </div>
+        <div class="innovation-tag">GLP-1R 多靶点</div>
+      </div>
+      <!-- Innovation 2 -->
+      <div class="innovation-card fade-in fade-in-delay-1">
+        <div class="innovation-icon">
+          <svg viewBox="0 0 36 36" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <!-- Mitochondria -->
+            <ellipse cx="18" cy="18" rx="12" ry="8" opacity="0.3"/>
+            <path d="M8 18 C8 12, 12 8, 18 8 C24 8, 28 12, 28 18 C28 24, 24 28, 18 28 C12 28, 8 24, 8 18"/>
+            <path d="M11 14 Q14 12, 18 13 Q22 14, 25 12"/>
+            <path d="M11 22 Q14 24, 18 23 Q22 22, 25 24"/>
+            <circle cx="18" cy="18" r="3" fill="rgba(0,201,167,0.2)"/>
+            <circle cx="18" cy="18" r="1.5" fill="#00C9A7"/>
+            <circle cx="12" cy="14" r="1" fill="#00C9A7" opacity="0.6"/>
+            <circle cx="24" cy="14" r="1" fill="#00C9A7" opacity="0.6"/>
+            <circle cx="12" cy="22" r="1" fill="#00C9A7" opacity="0.6"/>
+            <circle cx="24" cy="22" r="1" fill="#00C9A7" opacity="0.6"/>
+          </svg>
+        </div>
+        <h3 class="innovation-title">工程化线粒体治疗平台</h3>
+        <div class="innovation-list">
+          <div class="innovation-item">基于 pMITO/rpMITO 技术</div>
+          <div class="innovation-item">构建可程序化功能线粒体治疗体系</div>
+          <div class="innovation-item">应用于神经退行性疾病与代谢疾病</div>
+        </div>
+        <div class="innovation-tag">pMITO 技术</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT CTA ===== -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-inner fade-in">
+      <h2 class="section-title">了解更多关于我们的技术平台</h2>
+      <p class="section-sub">无论您是科研机构、药企还是投资方，我们期待与您深入交流</p>
+      <a href="index.html#contact" class="btn-cta">
+        联系我们
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-text">重庆权生医药科技有限公司</div>
+        <div class="footer-logo-sub">QUANSHENG PHARMA</div>
+        <p class="footer-brand-desc">以全生物活性物质开发体系为核心的生物医药转化平台，专注多肽递送、线粒体治疗与创新药研发。</p>
+      </div>
+      <div>
+        <div class="footer-col-title">技术平台</div>
+        <ul class="footer-links">
+          <li><a href="#platforms">组学检测平台</a></li>
+          <li><a href="#platforms">生物信息学分析</a></li>
+          <li><a href="#platforms">细胞分子实验</a></li>
+          <li><a href="#platforms">药物分析实验</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">业务板块</div>
+        <ul class="footer-links">
+          <li><a href="#kits">预制包/技术包</a></li>
+          <li><a href="index.html#pipeline">新药管线</a></li>
+          <li><a href="research-service.html">科研服务平台</a></li>
+          <li><a href="medaes.html">医美转化</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">联系</div>
+        <ul class="footer-links">
+          <li><a href="index.html#cooperation">合作与投资</a></li>
+          <li><a href="index.html#contact">联系我们</a></li>
+          <li><a href="mailto:contact@quansheng-pharma.com">contact@quansheng-pharma.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">© 2026 重庆权生医药科技有限公司. All rights reserved.</div>
+      <div class="footer-icp">渝ICP备XXXXXXXX号</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<div id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M9 14 L9 4 M5 8 L9 4 L13 8"/>
+  </svg>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+/* ===== Navbar scroll behavior ===== */
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  const btt = document.getElementById('back-to-top');
+  if (window.scrollY > 400) {
+    btt.classList.add('show');
+  } else {
+    btt.classList.remove('show');
+  }
+});
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+/* ===== Canvas Banner Animation ===== */
+(function() {
+  const canvas = document.getElementById('banner-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles, animId;
+  const TEAL = '#00C9A7';
+  const TEAL_DIM = 'rgba(0,201,167,';
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function Particle() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3;
+    this.r = Math.random() * 1.5 + 0.3;
+    this.alpha = Math.random() * 0.4 + 0.15;
+  }
+
+  function init() {
+    resize();
+    const count = Math.floor((W * H) / 10000);
+    particles = Array.from({length: Math.min(count, 80)}, () => new Particle());
+  }
+
+  function drawGrid() {
+    const step = 48;
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(0,201,167,0.035)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < W; x += step) {
+      ctx.moveTo(x, 0); ctx.lineTo(x, H);
+    }
+    for (let y = 0; y < H; y += step) {
+      ctx.moveTo(0, y); ctx.lineTo(W, y);
+    }
+    ctx.stroke();
+  }
+
+  function drawConnections() {
+    const dist = 120;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < dist) {
+          const alpha = (1 - d / dist) * 0.15;
+          ctx.beginPath();
+          ctx.strokeStyle = TEAL_DIM + alpha + ')';
+          ctx.lineWidth = 0.7;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    drawGrid();
+    for (const p of particles) {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W;
+      if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H;
+      if (p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = TEAL_DIM + p.alpha + ')';
+      ctx.fill();
+    }
+    drawConnections();
+    animId = requestAnimationFrame(loop);
+  }
+
+  init();
+  loop();
+  window.addEventListener('resize', () => { init(); });
+})();
+
+/* ===== Intersection Observer for animations ===== */
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+
+/* ===== Smooth anchor scroll with offset ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    const target = document.querySelector(href);
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
