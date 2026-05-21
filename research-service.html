@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>科研服务平台 | 重庆权生医药科技有限公司</title>
+<meta name="description" content="权生医药科研服务平台，提供覆盖组学检测、生信分析、细胞分子实验、动物实验、病理分析与药物分析的一站式体内体外科研技术服务。">
+<style>
+/* ===== CSS Reset & Variables ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --deep-blue: #0B1F3A;
+  --primary-blue: #1A56DB;
+  --teal: #00C9A7;
+  --teal-dark: #00A389;
+  --light-bg: #F0F6FF;
+  --white: #FFFFFF;
+  --text-gray: #4A5568;
+  --text-light: #A0AEC0;
+  --border-light: rgba(255,255,255,0.12);
+  --card-shadow: 0 4px 24px rgba(11,31,58,0.10);
+  --card-shadow-hover: 0 12px 40px rgba(11,31,58,0.18);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --font-cn: 'Source Han Sans CN', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-en: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-cn);
+  color: var(--text-gray);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+section { position: relative; overflow: hidden; }
+
+/* ===== Utility ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--teal);
+  padding: 6px 14px; border: 1.5px solid var(--teal);
+  border-radius: 100px; margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+  line-height: 1.2; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 16px; color: var(--text-gray);
+  line-height: 1.8; max-width: 680px;
+}
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header .section-sub { margin: 0 auto; }
+.section-en {
+  font-family: var(--font-en); font-size: 13px; font-weight: 500;
+  color: var(--text-light); letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.fade-in {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in-delay-5 { transition-delay: 0.5s; }
+
+/* ===== Navbar - Shared via nav.css ===== */
+
+/* ===== Hero Banner ===== */
+#rs-hero {
+  min-height: 82vh;
+  background: url('images/hero-research-bg.png') no-repeat center center;
+  background-size: cover;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 100px 24px 60px;
+}
+/* Subtle overlay - bottom-left gradient for text readability, mostly transparent */
+#rs-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(240,246,255,0.25) 0%,
+    rgba(220,235,252,0.15) 40%,
+    rgba(245,250,255,0.08) 70%,
+    rgba(240,246,255,0.20) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+/* Dark vignette at edges for depth */
+#rs-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(11,31,58,0.15) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.rs-hero-inner {
+  position: relative; z-index: 2; max-width: 900px;
+  text-align: center;
+  padding: 44px 52px;
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 8px 40px rgba(11,31,58,0.10), 0 1px 3px rgba(0,0,0,0.06);
+}
+.rs-hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  color: var(--primary-blue); padding: 8px 20px;
+  background: rgba(26,86,219,0.08);
+  border: 1px solid rgba(26,86,219,0.15);
+  border-radius: 100px; margin-bottom: 24px;
+}
+.rs-hero-tag-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal);
+  animation: pulse-dot 2s ease infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.rs-hero-title {
+  font-size: clamp(36px, 5.5vw, 56px);
+  font-weight: 800; line-height: 1.15;
+  color: var(--deep-blue); margin-bottom: 12px;
+}
+.rs-hero-en {
+  font-family: var(--font-en);
+  font-size: clamp(14px, 1.8vw, 18px);
+  color: var(--primary-blue); font-weight: 600;
+  letter-spacing: 2px; margin-bottom: 24px;
+}
+.rs-hero-sub {
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: var(--text-gray); line-height: 1.8;
+  max-width: 760px; margin: 0 auto 36px;
+}
+.rs-hero-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: var(--teal); color: var(--white);
+  border-radius: 100px; font-size: 15px; font-weight: 600;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.btn-primary:hover {
+  background: var(--teal-dark);
+  box-shadow: 0 6px 24px rgba(0,201,167,0.3);
+  transform: translateY(-2px);
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: rgba(255,255,255,0.8);
+  border: 1.5px solid var(--primary-blue); color: var(--primary-blue);
+  border-radius: 100px; font-size: 15px; font-weight: 600;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.btn-outline:hover {
+  background: var(--primary-blue); color: var(--white);
+  box-shadow: 0 6px 24px rgba(26,86,219,0.2);
+  transform: translateY(-2px);
+}
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.5); color: var(--deep-blue);
+  border-radius: 100px; font-size: 15px; font-weight: 600;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.btn-white:hover {
+  background: var(--white);
+  box-shadow: 0 6px 24px rgba(11,31,58,0.12);
+  transform: translateY(-2px);
+}
+/* Hero floating molecules - hidden when background image is used */
+.rs-hero-molecules {
+  display: none;
+}
+
+/* ===== Section 2: Platform Overview ===== */
+#rs-overview {
+  padding: 100px 0;
+  background: var(--white);
+}
+.overview-flow {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin-top: 48px; flex-wrap: wrap;
+}
+.flow-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; padding: 16px 12px;
+  text-align: center; position: relative;
+}
+.flow-step-icon {
+  width: 56px; height: 56px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 14px; font-size: 24px;
+  background: linear-gradient(135deg, rgba(0,201,167,0.1) 0%, rgba(26,86,219,0.1) 100%);
+  color: var(--primary-blue);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.flow-step:hover .flow-step-icon {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,201,167,0.15);
+}
+.flow-step-label {
+  font-size: 13px; font-weight: 600; color: var(--deep-blue);
+  line-height: 1.3;
+}
+.flow-arrow {
+  font-size: 18px; color: var(--teal); margin: 0 4px;
+  align-self: flex-start; padding-top: 18px;
+}
+.overview-desc {
+  max-width: 800px; margin: 32px auto 0;
+  text-align: center; font-size: 15px; line-height: 1.9;
+  color: var(--text-gray);
+}
+.overview-tags {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px; margin-top: 28px;
+}
+.overview-tag-item {
+  padding: 8px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 500;
+  background: var(--light-bg); color: var(--primary-blue);
+  border: 1px solid rgba(26,86,219,0.1);
+  transition: background var(--transition), transform var(--transition);
+}
+.overview-tag-item:hover {
+  background: rgba(26,86,219,0.08);
+  transform: translateY(-2px);
+}
+
+/* ===== Section 3: Six Platforms Matrix ===== */
+#rs-platforms {
+  padding: 100px 0;
+  background: var(--white);
+}
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.matrix-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 32px;
+  border-radius: 20px;
+  background: rgba(240, 246, 255, 0.5);
+  border: 1px solid rgba(26, 86, 219, 0.06);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.matrix-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11, 31, 58, 0.10);
+  background: rgba(255, 255, 255, 0.85);
+}
+.matrix-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--primary-blue));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.matrix-item:hover::before { opacity: 1; }
+/* Circular image */
+.matrix-img-wrap {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(0, 201, 167, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 201, 167, 0.15), 0 0 40px rgba(0, 201, 167, 0.08);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  position: relative;
+}
+.matrix-item:hover .matrix-img-wrap {
+  border-color: rgba(0, 201, 167, 0.6);
+  box-shadow: 0 4px 24px rgba(0, 201, 167, 0.25), 0 0 50px rgba(0, 201, 167, 0.12);
+}
+.matrix-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+.matrix-item:hover .matrix-img-wrap img { transform: scale(1.05); }
+/* Text content */
+.matrix-content {
+  flex: 1;
+  min-width: 0;
+}
+.matrix-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--teal);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  font-family: var(--font-en);
+}
+.matrix-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.matrix-desc {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-gray);
+  margin-bottom: 14px;
+}
+.matrix-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.matrix-tag {
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 500;
+  background: rgba(0, 201, 167, 0.08);
+  color: var(--teal-dark);
+  border: 1px solid rgba(0, 201, 167, 0.15);
+}
+
+/* ===== Section 4-9: Detail Platform Sections ===== */
+.detail-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+.detail-section:nth-child(even) { background: var(--light-bg); }
+.detail-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: center;
+}
+.detail-content { padding: 12px 0; }
+.detail-content .section-title { margin-bottom: 8px; }
+.detail-content .section-sub { max-width: 100%; margin-bottom: 24px; }
+.detail-list {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.detail-list-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 14.5px; line-height: 1.7;
+}
+.detail-list-dot {
+  flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--teal); margin-top: 8px;
+}
+.detail-list-subtitle {
+  font-weight: 600; color: var(--deep-blue); margin-bottom: 4px;
+  font-size: 15px;
+}
+.detail-list-item ul {
+  padding-left: 18px; margin-top: 4px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.detail-list-item ul li {
+  position: relative; padding-left: 12px; font-size: 13.5px;
+  color: var(--text-gray); line-height: 1.7;
+}
+.detail-list-item ul li::before {
+  content: ''; position: absolute; left: 0; top: 10px;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--text-light);
+}
+.detail-visual {
+  position: relative; border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 380px;
+  background: linear-gradient(135deg, var(--light-bg) 0%, rgba(0,201,167,0.05) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.detail-visual-cards {
+  display: grid; gap: 16px; padding: 32px;
+  width: 100%; height: 100%;
+}
+.detail-visual-cards.cols-2 { grid-template-columns: 1fr 1fr; }
+.detail-visual-cards.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+.dv-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px 16px;
+  box-shadow: 0 2px 12px rgba(11,31,58,0.06);
+  border: 1px solid rgba(11,31,58,0.04);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.dv-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(11,31,58,0.1);
+}
+.dv-card-icon {
+  font-size: 28px; margin-bottom: 10px;
+}
+.dv-card-title {
+  font-size: 14px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 6px;
+}
+.dv-card-desc {
+  font-size: 12px; line-height: 1.6; color: var(--text-gray);
+}
+/* Omics detail */
+.omics-visual .dv-card {
+  text-align: center; padding: 18px 12px;
+}
+.omics-visual .dv-card-icon { font-size: 32px; margin-bottom: 8px; }
+.omics-visual .dv-card-title { font-size: 13px; }
+
+/* Bioinfo detail */
+.bioinfo-flow {
+  display: flex; flex-direction: column; gap: 0;
+  padding: 32px;
+}
+.bioinfo-flow-step {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 18px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.04);
+  transition: transform var(--transition);
+}
+.bioinfo-flow-step:hover { transform: translateX(4px); }
+.bioinfo-flow-step .step-num {
+  flex-shrink: 0; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; font-size: 14px; font-weight: 700;
+  background: linear-gradient(135deg, var(--teal), var(--primary-blue));
+  color: var(--white);
+}
+.bioinfo-flow-step .step-text {
+  font-size: 14px; font-weight: 500; color: var(--deep-blue);
+}
+.bioinfo-flow-arrow {
+  text-align: center; color: var(--teal); font-size: 16px;
+  padding: 4px 0;
+}
+.bioinfo-capabilities {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; padding: 24px 32px;
+}
+.bioinfo-cap-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  background: var(--white); border-radius: 10px;
+  font-size: 13px; font-weight: 500; color: var(--deep-blue);
+  box-shadow: 0 1px 6px rgba(11,31,58,0.04);
+}
+
+/* Cell & Molecular detail */
+.cell-col-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px; padding: 28px;
+}
+.cell-col-card {
+  background: var(--white); border-radius: 14px;
+  padding: 22px 16px; text-align: center;
+  box-shadow: 0 2px 12px rgba(11,31,58,0.05);
+  border-top: 3px solid var(--teal);
+}
+.cell-col-card-icon { font-size: 30px; margin-bottom: 10px; }
+.cell-col-card-title {
+  font-size: 14px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 12px;
+}
+.cell-col-card-list {
+  text-align: left; font-size: 12px; line-height: 1.7;
+  color: var(--text-gray);
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+/* Animal detail */
+.animal-models {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px; padding: 28px;
+}
+.animal-model-card {
+  background: var(--white); border-radius: 12px;
+  padding: 18px 16px;
+  box-shadow: 0 2px 10px rgba(11,31,58,0.05);
+  border-left: 3px solid var(--teal);
+}
+.animal-model-title {
+  font-size: 14px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 8px;
+}
+.animal-model-list {
+  font-size: 12px; line-height: 1.7; color: var(--text-gray);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.animal-types {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  padding: 16px 28px; justify-content: center;
+}
+.animal-type-badge {
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 600; color: var(--primary-blue);
+  background: rgba(26,86,219,0.07);
+}
+.animal-imaging {
+  margin: 0 28px 28px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(26,86,219,0.06), rgba(0,201,167,0.06));
+  border-radius: 12px;
+  border: 1px solid rgba(26,86,219,0.08);
+}
+.animal-imaging-title {
+  font-size: 14px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 10px;
+}
+.animal-imaging-items {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.animal-imaging-item {
+  padding: 6px 12px; border-radius: 8px;
+  font-size: 12px; color: var(--primary-blue);
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(26,86,219,0.1);
+}
+
+/* Pathology detail */
+.pathology-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; padding: 28px;
+}
+.pathology-card {
+  background: var(--white); border-radius: 14px;
+  padding: 24px 20px; text-align: center;
+  box-shadow: 0 2px 12px rgba(11,31,58,0.05);
+  border-bottom: 3px solid var(--primary-blue);
+  transition: transform var(--transition);
+}
+.pathology-card:hover { transform: translateY(-3px); }
+.pathology-card-icon { font-size: 32px; margin-bottom: 10px; }
+.pathology-card-title {
+  font-size: 15px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 10px;
+}
+.pathology-card-list {
+  font-size: 12.5px; line-height: 1.7; color: var(--text-gray);
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+/* Drug Analysis detail */
+.drug-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; padding: 28px;
+}
+.drug-card {
+  background: var(--white); border-radius: 14px;
+  padding: 24px 20px;
+  box-shadow: 0 2px 12px rgba(11,31,58,0.05);
+  border-top: 3px solid var(--teal);
+  transition: transform var(--transition);
+}
+.drug-card:hover { transform: translateY(-3px); }
+.drug-card-icon { font-size: 28px; margin-bottom: 10px; }
+.drug-card-title {
+  font-size: 15px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 10px;
+}
+.drug-card-list {
+  font-size: 13px; line-height: 1.8; color: var(--text-gray);
+  display: flex; flex-direction: column; gap: 2px;
+}
+
+/* ===== Section 10: Service Flow ===== */
+#rs-flow {
+  padding: 100px 0;
+  background: var(--light-bg);
+}
+.flow-timeline {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px; margin-top: 48px;
+}
+.flow-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.flow-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+}
+.flow-card::after {
+  content: ''; position: absolute; top: 36px; right: -14px;
+  width: 0; height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--teal);
+  z-index: 1;
+}
+.flow-card:last-child::after { display: none; }
+.flow-card-num {
+  width: 44px; height: 44px; margin: 0 auto 16px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px; font-size: 18px; font-weight: 800;
+  background: linear-gradient(135deg, var(--teal), var(--primary-blue));
+  color: var(--white);
+}
+.flow-card-title {
+  font-size: 16px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 10px;
+}
+.flow-card-desc {
+  font-size: 13px; line-height: 1.7; color: var(--text-gray);
+}
+.flow-highlight {
+  text-align: center; margin-top: 36px;
+  padding: 20px 32px;
+  background: rgba(0,201,167,0.06);
+  border-radius: 12px;
+  border: 1px solid rgba(0,201,167,0.12);
+  font-size: 15px; font-weight: 600; color: var(--deep-blue);
+}
+
+/* ===== Section 11: Labs & Resources ===== */
+#rs-labs {
+  padding: 100px 0;
+  background: var(--white);
+}
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.lab-card {
+  background: var(--light-bg);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  border: 1px solid rgba(26,86,219,0.06);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.lab-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(0,201,167,0.2);
+}
+.lab-card-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px; border-radius: 100px;
+  font-size: 11px; font-weight: 600;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.lab-card-badge.hq { background: linear-gradient(135deg, var(--teal), var(--primary-blue)); }
+.lab-card-badge.joint { background: var(--primary-blue); }
+.lab-card-name {
+  font-size: 20px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 6px;
+}
+.lab-card-area {
+  font-size: 28px; font-weight: 800;
+  color: var(--teal); margin-bottom: 12px;
+  font-family: var(--font-en);
+}
+.lab-card-area span {
+  font-size: 14px; font-weight: 500; color: var(--text-light);
+}
+.lab-card-desc {
+  font-size: 13px; line-height: 1.8; color: var(--text-gray);
+}
+
+/* ===== Section 12: Research Achievements ===== */
+#rs-achievements {
+  padding: 80px 0;
+  background: var(--deep-blue);
+}
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.achievement-card {
+  text-align: center; padding: 36px 20px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform var(--transition), background var(--transition);
+}
+.achievement-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.08);
+}
+.achievement-num {
+  font-size: 48px; font-weight: 800;
+  color: var(--teal);
+  font-family: var(--font-en);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.achievement-label {
+  font-size: 15px; font-weight: 500;
+  color: rgba(255,255,255,0.75);
+}
+.achievements-desc {
+  text-align: center; margin-top: 36px;
+  font-size: 15px; line-height: 1.8;
+  color: rgba(255,255,255,0.65);
+  max-width: 700px; margin-left: auto; margin-right: auto;
+}
+
+/* ===== Section 13: CTA ===== */
+#rs-cta {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--deep-blue) 0%, #0D2A4A 50%, #0A1A30 100%);
+  position: relative; overflow: hidden;
+}
+#rs-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 50%, rgba(0,201,167,0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(26,86,219,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.rs-cta-inner {
+  position: relative; z-index: 2; text-align: center;
+}
+.rs-cta-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800; color: var(--white);
+  margin-bottom: 16px;
+}
+.rs-cta-sub {
+  font-size: 16px; line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  max-width: 680px; margin: 0 auto 32px;
+}
+.rs-cta-buttons {
+  display: flex; justify-content: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 40px;
+}
+.rs-cta-directions {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px;
+}
+.rs-cta-dir {
+  padding: 8px 18px; border-radius: 100px;
+  font-size: 13px; font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.05);
+  transition: background var(--transition), border-color var(--transition);
+}
+.rs-cta-dir:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(0,201,167,0.4);
+}
+
+/* ===== Footer ===== */
+#rs-footer {
+  padding: 48px 0 24px;
+  background: #060E1A;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+}
+.footer-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 32px; margin-bottom: 32px;
+}
+.footer-brand-name {
+  font-size: 18px; font-weight: 700; color: var(--white);
+  margin-bottom: 8px;
+}
+.footer-brand-desc {
+  font-size: 13px; line-height: 1.7;
+  color: rgba(255,255,255,0.45);
+}
+.footer-col-title {
+  font-size: 14px; font-weight: 600; color: var(--white);
+  margin-bottom: 12px;
+}
+.footer-col a {
+  display: block; padding: 4px 0;
+  color: rgba(255,255,255,0.45);
+  transition: color var(--transition);
+}
+.footer-col a:hover { color: var(--teal); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 20px; text-align: center;
+  font-size: 12px; color: rgba(255,255,255,0.3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .matrix-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .matrix-img-wrap { width: 110px; height: 110px; }
+  .flow-timeline { grid-template-columns: repeat(3, 1fr); }
+  .flow-timeline .flow-card:nth-child(3)::after { display: none; }
+  .labs-grid { grid-template-columns: repeat(2, 1fr); }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  #rs-hero { min-height: 70vh; padding: 90px 20px 50px; }
+  .rs-hero-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-outline, .btn-white { width: 100%; max-width: 280px; justify-content: center; }
+  .overview-flow { flex-direction: column; gap: 0; }
+  .flow-arrow { transform: rotate(90deg); align-self: center; }
+  .matrix-grid { grid-template-columns: 1fr; gap: 24px; }
+  .matrix-item { flex-direction: column; align-items: center; text-align: center; padding: 28px 24px; gap: 20px; }
+  .matrix-img-wrap { width: 120px; height: 120px; }
+  .matrix-tags { justify-content: center; }
+  .detail-inner { grid-template-columns: 1fr; gap: 32px; }
+  .detail-visual { min-height: 300px; }
+  .detail-visual-cards.cols-3 { grid-template-columns: 1fr 1fr; }
+  .cell-col-grid { grid-template-columns: 1fr; }
+  .animal-models { grid-template-columns: 1fr; }
+  .pathology-grid { grid-template-columns: 1fr; }
+  .drug-grid { grid-template-columns: 1fr; }
+  .bioinfo-capabilities { grid-template-columns: 1fr; }
+  .flow-timeline {
+    grid-template-columns: 1fr; gap: 16px;
+  }
+  .flow-timeline .flow-card::after { display: none; }
+  .labs-grid { grid-template-columns: 1fr; }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .achievement-num { font-size: 36px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  .section-header { margin-bottom: 32px; }
+  #rs-overview, #rs-platforms, #rs-flow, #rs-labs { padding: 70px 0; }
+  .detail-section { padding: 60px 0; }
+  #rs-cta { padding: 70px 0; }
+}
+</style>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<!-- ===== Navbar ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="权生医药 Quansheng Pharm">
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html">公司介绍</a></li>
+      <li><a href="research-service.html" class="active">科研服务平台</a></li>
+      <li><a href="kits.html">预制包/技术包</a></li>
+      <li><a href="index.html#pipeline">新药管线</a></li>
+      <li><a href="medaes.html">医美转化</a></li>
+      <li><a href="index.html#cooperation">合作与投资</a></li>
+      <li><a href="index.html#contact" class="nav-cta">联系我们</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">首页</a>
+    <a href="about.html">公司介绍</a>
+    <a href="research-service.html" class="active">科研服务平台</a>
+    <a href="kits.html">预制包/技术包</a>
+    <a href="index.html#pipeline">新药管线</a>
+    <a href="medaes.html">医美转化</a>
+    <a href="index.html#cooperation">合作与投资</a>
+    <a href="index.html#contact">联系我们</a>
+  </div>
+</nav>
+
+<!-- ===== Section 1: Hero Banner ===== -->
+<section id="rs-hero">
+  <div class="rs-hero-inner">
+    <div class="rs-hero-tag fade-in">
+      <span class="rs-hero-tag-dot"></span>
+      Scientific Research Service Platform
+    </div>
+    <h1 class="rs-hero-title fade-in fade-in-delay-1">科研服务平台</h1>
+    <p class="rs-hero-en fade-in fade-in-delay-2">Scientific Research Service Platform</p>
+    <p class="rs-hero-sub fade-in fade-in-delay-3">
+      一站式体内体外科研服务，覆盖组学检测、生信分析、细胞分子实验、动物模型、病理分析与药物分析，助力科研项目从科学问题到成果落地。
+    </p>
+    <div class="rs-hero-actions fade-in fade-in-delay-4">
+      <a href="#rs-platforms" class="btn-primary">查看服务矩阵</a>
+      <a href="#rs-cta" class="btn-outline">咨询课题方案</a>
+      <a href="#rs-cta" class="btn-white">获取服务清单</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 2: Platform Overview ===== -->
+<section id="rs-overview">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">一站式服务</div>
+      <div class="section-en">End-to-End Research Service System</div>
+      <h2 class="section-title">一站式体内体外科研服务体系</h2>
+      <p class="section-sub">
+        权生医药以科研问题为导向，不局限于单点实验服务，而是根据客户的疾病方向、机制假说、课题需求或产品开发目标，整合公共数据库挖掘、生信分析、多组学检测、细胞分子实验、动物模型验证、病理检测和药物分析等技术能力，协助客户完成从科学问题发现、机制验证到成果产出的全过程。
+      </p>
+    </div>
+    <div class="overview-flow fade-in">
+      <div class="flow-step">
+        <div class="flow-step-icon">&#128221;</div>
+        <div class="flow-step-label">课题设计</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#128300;</div>
+        <div class="flow-step-label">组学检测</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#128202;</div>
+        <div class="flow-step-label">生信分析</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#129516;</div>
+        <div class="flow-step-label">实验验证</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#129440;</div>
+        <div class="flow-step-label">动物模型</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#128196;</div>
+        <div class="flow-step-label">病理分析</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#128138;</div>
+        <div class="flow-step-label">药物分析</div>
+      </div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step">
+        <div class="flow-step-icon">&#127942;</div>
+        <div class="flow-step-label">论文 / 项目 / 产品转化</div>
+      </div>
+    </div>
+    <p class="overview-desc fade-in">
+      权生医药科技是一家专注于生物医药研发服务与创新转化的技术型企业，围绕生命科学研究与生物医药开发需求，提供覆盖课题设计、技术实施、数据分析、成果产出和产品开发的一体化解决方案。
+    </p>
+    <div class="overview-tags fade-in">
+      <span class="overview-tag-item">定制化</span>
+      <span class="overview-tag-item">系统化</span>
+      <span class="overview-tag-item">问题导向</span>
+      <span class="overview-tag-item">一站式体内体外</span>
+      <span class="overview-tag-item">从课题设计到成果产出</span>
+      <span class="overview-tag-item">从数据分析到实验验证</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 3: Six Platforms Matrix ===== -->
+<section id="rs-platforms">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">核心业务</div>
+      <div class="section-en">Six Core Service Platforms</div>
+      <h2 class="section-title">六大业务产品矩阵</h2>
+      <p class="section-sub">围绕生命科学研究与生物医药开发需求，构建覆盖检测、分析、验证、评价与转化的一体化科研服务平台。</p>
+    </div>
+    <div class="matrix-grid">
+
+      <!-- 01 组学检测平台 -->
+      <a href="#rs-omics" class="matrix-item fade-in" style="text-decoration:none;">
+        <div class="matrix-img-wrap">
+          <img src="images/platform-omics.png" alt="组学检测平台">
+        </div>
+        <div class="matrix-content">
+          <div class="matrix-num">01</div>
+          <h3 class="matrix-title">组学检测平台</h3>
+          <p class="matrix-desc">组学检测平台为生物医药研发服务提供基础分子数据，覆盖基因组学、转录组学、蛋白组学、代谢组学和表观遗传学等多维检测方向，为后续机制研究、靶点发现和产品开发提供数据支撑。</p>
+          <div class="matrix-tags">
+            <span class="matrix-tag">WGS/WES</span>
+            <span class="matrix-tag">mRNA</span>
+            <span class="matrix-tag">蛋白组</span>
+            <span class="matrix-tag">代谢组</span>
+            <span class="matrix-tag">表观遗传</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 02 生物信息学分析平台 -->
+      <a href="#rs-bioinfo" class="matrix-item fade-in fade-in-delay-1" style="text-decoration:none;">
+        <div class="matrix-img-wrap">
+          <img src="images/platform-cell.png" alt="生物信息学分析平台">
+        </div>
+        <div class="matrix-content">
+          <div class="matrix-num">02</div>
+          <h3 class="matrix-title">生物信息学分析平台</h3>
+          <p class="matrix-desc">生物信息学分析平台围绕公共数据库与客户自有数据，开展差异分析、富集分析、免疫浸润、WGCNA、网络药理学、分子对接、单细胞/空间转录组和多组学整合分析，推动科研成果产出。</p>
+          <div class="matrix-tags">
+            <span class="matrix-tag">差异分析</span>
+            <span class="matrix-tag">富集分析</span>
+            <span class="matrix-tag">单细胞</span>
+            <span class="matrix-tag">多组学</span>
+            <span class="matrix-tag">分子对接</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 03 细胞分子实验平台 -->
+      <a href="#rs-cell" class="matrix-item fade-in fade-in-delay-2" style="text-decoration:none;">
+        <div class="matrix-img-wrap">
+          <img src="images/platform-bioinfo.png" alt="细胞分子实验平台">
+        </div>
+        <div class="matrix-content">
+          <div class="matrix-num">03</div>
+          <h3 class="matrix-title">细胞分子实验平台</h3>
+          <p class="matrix-desc">细胞分子实验平台专注细胞和分子层面的实验验证，覆盖细胞功能、分子检测、蛋白表达、细胞器构建、慢病毒转染、细胞侵袭迁移、ROS、JC-1染色及类器官构建等实验项目。</p>
+          <div class="matrix-tags">
+            <span class="matrix-tag">细胞功能</span>
+            <span class="matrix-tag">WB/CO-IP</span>
+            <span class="matrix-tag">慢病毒</span>
+            <span class="matrix-tag">ROS</span>
+            <span class="matrix-tag">类器官</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 04 动物实验平台 -->
+      <a href="#rs-animal" class="matrix-item fade-in fade-in-delay-3" style="text-decoration:none;">
+        <div class="matrix-img-wrap">
+          <img src="images/platform-pathology.png" alt="动物实验平台">
+        </div>
+        <div class="matrix-content">
+          <div class="matrix-num">04</div>
+          <h3 class="matrix-title">动物实验平台</h3>
+          <p class="matrix-desc">动物实验平台为生物医药研发提供体内实验支持，覆盖小鼠、大鼠、兔、犬、猪等多种动物实验，支持肿瘤、炎症、代谢、物理损伤等疾病模型，并配套PET-CT、Micro-CT和活体成像检测。</p>
+          <div class="matrix-tags">
+            <span class="matrix-tag">动物模型</span>
+            <span class="matrix-tag">肿瘤模型</span>
+            <span class="matrix-tag">炎症模型</span>
+            <span class="matrix-tag">PET-CT</span>
+            <span class="matrix-tag">Micro-CT</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 05 病理实验平台 -->
+      <a href="#rs-pathology" class="matrix-item fade-in fade-in-delay-4" style="text-decoration:none;">
+        <div class="matrix-img-wrap">
+          <img src="images/platform-animal.png" alt="病理实验平台">
+        </div>
+        <div class="matrix-content">
+          <div class="matrix-num">05</div>
+          <h3 class="matrix-title">病理实验平台</h3>
+          <p class="matrix-desc">病理实验平台主要开展组织病理相关实验，支持HE染色、免疫组化、免疫荧光、Masson、PAS、油红O、天狼星红、硬组织切片等病理检测与结果解读，助力组织学验证和机制研究。</p>
+          <div class="matrix-tags">
+            <span class="matrix-tag">HE/IHC</span>
+            <span class="matrix-tag">免疫荧光</span>
+            <span class="matrix-tag">特殊染色</span>
+            <span class="matrix-tag">硬组织</span>
+            <span class="matrix-tag">病理分析</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 06 药物分析平台 -->
+      <a href="#rs-drug" class="matrix-item fade-in fade-in-delay-5" style="text-decoration:none;">
+        <div class="matrix-img-wrap">
+          <img src="images/platform-drug.png" alt="药物分析平台">
+        </div>
+        <div class="matrix-content">
+          <div class="matrix-num">06</div>
+          <h3 class="matrix-title">药物分析平台</h3>
+          <p class="matrix-desc">药物分析平台支持药物递送系统设计与合成、药物含量检测、药代动力学监测、安全性评价、药效学验证和递送系统开发，为药物发现、产品验证和转化开发提供技术支持。</p>
+          <div class="matrix-tags">
+            <span class="matrix-tag">药代动力学</span>
+            <span class="matrix-tag">毒理评价</span>
+            <span class="matrix-tag">递送系统</span>
+            <span class="matrix-tag">药效学</span>
+            <span class="matrix-tag">药物分析</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 4: Omics Detection Platform ===== -->
+<section id="rs-omics" class="detail-section">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="detail-content fade-in">
+        <div class="section-tag">Platform 01</div>
+        <div class="section-en">Omics Detection Platform</div>
+        <h2 class="section-title">组学检测平台</h2>
+        <p class="section-sub">
+          组学检测平台可助力科研人员深入了解生物样本的分子特征，为后续机制研究和产品开发提供基础数据。从样本检测到下游分析，提供一体化服务。
+        </p>
+        <div class="detail-list">
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">基因组学 Genomics</div>
+              <div>WGS / WES / 靶向测序，支持基因突变、拷贝数变异、结构变异分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">转录组学 Transcriptomics</div>
+              <div>mRNA / lncRNA / circRNA，支持差异表达、通路富集、调控网络分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">蛋白组学 Proteomics</div>
+              <div>TMT / DIA / 磷酸化修饰，支持蛋白定量和翻译后修饰分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">代谢组学 Metabolomics</div>
+              <div>靶向 / 非靶向代谢组，支持代谢物鉴定和代谢通路分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">表观遗传学 Epigenetics</div>
+              <div>ATAC-seq / ChIP-seq / DNA甲基化，支持染色质开放性和表观调控分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">定制化检测</div>
+              <div>多组学联合方案设计和个性化检测需求定制</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-visual omics-visual fade-in">
+        <div class="detail-visual-cards cols-3">
+          <div class="dv-card">
+            <div class="dv-card-icon">&#127464;&#127475;</div>
+            <div class="dv-card-title">基因组学</div>
+            <div class="dv-card-desc">WGS / WES<br>靶向测序</div>
+          </div>
+          <div class="dv-card">
+            <div class="dv-card-icon">&#128214;</div>
+            <div class="dv-card-title">转录组学</div>
+            <div class="dv-card-desc">mRNA / lncRNA<br>circRNA</div>
+          </div>
+          <div class="dv-card">
+            <div class="dv-card-icon">&#129516;</div>
+            <div class="dv-card-title">蛋白组学</div>
+            <div class="dv-card-desc">TMT / DIA<br>磷酸化修饰</div>
+          </div>
+          <div class="dv-card">
+            <div class="dv-card-icon">&#128300;</div>
+            <div class="dv-card-title">代谢组学</div>
+            <div class="dv-card-desc">靶向 / 非靶向<br>代谢通路</div>
+          </div>
+          <div class="dv-card">
+            <div class="dv-card-icon">&#128274;</div>
+            <div class="dv-card-title">表观遗传学</div>
+            <div class="dv-card-desc">ATAC-seq<br>ChIP-seq</div>
+          </div>
+          <div class="dv-card">
+            <div class="dv-card-icon">&#9881;&#65039;</div>
+            <div class="dv-card-title">定制化检测</div>
+            <div class="dv-card-desc">多组学联合<br>个性化方案</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 5: Bioinformatics Analysis Platform ===== -->
+<section id="rs-bioinfo" class="detail-section">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="detail-visual fade-in">
+        <div style="padding: 28px; width: 100%;">
+          <div class="bioinfo-flow">
+            <div class="bioinfo-flow-step">
+              <span class="step-num">1</span>
+              <span class="step-text">公共数据库 / 客户数据</span>
+            </div>
+            <div class="bioinfo-flow-arrow">&#8595;</div>
+            <div class="bioinfo-flow-step">
+              <span class="step-num">2</span>
+              <span class="step-text">数据清洗与预处理</span>
+            </div>
+            <div class="bioinfo-flow-arrow">&#8595;</div>
+            <div class="bioinfo-flow-step">
+              <span class="step-num">3</span>
+              <span class="step-text">差异分析 / 机制挖掘</span>
+            </div>
+            <div class="bioinfo-flow-arrow">&#8595;</div>
+            <div class="bioinfo-flow-step">
+              <span class="step-num">4</span>
+              <span class="step-text">多组学联合分析</span>
+            </div>
+            <div class="bioinfo-flow-arrow">&#8595;</div>
+            <div class="bioinfo-flow-step">
+              <span class="step-num">5</span>
+              <span class="step-text">结果验证与课题输出</span>
+            </div>
+          </div>
+          <div class="bioinfo-capabilities">
+            <div class="bioinfo-cap-item">&#8226; 差异表达分析</div>
+            <div class="bioinfo-cap-item">&#8226; GO/KEGG/GSEA</div>
+            <div class="bioinfo-cap-item">&#8226; 免疫浸润分析</div>
+            <div class="bioinfo-cap-item">&#8226; WGCNA</div>
+            <div class="bioinfo-cap-item">&#8226; 网络药理学</div>
+            <div class="bioinfo-cap-item">&#8226; 分子对接</div>
+            <div class="bioinfo-cap-item">&#8226; 单细胞分析</div>
+            <div class="bioinfo-cap-item">&#8226; 空间转录组</div>
+            <div class="bioinfo-cap-item">&#8226; 虚拟细胞</div>
+            <div class="bioinfo-cap-item">&#8226; 多组学整合</div>
+            <div class="bioinfo-cap-item">&#8226; 预后模型</div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-content fade-in">
+        <div class="section-tag">Platform 02</div>
+        <div class="section-en">Bioinformatics Analysis Platform</div>
+        <h2 class="section-title">生物信息学分析平台</h2>
+        <p class="section-sub">
+          生物信息学分析平台通过多组学联合分析，对生物数据进行深度挖掘，结合前沿算法发现数据背后的生物学意义，为科研成果产出和生物医药创新转化提供支持。
+        </p>
+        <div class="detail-list">
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">差异表达与富集分析</div>
+              <div>DEG筛选、GO / KEGG / GSEA 功能富集分析，系统解析基因表达变化</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">免疫浸润与WGCNA</div>
+              <div>肿瘤免疫微环境分析、加权基因共表达网络分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">网络药理学与分子对接</div>
+              <div>药物-靶点-疾病网络构建、分子对接与分子动力学模拟</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">单细胞与空间转录组</div>
+              <div>细胞分群、轨迹推断、空间基因表达模式分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">多组学整合与预后模型</div>
+              <div>跨组学数据联合分析、临床相关性分析、预后模型构建与验证</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding: 16px 20px; background: rgba(0,201,167,0.06); border-radius: 12px; border-left: 3px solid var(--teal);">
+          <p style="font-size: 14px; font-weight: 600; color: var(--deep-blue); line-height: 1.7;">
+            &#128161; 平台优势：不仅提供基础分析，更擅长联合多组学分析，聚焦前沿机制挖掘、课题设计与成果产出。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 6: Cell & Molecular Experiment Platform ===== -->
+<section id="rs-cell" class="detail-section">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="detail-content fade-in">
+        <div class="section-tag">Platform 03</div>
+        <div class="section-en">Cellular & Molecular Experiment Platform</div>
+        <h2 class="section-title">细胞分子实验平台</h2>
+        <p class="section-sub">
+          细胞分子实验平台专注于细胞和分子层面的实验研究，可开展包括类器官在内的多种实验项目，为机制验证、药效评价和产品开发提供关键实验数据。
+        </p>
+        <div class="detail-list">
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">细胞功能服务</div>
+              <div>迁移 / 侵袭 / 黏附、淋巴细胞亚群分析、细胞周期 / 凋亡 / 增殖、过表达 / 敲低 / 敲除细胞构建、亚细胞结构提取、类器官构建</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">分子检测服务</div>
+              <div>基因表达检测、基因分型、蛋白表达 / 互作分析、CO-IP、ChIP-seq、甲基化检测、免疫印迹 WB、细胞因子检测、ROS检测、JC-1染色、透射电镜、慢病毒转染</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">类器官方向</div>
+              <div>小鼠肠类器官、乳腺癌类器官、子宫内膜癌类器官、前列腺癌类器官、脑胶质癌类器官</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-visual fade-in">
+        <div class="cell-col-grid">
+          <div class="cell-col-card">
+            <div class="cell-col-card-icon">&#129516;</div>
+            <div class="cell-col-card-title">细胞功能</div>
+            <div class="cell-col-card-list">
+              <div>&#8226; 迁移/侵袭/黏附</div>
+              <div>&#8226; 细胞周期/凋亡/增殖</div>
+              <div>&#8226; 淋巴细胞亚群分析</div>
+              <div>&#8226; 过表达/敲低/敲除</div>
+              <div>&#8226; 亚细胞结构提取</div>
+              <div>&#8226; 类器官构建</div>
+            </div>
+          </div>
+          <div class="cell-col-card">
+            <div class="cell-col-card-icon">&#128300;</div>
+            <div class="cell-col-card-title">分子检测</div>
+            <div class="cell-col-card-list">
+              <div>&#8226; 基因表达/分型</div>
+              <div>&#8226; 蛋白表达/互作</div>
+              <div>&#8226; CO-IP / WB</div>
+              <div>&#8226; ChIP-seq</div>
+              <div>&#8226; ROS / JC-1</div>
+              <div>&#8226; 慢病毒转染</div>
+            </div>
+          </div>
+          <div class="cell-col-card">
+            <div class="cell-col-card-icon">&#129728;</div>
+            <div class="cell-col-card-title">类器官构建</div>
+            <div class="cell-col-card-list">
+              <div>&#8226; 小鼠肠类器官</div>
+              <div>&#8226; 乳腺癌类器官</div>
+              <div>&#8226; 子宫内膜癌类器官</div>
+              <div>&#8226; 前列腺癌类器官</div>
+              <div>&#8226; 脑胶质癌类器官</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 7: Animal Experiment Platform ===== -->
+<section id="rs-animal" class="detail-section">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="detail-visual fade-in" style="display: flex; flex-direction: column; gap: 0;">
+        <div class="animal-types">
+          <span class="animal-type-badge">&#128022; 小鼠</span>
+          <span class="animal-type-badge">&#128058; 大鼠</span>
+          <span class="animal-type-badge">&#128048; 兔</span>
+          <span class="animal-type-badge">&#128054; 犬</span>
+          <span class="animal-type-badge">&#128055; 猪</span>
+          <span class="animal-type-badge">&#128044; 豚鼠</span>
+          <span class="animal-type-badge">&#128057; 地鼠</span>
+        </div>
+        <div class="animal-models">
+          <div class="animal-model-card">
+            <div class="animal-model-title">&#129440; 肿瘤相关模型</div>
+            <div class="animal-model-list">
+              <div>&#8226; 裸鼠皮下移植瘤模型</div>
+              <div>&#8226; 兔VX2原位肝肿瘤模型</div>
+              <div>&#8226; 裸鼠脑原位肿瘤模型</div>
+              <div>&#8226; 裸鼠肿瘤淋巴结转移模型</div>
+              <div>&#8226; 裸鼠肿瘤肺/全身转移模型</div>
+            </div>
+          </div>
+          <div class="animal-model-card">
+            <div class="animal-model-title">&#128293; 炎症相关模型</div>
+            <div class="animal-model-list">
+              <div>&#8226; DSS诱导急/慢性肠炎模型</div>
+              <div>&#8226; DSS+AOM结肠癌模型</div>
+              <div>&#8226; 香烟诱导COPD模型</div>
+              <div>&#8226; 大鼠肺动脉高压模型</div>
+              <div>&#8226; 急性肺损伤模型</div>
+            </div>
+          </div>
+          <div class="animal-model-card">
+            <div class="animal-model-title">&#9878;&#65039; 代谢相关模型</div>
+            <div class="animal-model-list">
+              <div>&#8226; 糖尿病肾病/II型模型</div>
+              <div>&#8226; 糖尿病创面模型</div>
+              <div>&#8226; 高尿酸模型</div>
+              <div>&#8226; 铁超载模型</div>
+              <div>&#8226; 肥胖模型</div>
+            </div>
+          </div>
+          <div class="animal-model-card">
+            <div class="animal-model-title">&#128737;&#65039; 物理损伤模型</div>
+            <div class="animal-model-list">
+              <div>&#8226; 大/小鼠血管移植术</div>
+              <div>&#8226; 大鼠肾缺血再灌注模型</div>
+              <div>&#8226; 大鼠肾移植模型</div>
+              <div>&#8226; 大鼠骨关节炎模型</div>
+              <div>&#8226; 大鼠子宫内膜异位症模型</div>
+            </div>
+          </div>
+        </div>
+        <div class="animal-imaging">
+          <div class="animal-imaging-title">&#128247; 影像检测能力</div>
+          <div class="animal-imaging-items">
+            <span class="animal-imaging-item">PET-CT</span>
+            <span class="animal-imaging-item">Micro-CT</span>
+            <span class="animal-imaging-item">SPECT心肌灌注显像</span>
+            <span class="animal-imaging-item">小鼠活体扫描</span>
+            <span class="animal-imaging-item">大鼠活体扫描</span>
+            <span class="animal-imaging-item">离体组织扫描</span>
+          </div>
+        </div>
+      </div>
+      <div class="detail-content fade-in">
+        <div class="section-tag">Platform 04</div>
+        <div class="section-en">Animal Experiment Platform</div>
+        <h2 class="section-title">动物实验平台</h2>
+        <p class="section-sub">
+          动物实验平台可为生物医药研发提供动物实验支持，覆盖多种动物类型、疾病模型和影像学检测，为机制研究、药效验证和产品转化提供体内实验依据。
+        </p>
+        <div class="detail-list">
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">可开展动物类型</div>
+              <div>猪、犬、兔、豚鼠、地鼠、大鼠、小鼠</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">肿瘤相关模型</div>
+              <div>裸鼠皮下移植瘤、兔VX2原位肝肿瘤、裸鼠脑原位肿瘤、裸鼠肿瘤淋巴结/肺/全身转移模型</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">炎症相关模型</div>
+              <div>DSS诱导急慢性肠炎、DSS+AOM结肠癌、香烟诱导COPD、肺动脉高压、急性肺损伤</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">代谢相关模型</div>
+              <div>糖尿病肾病/II型/创面模型、高尿酸模型、铁超载模型、肥胖模型</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">物理损伤相关模型</div>
+              <div>血管移植术、肾缺血再灌注、肾移植、骨关节炎、子宫内膜异位症、胸骨切开手术</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">影像检测</div>
+              <div>PET-CT、Micro-CT、SPECT心肌灌注显像、小鼠/大鼠活体扫描、离体组织扫描</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 8: Pathology Experiment Platform ===== -->
+<section id="rs-pathology" class="detail-section">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="detail-content fade-in">
+        <div class="section-tag">Platform 05</div>
+        <div class="section-en">Pathology Experiment Platform</div>
+        <h2 class="section-title">病理实验平台</h2>
+        <p class="section-sub">
+          病理实验平台可开展多种病理标本制作、染色及专业病理结果解读分析，帮助科研项目完成组织学验证、损伤评估和机制研究。
+        </p>
+        <div class="detail-list">
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">常规组织病理</div>
+              <div>HE染色、组织形态学观察、病变评估</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">硬组织切片</div>
+              <div>骨组织、牙齿等硬质样本制片与染色</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">特殊染色</div>
+              <div>Masson、PAS、油红O、天狼星红等特殊染色方法</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">免疫组化 / 免疫荧光</div>
+              <div>蛋白定位表达、信号通路检测、免疫荧光双标/四标</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-visual fade-in">
+        <div class="pathology-grid">
+          <div class="pathology-card">
+            <div class="pathology-card-icon">&#128214;</div>
+            <div class="pathology-card-title">常规组织病理</div>
+            <div class="pathology-card-list">
+              <div>&#8226; H&E染色</div>
+              <div>&#8226; 组织形态学观察</div>
+              <div>&#8226; 病变评估</div>
+            </div>
+          </div>
+          <div class="pathology-card">
+            <div class="pathology-card-icon">&#129704;</div>
+            <div class="pathology-card-title">硬组织切片</div>
+            <div class="pathology-card-list">
+              <div>&#8226; 骨组织制片与染色</div>
+              <div>&#8226; 牙齿硬质样本</div>
+              <div>&#8226; 不脱钙切片</div>
+            </div>
+          </div>
+          <div class="pathology-card">
+            <div class="pathology-card-icon">&#127912;</div>
+            <div class="pathology-card-title">特殊染色</div>
+            <div class="pathology-card-list">
+              <div>&#8226; Masson染色</div>
+              <div>&#8226; PAS染色</div>
+              <div>&#8226; 油红O染色</div>
+              <div>&#8226; 天狼星红染色</div>
+            </div>
+          </div>
+          <div class="pathology-card">
+            <div class="pathology-card-icon">&#128300;</div>
+            <div class="pathology-card-title">免疫组化 / 免疫荧光</div>
+            <div class="pathology-card-list">
+              <div>&#8226; 蛋白定位表达</div>
+              <div>&#8226; 信号通路检测</div>
+              <div>&#8226; 免疫荧光双标</div>
+              <div>&#8226; 免疫荧光四标</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 9: Drug Analysis Platform ===== -->
+<section id="rs-drug" class="detail-section">
+  <div class="container">
+    <div class="detail-inner">
+      <div class="detail-visual fade-in">
+        <div class="drug-grid">
+          <div class="drug-card">
+            <div class="drug-card-icon">&#128269;</div>
+            <div class="drug-card-title">成分鉴定与分析</div>
+            <div class="drug-card-list">
+              <div>&#8226; 成分分析</div>
+              <div>&#8226; 杂质分析</div>
+              <div>&#8226; 方法学建立与验证</div>
+            </div>
+          </div>
+          <div class="drug-card">
+            <div class="drug-card-icon">&#128200;</div>
+            <div class="drug-card-title">药代动力学</div>
+            <div class="drug-card-list">
+              <div>&#8226; 体内暴露量评估</div>
+              <div>&#8226; 代谢过程研究</div>
+              <div>&#8226; 时间-浓度变化分析</div>
+            </div>
+          </div>
+          <div class="drug-card">
+            <div class="drug-card-icon">&#9888;&#65039;</div>
+            <div class="drug-card-title">安全性 / 毒理评价</div>
+            <div class="drug-card-list">
+              <div>&#8226; 初步安全性评价</div>
+              <div>&#8226; 毒性观察与记录</div>
+              <div>&#8226; 安全性指标检测</div>
+            </div>
+          </div>
+          <div class="drug-card">
+            <div class="drug-card-icon">&#128138;</div>
+            <div class="drug-card-title">递送系统设计与开发</div>
+            <div class="drug-card-list">
+              <div>&#8226; 药剂学应用解决方案</div>
+              <div>&#8226; 材料合成与表征</div>
+              <div>&#8226; 药效学验证</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-content fade-in">
+        <div class="section-tag">Platform 06</div>
+        <div class="section-en">Drug Analysis Platform</div>
+        <h2 class="section-title">药物分析平台</h2>
+        <p class="section-sub">
+          药物分析平台支持药物递送系统设计与合成、药物含量检测、药代动力学监测、药效学评价及初步安全性评价，服务药物发现、验证与转化开发。
+        </p>
+        <div class="detail-list">
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">成分鉴定与分析</div>
+              <div>成分分析、杂质分析、方法建立与验证</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">药代动力学</div>
+              <div>体内暴露、代谢过程、时间-浓度变化分析</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">安全性 / 毒理评价</div>
+              <div>初步安全性评价、毒性观察、安全性指标检测</div>
+            </div>
+          </div>
+          <div class="detail-list-item">
+            <div class="detail-list-dot"></div>
+            <div>
+              <div class="detail-list-subtitle">递送系统设计与开发</div>
+              <div>药剂学应用解决方案、材料合成与表征、药效学验证</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 20px; padding: 16px 20px; background: rgba(26,86,219,0.06); border-radius: 12px; border-left: 3px solid var(--primary-blue);">
+          <p style="font-size: 14px; font-weight: 600; color: var(--deep-blue); line-height: 1.7;">
+            &#128161; 支持药物研发全链条：从成分鉴定、药代研究到递送系统设计，覆盖药物发现、验证与转化的完整路径。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 10: Service Flow ===== -->
+<section id="rs-flow">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">服务流程</div>
+      <div class="section-en">From Requirement to Outcome</div>
+      <h2 class="section-title">从需求到成果的一体化服务流程</h2>
+      <p class="section-sub">六个环节环环相扣，覆盖科研项目的全生命周期。</p>
+    </div>
+    <div class="flow-timeline">
+      <div class="flow-card fade-in">
+        <div class="flow-card-num">1</div>
+        <div class="flow-card-title">需求沟通</div>
+        <div class="flow-card-desc">明确疾病方向、研究假说、技术需求和成果目标</div>
+      </div>
+      <div class="flow-card fade-in fade-in-delay-1">
+        <div class="flow-card-num">2</div>
+        <div class="flow-card-title">课题设计</div>
+        <div class="flow-card-desc">制定实验路线、检测方案、样本方案和分析策略</div>
+      </div>
+      <div class="flow-card fade-in fade-in-delay-2">
+        <div class="flow-card-num">3</div>
+        <div class="flow-card-title">技术实施</div>
+        <div class="flow-card-desc">完成组学检测、细胞实验、动物实验、病理实验或药物分析</div>
+      </div>
+      <div class="flow-card fade-in fade-in-delay-3">
+        <div class="flow-card-num">4</div>
+        <div class="flow-card-title">数据分析</div>
+        <div class="flow-card-desc">统计分析、生物信息学分析、多组学整合和机制挖掘</div>
+      </div>
+      <div class="flow-card fade-in fade-in-delay-4">
+        <div class="flow-card-num">5</div>
+        <div class="flow-card-title">结果验证</div>
+        <div class="flow-card-desc">实验验证、图表整理和机制闭环，提升课题完整性</div>
+      </div>
+      <div class="flow-card fade-in fade-in-delay-5">
+        <div class="flow-card-num">6</div>
+        <div class="flow-card-title">成果输出</div>
+        <div class="flow-card-desc">支持论文、基金、专利、产品开发或项目申报材料产出</div>
+      </div>
+    </div>
+    <div class="flow-highlight fade-in">
+      &#10003; 一站式服务：从需求沟通到成果产出，全程跟进，无需对接多个服务商
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 11: Labs & Resources ===== -->
+<section id="rs-labs">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="section-tag">平台资源</div>
+      <div class="section-en">Multi-City Joint Laboratories</div>
+      <h2 class="section-title">多地联合实验室与平台资源</h2>
+      <p class="section-sub">覆盖西南、西北、华东多个城市，构建区域性科研服务网络。</p>
+    </div>
+    <div class="labs-grid">
+      <div class="lab-card fade-in">
+        <div class="lab-card-badge hq">&#127970; 总部</div>
+        <div class="lab-card-name">重庆本部</div>
+        <div class="lab-card-area">700 <span>㎡</span></div>
+        <div class="lab-card-desc">细胞分子实验平台、病理分析平台、生物信息学分析平台</div>
+      </div>
+      <div class="lab-card fade-in fade-in-delay-1">
+        <div class="lab-card-badge joint">&#128279; 联合实验室</div>
+        <div class="lab-card-name">常州联合实验室</div>
+        <div class="lab-card-area">7,000 <span>㎡</span></div>
+        <div class="lab-card-desc">医疗器械/消毒产品/化妆品/药品包材毒理学测试；医疗器械生物学评价；临床前研究、大动物试验、眼科专项及科研服务；生物制品检定</div>
+      </div>
+      <div class="lab-card fade-in fade-in-delay-2">
+        <div class="lab-card-badge joint">&#128279; 联合实验室</div>
+        <div class="lab-card-name">西安联合实验室</div>
+        <div class="lab-card-area">1,200 <span>㎡</span></div>
+        <div class="lab-card-desc">药物分析平台</div>
+      </div>
+      <div class="lab-card fade-in fade-in-delay-3">
+        <div class="lab-card-badge joint">&#128279; 联合实验室</div>
+        <div class="lab-card-name">南充联合实验室</div>
+        <div class="lab-card-area">1,600 <span>㎡</span></div>
+        <div class="lab-card-desc">细胞分子实验、病理分析平台、生物信息学分析平台、动物实验平台</div>
+      </div>
+      <div class="lab-card fade-in fade-in-delay-4">
+        <div class="lab-card-badge joint">&#128279; 联合实验室</div>
+        <div class="lab-card-name">重庆联合实验室</div>
+        <div class="lab-card-area">2,000 <span>㎡</span></div>
+        <div class="lab-card-desc">细胞分子实验、病理分析平台、生物信息学分析平台、动物实验平台</div>
+      </div>
+      <div class="lab-card fade-in fade-in-delay-5">
+        <div class="lab-card-badge joint">&#128279; 联合实验室</div>
+        <div class="lab-card-name">昆明联合实验室</div>
+        <div class="lab-card-area">1,200 <span>㎡</span></div>
+        <div class="lab-card-desc">材料化学表征、毒理学评估、病理实验室</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Section 12: Research Achievements ===== -->
+<section id="rs-achievements">
+  <div class="container">
+    <div class="section-header fade-in" style="margin-bottom: 48px;">
+      <div class="section-tag" style="border-color: var(--teal); color: var(--teal);">科研实力</div>
+      <h2 class="section-title" style="color: var(--white);">科研成果与团队实力</h2>
+    </div>
+    <div class="achievements-grid">
+      <div class="achievement-card fade-in">
+        <div class="achievement-num">25<span style="font-size: 20px; font-weight: 500;">项</span></div>
+        <div class="achievement-label">实用新型专利</div>
+      </div>
+      <div class="achievement-card fade-in fade-in-delay-1">
+        <div class="achievement-num">3<span style="font-size: 20px; font-weight: 500;">项</span></div>
+        <div class="achievement-label">创新创业奖</div>
+      </div>
+      <div class="achievement-card fade-in fade-in-delay-2">
+        <div class="achievement-num">8<span style="font-size: 20px; font-weight: 500;">项</span></div>
+        <div class="achievement-label">国家自然基金</div>
+      </div>
+      <div class="achievement-card fade-in fade-in-delay-3">
+        <div class="achievement-num">200<span style="font-size: 20px; font-weight: 500;">+</span></div>
+        <div class="achievement-label">国际期刊论文</div>
+      </div>
+    </div>
+    <p class="achievements-desc fade-in">
+      公司依托多学科团队、联合实验平台和持续的项目积累，形成了兼具科研服务、技术转化和创新孵化能力的复合型生物医药平台。
+    </p>
+  </div>
+</section>
+
+<!-- ===== Section 13: CTA ===== -->
+<section id="rs-cta">
+  <div class="container">
+    <div class="rs-cta-inner fade-in">
+      <h2 class="rs-cta-title">让科研问题更快走向成果</h2>
+      <p class="rs-cta-sub">
+        权生医药面向高校、医院、科研机构和企业客户提供一站式科研技术服务，支持课题设计、实验实施、数据分析、论文产出、项目申报和产品开发。
+      </p>
+      <div class="rs-cta-buttons">
+        <a href="index.html#contact" class="btn-primary" style="font-size: 16px; padding: 16px 32px;">咨询科研服务</a>
+        <a href="index.html#contact" class="btn-white" style="font-size: 16px; padding: 16px 32px;">获取服务清单</a>
+        <a href="index.html#contact" class="btn-white" style="font-size: 16px; padding: 16px 32px;">联系项目顾问</a>
+      </div>
+      <div class="rs-cta-directions">
+        <span class="rs-cta-dir">课题设计</span>
+        <span class="rs-cta-dir">组学检测</span>
+        <span class="rs-cta-dir">生信分析</span>
+        <span class="rs-cta-dir">实验验证</span>
+        <span class="rs-cta-dir">动物模型</span>
+        <span class="rs-cta-dir">病理分析</span>
+        <span class="rs-cta-dir">药物分析</span>
+        <span class="rs-cta-dir">论文辅导</span>
+        <span class="rs-cta-dir">项目申报</span>
+        <span class="rs-cta-dir">产品开发</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer id="rs-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">重庆权生医药科技有限公司</div>
+        <p class="footer-brand-desc">以全生物活性物质开发体系为核心的生物医药转化平台，专注科研服务与创新转化。</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">快速导航</div>
+        <a href="index.html">首页</a>
+        <a href="about.html">公司介绍</a>
+        <a href="research-service.html">科研服务平台</a>
+        <a href="kits.html">预制包/技术包</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">技术平台</div>
+        <a href="#rs-omics">组学检测</a>
+        <a href="#rs-bioinfo">生物信息学</a>
+        <a href="#rs-cell">细胞分子实验</a>
+        <a href="#rs-animal">动物实验</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">联系方式</div>
+        <a href="index.html#contact">联系我们</a>
+        <a href="index.html#cooperation">合作与投资</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 重庆权生医药科技有限公司 版权所有
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JS ===== -->
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+const navHamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Hamburger toggle
+navHamburger.addEventListener('click', () => {
+  navHamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+});
+
+// Close mobile menu on link click
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navHamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
