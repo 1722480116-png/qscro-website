@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>公司介绍 | 重庆权生医药科技有限公司</title>
+<meta name="description" content="重庆权生医药科技有限公司，以全生物活性物质开发体系为核心的生物医药转化平台，专注科研服务与创新转化。">
+<style>
+/* ===== CSS Reset & Variables ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --deep-blue: #0B1F3A;
+  --teal: #00C9A7;
+  --teal-dark: #00A389;
+  --light-bg: #F0F6FF;
+  --white: #FFFFFF;
+  --text-gray: #4A5568;
+  --text-light: #A0AEC0;
+  --border-light: rgba(255,255,255,0.12);
+  --card-shadow: 0 4px 24px rgba(11,31,58,0.10);
+  --card-shadow-hover: 0 12px 40px rgba(11,31,58,0.18);
+  --radius: 16px;
+  --radius-sm: 8px;
+  --font-cn: 'Source Han Sans CN', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-en: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+}
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-cn);
+  color: var(--text-gray);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: inherit; }
+section { position: relative; overflow: hidden; }
+
+/* ===== Utility ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--teal);
+  padding: 6px 14px; border: 1.5px solid var(--teal);
+  border-radius: 100px; margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 42px); font-weight: 700;
+  line-height: 1.2; margin-bottom: 14px;
+}
+.section-sub {
+  font-size: 16px; color: var(--text-gray);
+  line-height: 1.8; max-width: 560px;
+}
+.fade-in {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
+.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in-delay-5 { transition-delay: 0.5s; }
+.fade-in-delay-6 { transition-delay: 0.6s; }
+
+/* ===== Navbar - Shared via nav.css ===== */
+
+/* ===== Banner ===== */
+#about-banner {
+  width: 100%; min-height: 78vh; max-height: 85vh;
+  background-image: url('images/about-hero-bg-new.png');
+  background-size: cover; background-position: center center; background-repeat: no-repeat;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding-top: 72px;
+}
+#about-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,31,58,0.62) 0%, rgba(11,31,58,0.48) 50%, rgba(11,31,58,0.58) 100%);
+  pointer-events: none; z-index: 1;
+}
+#about-banner::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 100px;
+  background: linear-gradient(transparent, rgba(11,31,58,0.35));
+  pointer-events: none; z-index: 1;
+}
+.banner-inner {
+  position: relative; z-index: 2;
+  text-align: center; padding: 80px 24px 60px;
+}
+.banner-title {
+  font-size: 48px; font-weight: 800; color: var(--white);
+  letter-spacing: 4px; margin-bottom: 18px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+.banner-sub {
+  font-size: 18px; color: rgba(255,255,255,0.7);
+  font-weight: 400; letter-spacing: 1px;
+  max-width: 600px; margin: 0 auto; line-height: 1.8;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* ===== Anchor Nav ===== */
+#anchor-nav {
+  background: var(--white);
+  border-bottom: 1px solid rgba(11,31,58,0.06);
+  position: sticky; top: 72px; z-index: 100;
+  transition: top var(--transition);
+}
+.anchor-nav-inner {
+  display: flex; justify-content: center; gap: 48px;
+  padding: 18px 24px;
+}
+.anchor-nav-inner a {
+  font-size: 15px; font-weight: 500; color: var(--text-gray);
+  padding: 6px 4px; position: relative;
+  transition: color var(--transition);
+}
+.anchor-nav-inner a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 2px; background: var(--teal);
+  transform: scaleX(0); transition: transform var(--transition);
+}
+.anchor-nav-inner a:hover { color: var(--teal); }
+.anchor-nav-inner a:hover::after,
+.anchor-nav-inner a.active::after { transform: scaleX(1); }
+.anchor-nav-inner a.active { color: var(--teal); font-weight: 600; }
+
+/* ===== Section Title with Decor ===== */
+.section-heading {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 48px;
+}
+.section-heading .heading-line {
+  width: 4px; height: 32px; background: var(--teal);
+  border-radius: 2px; flex-shrink: 0;
+}
+.section-heading h2 {
+  font-size: 32px; font-weight: 700; color: var(--deep-blue);
+  letter-spacing: 1px;
+}
+
+/* ===== Company Overview ===== */
+#overview {
+  background: var(--white);
+  padding: 100px 0;
+}
+.overview-grid {
+  display: grid; grid-template-columns: 3fr 2fr;
+  gap: 60px; align-items: start;
+}
+.overview-text p {
+  font-size: 15px; color: var(--text-gray);
+  line-height: 1.8; margin-bottom: 20px;
+  text-indent: 2em;
+}
+.overview-text p:last-child { margin-bottom: 0; }
+.overview-visual {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-height: 360px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 32px rgba(11,31,58,0.10);
+}
+.overview-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  position: absolute; inset: 0;
+}
+.overview-visual::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,31,58,0.15), rgba(11,31,58,0.05));
+  pointer-events: none; z-index: 1;
+}
+.overview-dna-icon {
+  margin-bottom: 32px; position: relative; z-index: 2;
+}
+.overview-tags {
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px; padding: 20px 24px;
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 4px 16px rgba(11,31,58,0.06);
+}
+.overview-tag {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; color: var(--deep-blue);
+  font-weight: 500;
+}
+.overview-tag-dot {
+  width: 8px; height: 8px; background: var(--teal);
+  border-radius: 50%; flex-shrink: 0;
+}
+.overview-tag-sep {
+  color: rgba(11,31,58,0.2); font-weight: 300;
+  margin: 0 2px;
+}
+
+/* ===== Stats Section ===== */
+#stats-section {
+  background: var(--light-bg);
+  padding: 100px 0;
+}
+.stats-labs {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-bottom: 32px;
+}
+.stat-lab-card {
+  background: var(--white);
+  border: 1.5px solid rgba(11,31,58,0.06);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  text-align: center;
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+.stat-lab-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(0,201,167,0.18);
+  transform: translateY(-4px);
+}
+.stat-lab-num {
+  font-size: 48px; font-weight: 800; color: var(--deep-blue);
+  font-family: var(--font-en); line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-lab-num .unit {
+  font-size: 22px; font-weight: 600; color: var(--teal);
+  margin-left: 2px;
+}
+.stat-lab-label {
+  font-size: 15px; color: var(--text-gray); font-weight: 500;
+}
+
+.stats-achievements {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.stat-ach-card {
+  background: var(--white);
+  border: 1.5px solid rgba(11,31,58,0.06);
+  border-radius: var(--radius);
+  padding: 36px 24px;
+  text-align: center;
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+.stat-ach-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(0,201,167,0.18);
+  transform: translateY(-4px);
+}
+.stat-ach-num {
+  font-size: 48px; font-weight: 800; color: var(--deep-blue);
+  font-family: var(--font-en); line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-ach-num .suffix {
+  font-size: 24px; color: var(--teal); font-weight: 700;
+}
+.stat-ach-num .unit {
+  font-size: 18px; font-weight: 600; color: var(--teal);
+  margin-left: 2px;
+}
+.stat-ach-label {
+  font-size: 15px; color: var(--text-gray); font-weight: 500;
+}
+.stats-sub-title {
+  font-size: 18px; font-weight: 600; color: var(--deep-blue);
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 10px;
+}
+.stats-sub-title .sub-line {
+  width: 3px; height: 20px; background: var(--teal);
+  border-radius: 2px;
+}
+
+/* ===== Timeline ===== */
+#timeline {
+  background: var(--white);
+  padding: 100px 0;
+}
+.timeline-wrap {
+  position: relative;
+  padding: 40px 0 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.timeline-wrap::-webkit-scrollbar { height: 4px; }
+.timeline-wrap::-webkit-scrollbar-thumb { background: rgba(0,201,167,0.3); border-radius: 4px; }
+.timeline-track {
+  display: flex; gap: 0;
+  min-width: 900px;
+  position: relative;
+  padding: 0 40px;
+}
+.timeline-line {
+  position: absolute; top: 50px; left: 40px; right: 40px;
+  height: 3px; background: var(--teal);
+  border-radius: 2px;
+}
+.timeline-node {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; position: relative; z-index: 2;
+}
+.timeline-year {
+  font-size: 22px; font-weight: 800; color: var(--deep-blue);
+  font-family: var(--font-en); margin-bottom: 18px;
+}
+.timeline-dot {
+  width: 16px; height: 16px;
+  background: var(--deep-blue);
+  border: 3px solid var(--teal);
+  border-radius: 50%;
+  position: relative; z-index: 3;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.timeline-node:hover .timeline-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 6px rgba(0,201,167,0.15);
+}
+.timeline-content {
+  margin-top: 24px;
+  padding: 20px 18px;
+  background: var(--white);
+  border: 1.5px solid rgba(11,31,58,0.06);
+  border-radius: var(--radius-sm);
+  min-width: 120px;
+  text-align: center;
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+.timeline-node:hover .timeline-content {
+  box-shadow: var(--card-shadow);
+  border-color: rgba(0,201,167,0.18);
+  transform: translateY(-3px);
+}
+.timeline-content p {
+  font-size: 13px; color: var(--text-gray);
+  line-height: 1.7;
+}
+
+/* ===== Platform Capabilities ===== */
+#capabilities {
+  background: var(--light-bg);
+  padding: 100px 0;
+}
+.cap-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.cap-card {
+  background: var(--white);
+  border: 1.5px solid rgba(11,31,58,0.06);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  text-align: center;
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+  position: relative; overflow: hidden;
+}
+.cap-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--teal), var(--teal-dark));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.cap-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: rgba(0,201,167,0.18);
+  transform: translateY(-4px);
+}
+.cap-card:hover::before { transform: scaleX(1); }
+.cap-icon {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, rgba(0,201,167,0.1), rgba(0,201,167,0.03));
+  border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+}
+.cap-icon svg { width: 30px; height: 30px; }
+.cap-title {
+  font-size: 18px; font-weight: 700; color: var(--deep-blue);
+  margin-bottom: 10px;
+}
+.cap-desc {
+  font-size: 13.5px; color: var(--text-gray);
+  line-height: 1.7;
+}
+
+/* ===== Contact Section ===== */
+#about-contact {
+  background: var(--deep-blue);
+  padding: 80px 0;
+  position: relative;
+}
+#about-contact::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,201,167,0.08), transparent 70%);
+  border-radius: 50%; pointer-events: none;
+}
+.about-contact-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 48px; position: relative; z-index: 2;
+}
+.about-contact-info {
+  display: flex; flex-direction: column; gap: 20px;
+}
+.about-contact-item {
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.about-contact-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: rgba(0,201,167,0.12); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-contact-label {
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); font-weight: 600; margin-bottom: 3px;
+}
+.about-contact-value {
+  font-size: 14px; color: rgba(255,255,255,0.85); font-weight: 500;
+}
+.about-contact-text h2 {
+  font-size: 32px; font-weight: 700; color: var(--white);
+  margin-bottom: 10px;
+}
+.about-contact-text p {
+  font-size: 15px; color: rgba(255,255,255,0.5);
+  line-height: 1.7; max-width: 400px;
+}
+.btn-contact-cta {
+  background: var(--teal); color: var(--white);
+  padding: 14px 36px; border-radius: 100px;
+  font-size: 15px; font-weight: 600;
+  transition: background var(--transition), box-shadow var(--transition), transform 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  flex-shrink: 0;
+}
+.btn-contact-cta:hover {
+  background: var(--teal-dark);
+  box-shadow: 0 6px 24px rgba(0,201,167,0.3);
+  transform: translateY(-1px);
+}
+
+/* ===== Footer ===== */
+#footer {
+  background: #071526;
+  padding: 60px 0 0;
+}
+.footer-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-brand .footer-logo-text {
+  font-size: 18px; font-weight: 700; color: var(--white);
+  margin-bottom: 4px;
+}
+.footer-brand .footer-logo-sub { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 1px; margin-bottom: 16px; }
+.footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
+.footer-col-title {
+  font-size: 11px; font-weight: 700; color: var(--white);
+  letter-spacing: 1.5px; margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,0.4);
+  transition: color var(--transition);
+}
+.footer-links a:hover { color: var(--teal); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 0; flex-wrap: wrap; gap: 12px;
+}
+.footer-copyright { font-size: 12px; color: rgba(255,255,255,0.25); }
+.footer-icp { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+/* ===== Back to Top ===== */
+#back-to-top {
+  position: fixed; bottom: 32px; right: 32px; z-index: 999;
+  width: 44px; height: 56px;
+  background: var(--teal); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; opacity: 0; pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition), background var(--transition);
+  box-shadow: 0 4px 16px rgba(0,201,167,0.3);
+}
+#back-to-top.show { opacity: 1; pointer-events: all; }
+#back-to-top:hover { background: var(--teal-dark); transform: translateY(-3px); }
+#back-to-top svg { width: 18px; height: 18px; color: var(--white); }
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+  .stats-labs { grid-template-columns: repeat(2, 1fr); }
+  .stats-achievements { grid-template-columns: repeat(2, 1fr); }
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .about-contact-inner { flex-direction: column; text-align: center; }
+  .about-contact-text p { margin: 0 auto; }
+  .about-contact-info { align-items: center; }
+}
+@media (max-width: 768px) {
+  .banner-title { font-size: 36px; letter-spacing: 2px; }
+  .banner-sub { font-size: 15px; }
+  .anchor-nav-inner { gap: 24px; }
+  .anchor-nav-inner a { font-size: 14px; }
+  .stats-labs { grid-template-columns: 1fr 1fr; }
+  .stats-achievements { grid-template-columns: 1fr 1fr; }
+  .cap-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .about-contact-inner { flex-direction: column; text-align: center; }
+  .stat-lab-num, .stat-ach-num { font-size: 36px; }
+  #about-banner { min-height: 50vh; }
+  .banner-title { font-size: 30px; letter-spacing: 2px; }
+  .section-heading h2 { font-size: 26px; }
+  .timeline-track { min-width: 800px; }
+}
+
+/* ===== HONOR & QUALIFICATION SECTION ===== */
+#honor-section {
+  padding: 80px 0 60px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F0F6FF 100%);
+}
+.honor-intro {
+  max-width: 800px;
+  margin: 0 auto 48px;
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.honor-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.honor-stat-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(37,99,235,0.06);
+}
+.honor-stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(37,99,235,0.14);
+}
+.honor-stat-num {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--deep-blue);
+  line-height: 1.2;
+}
+.honor-stat-num .unit {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--teal);
+  margin-left: 2px;
+}
+.honor-stat-label {
+  font-size: 14px;
+  color: var(--text-gray);
+  margin-top: 8px;
+}
+.honor-sub-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 24px;
+}
+.honor-sub-title .sub-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--teal);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.honor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.honor-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.honor-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+}
+.honor-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.honor-item-title .icon-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+}
+.honor-item ul {
+  list-style: none;
+  padding: 0;
+}
+.honor-item ul li {
+  font-size: 14px;
+  color: var(--text-gray);
+  line-height: 1.8;
+  padding-left: 16px;
+  position: relative;
+}
+.honor-item ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  background: #2563EB;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* Honor certificates gallery */
+.honor-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 60px;
+}
+.honor-cert-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(11,31,58,0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+  cursor: pointer;
+}
+.honor-cert-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(11,31,58,0.16);
+}
+.honor-cert-card img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+.honor-cert-info {
+  padding: 14px 16px;
+}
+.honor-cert-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--deep-blue);
+  line-height: 1.4;
+}
+.honor-cert-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 4px;
+}
+
+/* Patent banner */
+.patent-banner {
+  background: linear-gradient(135deg, #0B1F3A 0%, #1a3a6a 50%, #0d2d5e 100%);
+  border-radius: 20px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.patent-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(0,201,167,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.patent-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: 20%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.patent-banner-content {
+  position: relative;
+  z-index: 1;
+}
+.patent-banner h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.patent-banner p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  max-width: 700px;
+  margin-bottom: 32px;
+}
+.patent-images-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.patent-images-row img {
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transition: transform var(--transition);
+}
+.patent-images-row img:first-child {
+  max-width: 420px;
+}
+.patent-images-row img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== PRODUCTS SECTION ===== */
+#products-section {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #F0F6FF 0%, #FFFFFF 100%);
+}
+.products-intro {
+  max-width: 800px;
+  margin: 0 auto 48px;
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 15px;
+  line-height: 1.8;
+}
+.products-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.product-stat-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 22px 14px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+  transition: transform var(--transition), box-shadow var(--transition);
+  border: 1px solid rgba(37,99,235,0.06);
+}
+.product-stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(37,99,235,0.14);
+}
+.product-stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--deep-blue);
+  line-height: 1.2;
+}
+.product-stat-num .unit {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal);
+}
+.product-stat-label {
+  font-size: 12px;
+  color: var(--text-gray);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+.products-tagline {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 12px;
+  position: relative;
+}
+.products-tagline::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), #2563EB);
+  margin: 16px auto 0;
+  border-radius: 2px;
+}
+.products-logic {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.products-logic-tags {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+.logic-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(37,99,235,0.06);
+  border-radius: 24px;
+  font-size: 14px;
+  color: #2563EB;
+  font-weight: 500;
+}
+.logic-tag .arrow {
+  color: var(--teal);
+  font-weight: 700;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(11,31,58,0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(11,31,58,0.14);
+}
+.product-card-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  background: linear-gradient(135deg, #E8F0FE, #F0F6FF);
+}
+.product-card-body {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.product-card-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--deep-blue);
+  margin-bottom: 8px;
+}
+.product-card-type {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+.product-card-status {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.status-launched {
+  background: rgba(0,201,167,0.12);
+  color: #00A389;
+}
+.status-approved {
+  background: rgba(37,99,235,0.10);
+  color: #2563EB;
+}
+.product-card-partner {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,0.04);
+}
+.product-card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.product-tag {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(37,99,235,0.05);
+  color: #4A5568;
+}
+
+/* Placeholder image */
+.product-placeholder {
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #E8F0FE 0%, #F0F6FF 50%, #E0EFFF 100%);
+  color: #2563EB;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+/* Image lightbox */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  cursor: zoom-out;
+}
+.lightbox-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform: scale(0.9);
+  transition: transform 0.3s;
+}
+.lightbox-overlay.active img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  z-index: 10001;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.2s;
+}
+.lightbox-close:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .honor-stats { grid-template-columns: repeat(2, 1fr); }
+  .honor-grid { grid-template-columns: 1fr; }
+  .products-stats { grid-template-columns: repeat(3, 1fr); }
+  .patent-banner { padding: 32px 24px; }
+  .patent-images-row img { height: 160px; }
+  .patent-images-row img:first-child { max-width: 320px; }
+}
+@media (max-width: 768px) {
+  .honor-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .honor-stat-num { font-size: 28px; }
+  .honor-gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .products-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .product-stat-num { font-size: 22px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .patent-banner { padding: 24px 16px; }
+  .patent-banner h3 { font-size: 20px; }
+  .patent-images-row { flex-direction: column; }
+  .patent-images-row img { height: 160px; width: 100% !important; max-width: 100% !important; }
+  .products-logic-tags { gap: 10px; }
+  .logic-tag { font-size: 12px; padding: 6px 14px; }
+}
+
+</style>
+<link rel="stylesheet" href="nav.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="权生医药 Quansheng Pharm">
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html">首页</a></li>
+      <li><a href="about.html" class="active">公司介绍</a></li>
+      <li><a href="research-service.html">科研服务平台</a></li>
+      <li><a href="kits.html">预制包/技术包</a></li>
+      <li><a href="index.html#pipeline">新药管线</a></li>
+      <li><a href="medaes.html">医美转化</a></li>
+      <li><a href="index.html#cooperation">合作与投资</a></li>
+      <li><a href="index.html#contact" class="nav-cta">联系我们</a></li>
+    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">首页</a>
+    <a href="about.html" class="active">公司介绍</a>
+    <a href="research-service.html">科研服务平台</a>
+    <a href="kits.html">预制包/技术包</a>
+    <a href="index.html#pipeline">新药管线</a>
+    <a href="medaes.html">医美转化</a>
+    <a href="index.html#cooperation">合作与投资</a>
+    <a href="index.html#contact">联系我们</a>
+  </div>
+</nav>
+
+<!-- ===== BANNER ===== -->
+<section id="about-banner">
+  <div class="banner-inner fade-in">
+    <h1 class="banner-title">公司介绍</h1>
+    <p class="banner-sub">以全生物活性物质开发体系为核心的生物医药转化平台</p>
+  </div>
+</section>
+
+<!-- ===== ANCHOR NAV ===== -->
+<div id="anchor-nav">
+  <div class="container">
+    <div class="anchor-nav-inner">
+      <a href="#overview">公司概览</a>
+      <a href="#honor-section">荣誉资质</a>
+      <a href="#products-section">转化成果</a>
+      <a href="#stats-section">发展历程</a>
+      <a href="#capabilities">平台能力</a>
+      <a href="#about-contact">联系我们</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPANY OVERVIEW ===== -->
+<section id="overview">
+  <div class="container">
+    <div class="section-heading fade-in">
+      <div class="heading-line"></div>
+      <h2>公司概览</h2>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-text fade-in fade-in-delay-1">
+        <p>权生医药科技是一家专注于生物医药研发服务与创新转化的技术型企业，围绕生命科学研究与生物医药开发需求，提供覆盖"课题设计—技术实施—数据分析—成果产出—产品开发"的一体化解决方案。公司业务涵盖生物信息学深度分析、多组学检测与挖掘、分子与细胞实验、动物实验、项目申报支持、论文辅导及生物医药产品开发等多个方向。</p>
+        <p>与传统单点式科研服务不同，权生医药科技更强调以科研问题为导向，为客户提供定制化、系统化服务。针对客户提出的疾病方向、机制假说或产品开发需求，公司可结合公共数据库挖掘、生信分析、实验验证及转化开发思路，协助客户完成从科学问题发现到研究成果落地的全过程。</p>
+        <p>同时，公司也持续布局基于生物活性材料的创新产品开发，涉及医美、医疗器械、科研试剂盒、细胞器衍生物新药开发等领域，致力于打造兼具科研服务能力与创新孵化能力的复合型生物医药科技平台。</p>
+      </div>
+      <div class="overview-visual fade-in fade-in-delay-2">
+        <img src="images/about-overview-img.png" alt="权生医药">
+        <div class="overview-tags">
+          <div class="overview-tag">
+            <div class="overview-tag-dot"></div>
+            科研服务
+          </div>
+          <div class="overview-tag">
+            <div class="overview-tag-dot"></div>
+            技术转化
+          </div>
+          <div class="overview-tag">
+            <div class="overview-tag-dot"></div>
+            创新孵化
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HONOR & QUALIFICATION ===== -->
+<section id="honor-section">
+  <div class="container">
+    <div class="section-heading fade-in">
+      <div class="heading-line"></div>
+      <h2>荣誉资质与知识产权</h2>
+      <p style="color:var(--text-light);font-size:14px;margin-top:6px;font-family:var(--font-en);letter-spacing:1px;">Honor, Qualification &amp; Intellectual Property</p>
+    </div>
+
+    <p class="honor-intro fade-in fade-in-delay-1">权生医药持续推进科研创新、技术转化与知识产权布局，已形成企业资质认定、创新创业奖项、专利成果、科研项目和论文成果等多维度成果体系，为公司后续技术产品化和创新药管线转化奠定了坚实基础。</p>
+
+    <!-- Stats cards -->
+    <div class="honor-stats fade-in fade-in-delay-2">
+      <div class="honor-stat-card">
+        <div class="honor-stat-num">25<span class="unit">项</span></div>
+        <div class="honor-stat-label">专利成果</div>
+      </div>
+      <div class="honor-stat-card">
+        <div class="honor-stat-num">8<span class="unit">项</span></div>
+        <div class="honor-stat-label">国家自然科学基金</div>
+      </div>
+      <div class="honor-stat-card">
+        <div class="honor-stat-num">200<span class="unit">+</span></div>
+        <div class="honor-stat-label">国际期刊论文</div>
+      </div>
+      <div class="honor-stat-card">
+        <div class="honor-stat-num">多项</div>
+        <div class="honor-stat-label">技术转化项目</div>
+      </div>
+    </div>
+
+    <!-- Four blocks grid -->
+    <div class="honor-grid fade-in">
+      <div class="honor-item">
+        <div class="honor-item-title"><span class="icon-dot"></span>企业资质</div>
+        <ul>
+          <li>国家高新技术企业</li>
+          <li>重庆市科技型企业</li>
+        </ul>
+      </div>
+      <div class="honor-item">
+        <div class="honor-item-title"><span class="icon-dot"></span>创新创业荣誉</div>
+        <ul>
+          <li>2023年"创青春"川渝青年创新创业大赛科技创新类创新组三等奖</li>
+          <li>2022年巴南区第九届"渝创渝新"创业大赛三等奖</li>
+          <li>中国创翼 / 渝创渝新创业创新大赛相关荣誉</li>
+        </ul>
+      </div>
+      <div class="honor-item">
+        <div class="honor-item-title"><span class="icon-dot"></span>知识产权布局</div>
+        <ul>
+          <li>25项实用新型专利</li>
+          <li>已形成多项技术专利储备</li>
+          <li>围绕生物活性物质、纳米递送、线粒体技术、医美转化等方向持续布局</li>
+        </ul>
+      </div>
+      <div class="honor-item">
+        <div class="honor-item-title"><span class="icon-dot"></span>科研成果</div>
+        <ul>
+          <li>8项国家自然科学基金</li>
+          <li>200+篇国际期刊论文</li>
+          <li>多项横向课题与成果转化项目</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Certificates gallery -->
+    <div class="honor-sub-title"><span class="sub-dot"></span>荣誉证书展示</div>
+    <div class="honor-gallery fade-in">
+      <div class="honor-cert-card" onclick="openLightbox(this)">
+        <img src="images/cert-trophy.png" alt="国家高新技术企业证书" loading="lazy">
+        <div class="honor-cert-info">
+          <div class="honor-cert-name">国家高新技术企业</div>
+          <div class="honor-cert-desc">高新技术企业认定证书</div>
+        </div>
+      </div>
+      <div class="honor-cert-card" onclick="openLightbox(this)">
+        <img src="images/cert-tech-company-new.png" alt="重庆市科技型企业备案证书" loading="lazy">
+        <div class="honor-cert-info">
+          <div class="honor-cert-name">重庆市科技型企业</div>
+          <div class="honor-cert-desc">重庆市科技型企业备案证书</div>
+        </div>
+      </div>
+      <div class="honor-cert-card" onclick="openLightbox(this)">
+        <img src="images/cert-high-tech-enterprise.png" alt="创青春创新创业大赛三等奖奖杯" loading="lazy">
+        <div class="honor-cert-info">
+          <div class="honor-cert-name">创青春创新创业大赛三等奖</div>
+          <div class="honor-cert-desc">2023年"创青春"川渝青年创新创业大赛科技创新类创新组三等奖</div>
+        </div>
+      </div>
+      <div class="honor-cert-card" onclick="openLightbox(this)">
+        <img src="images/cert-innovation-award1.png" alt="渝创渝新创业大赛三等奖奖杯" loading="lazy">
+        <div class="honor-cert-info">
+          <div class="honor-cert-name">渝创渝新创业大赛三等奖</div>
+          <div class="honor-cert-desc">2022年巴南区第九届"渝创渝新"创业大赛三等奖</div>
+        </div>
+      </div>
+      <div class="honor-cert-card" onclick="openLightbox(this)">
+        <img src="images/cert-tech-company.png" alt="创业创新大赛三等奖证书" loading="lazy">
+        <div class="honor-cert-info">
+          <div class="honor-cert-name">创业创新大赛证书</div>
+          <div class="honor-cert-desc">第六届"中国创翼"创业创新大赛重庆市选拔赛暨第八届"渝创渝新"创业创新大赛三等奖</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Patent banner -->
+    <div class="patent-banner fade-in">
+      <div class="patent-banner-content">
+        <h3>持续完善的知识产权布局</h3>
+        <p>公司围绕生物活性物质开发、纳米递送系统、线粒体研究、医美功效产品转化等方向持续推进知识产权布局，逐步形成支撑技术产品化与新药管线转化的专利保护体系。</p>
+        <div class="patent-images-row" style="justify-content:center;">
+          <img src="images/patents-stacked.png" alt="专利证书堆叠展示" loading="lazy" onclick="openLightbox(this)" style="cursor:zoom-in;max-width:560px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS & TRANSLATION ===== -->
+<section id="products-section">
+  <div class="container">
+    <div class="section-heading fade-in">
+      <div class="heading-line"></div>
+      <h2>已开发产品与转化成果</h2>
+      <p style="color:var(--text-light);font-size:14px;margin-top:6px;font-family:var(--font-en);letter-spacing:1px;">Developed Products &amp; Translation Achievements</p>
+    </div>
+
+    <p class="products-intro fade-in fade-in-delay-1">权生医药依托生物活性物质开发、纳米递送、细胞衍生物应用和功效产品转化等技术基础，已完成医疗器械、护肤品、功能性食品等多类产品开发，并通过横向项目、技术合作与专利转让等方式实现成果转化，逐步形成"科研服务—技术产品—商业转化"的闭环体系。</p>
+
+    <!-- Stats cards -->
+    <div class="products-stats fade-in fade-in-delay-2">
+      <div class="product-stat-card">
+        <div class="product-stat-num">1471<span class="unit">万元</span></div>
+        <div class="product-stat-label">横向项目和专利转让费用</div>
+      </div>
+      <div class="product-stat-card">
+        <div class="product-stat-num">3<span class="unit">项</span></div>
+        <div class="product-stat-label">已成功研发产品类型</div>
+      </div>
+      <div class="product-stat-card">
+        <div class="product-stat-num">1<span class="unit">项</span></div>
+        <div class="product-stat-label">I类医疗器械已上市</div>
+      </div>
+      <div class="product-stat-card">
+        <div class="product-stat-num">3<span class="unit">款</span></div>
+        <div class="product-stat-label">护肤品/功能产品转化</div>
+      </div>
+      <div class="product-stat-card">
+        <div class="product-stat-num">1<span class="unit">项</span></div>
+        <div class="product-stat-label">功能性食品上市销售</div>
+      </div>
+    </div>
+
+    <!-- Tagline -->
+    <div class="products-tagline fade-in">技术不止于实验室，更服务于产品转化与商业落地。</div>
+
+    <!-- Translation logic -->
+    <div class="products-logic fade-in">
+      <div class="products-logic-tags">
+        <span class="logic-tag">科研技术 <span class="arrow">&rarr;</span> 产品落地</span>
+        <span class="logic-tag">技术服务 <span class="arrow">&rarr;</span> 商业转化</span>
+        <span class="logic-tag">实验室研发 <span class="arrow">&rarr;</span> 上市销售</span>
+      </div>
+    </div>
+
+    <!-- Product cards -->
+    <div class="products-grid fade-in">
+      <div class="product-card">
+        <img class="product-card-img" src="images/product-baiwuyu-peptide.png" alt="DC-T细胞培养基" loading="lazy">
+        <div class="product-card-body">
+          <div class="product-card-name">DC-T细胞培养基</div>
+          <div class="product-card-type">I类医疗器械</div>
+          <span class="product-card-status status-launched">已上市</span>
+          <div class="product-card-tags">
+            <span class="product-tag">医疗器械</span>
+            <span class="product-tag">细胞培养</span>
+            <span class="product-tag">已上市</span>
+          </div>
+          <div class="product-card-partner">合作单位：重庆福美干细胞</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img class="product-card-img" src="images/product-dc-t-cell.png" alt="RSK纳米脐带精华液" loading="lazy">
+        <div class="product-card-body">
+          <div class="product-card-name">RSK纳米脐带精华液</div>
+          <div class="product-card-type">护肤品</div>
+          <span class="product-card-status status-approved">获得化妆品批文</span>
+          <div class="product-card-tags">
+            <span class="product-tag">护肤品</span>
+            <span class="product-tag">纳米技术</span>
+            <span class="product-tag">已获批文</span>
+          </div>
+          <div class="product-card-partner">合作单位：重庆福美干细胞</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img class="product-card-img" src="images/product-pingmaiyin.png" alt="丸美小金针高透皮精华" loading="lazy">
+        <div class="product-card-body">
+          <div class="product-card-name">丸美小金针高透皮精华</div>
+          <div class="product-card-type">护肤品</div>
+          <span class="product-card-status status-launched">上市销售</span>
+          <div class="product-card-tags">
+            <span class="product-tag">高透皮技术</span>
+            <span class="product-tag">功效护肤</span>
+            <span class="product-tag">上市销售</span>
+          </div>
+          <div class="product-card-partner">合作单位：广州丸美生物</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img class="product-card-img" src="images/product-rsk-nano-umbilical.png" alt="白乌鱼鱼肉蛋白小分子活性肽" loading="lazy">
+        <div class="product-card-body">
+          <div class="product-card-name">白乌鱼鱼肉蛋白小分子活性肽</div>
+          <div class="product-card-type">功能性食品</div>
+          <span class="product-card-status status-launched">上市销售</span>
+          <div class="product-card-tags">
+            <span class="product-tag">活性肽</span>
+            <span class="product-tag">功能食品</span>
+            <span class="product-tag">上市销售</span>
+          </div>
+          <div class="product-card-partner">合作单位：内江市中区人民政府</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img class="product-card-img" src="images/product-marubi-jin-zhen.png" alt="平脉饮" loading="lazy">
+        <div class="product-card-body">
+          <div class="product-card-name">平脉饮</div>
+          <div class="product-card-type">功能性食品</div>
+          <span class="product-card-status status-launched">上市销售</span>
+          <div class="product-card-tags">
+            <span class="product-tag">功能食品</span>
+            <span class="product-tag">大健康产品</span>
+            <span class="product-tag">上市销售</span>
+          </div>
+          <div class="product-card-partner">合作单位：重庆精合康诚有限公司</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox overlay -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- ===== STATS SECTION ===== -->
+<section id="stats-section">
+  <div class="container">
+    <div class="section-heading fade-in">
+      <div class="heading-line"></div>
+      <h2>场地与实力</h2>
+    </div>
+
+    <div class="stats-sub-title fade-in"><div class="sub-line"></div>实验场地</div>
+    <div class="stats-labs">
+      <div class="stat-lab-card fade-in fade-in-delay-1">
+        <div class="stat-lab-num">700<span class="unit">㎡</span></div>
+        <div class="stat-lab-label">重庆本部</div>
+      </div>
+      <div class="stat-lab-card fade-in fade-in-delay-2">
+        <div class="stat-lab-num">7000<span class="unit">㎡</span></div>
+        <div class="stat-lab-label">常州联合实验室</div>
+      </div>
+      <div class="stat-lab-card fade-in fade-in-delay-3">
+        <div class="stat-lab-num">1200<span class="unit">㎡</span></div>
+        <div class="stat-lab-label">西安联合实验室</div>
+      </div>
+      <div class="stat-lab-card fade-in fade-in-delay-4">
+        <div class="stat-lab-num">1600<span class="unit">㎡</span></div>
+        <div class="stat-lab-label">南充联合实验室</div>
+      </div>
+      <div class="stat-lab-card fade-in fade-in-delay-5">
+        <div class="stat-lab-num">2000<span class="unit">㎡</span></div>
+        <div class="stat-lab-label">重庆联合实验室</div>
+      </div>
+      <div class="stat-lab-card fade-in fade-in-delay-6">
+        <div class="stat-lab-num">1200<span class="unit">㎡</span></div>
+        <div class="stat-lab-label">昆明联合实验室</div>
+      </div>
+    </div>
+
+    <div class="stats-sub-title fade-in" style="margin-top:40px;"><div class="sub-line"></div>科研实力</div>
+    <div class="stats-achievements">
+      <div class="stat-ach-card fade-in fade-in-delay-1">
+        <div class="stat-ach-num">25<span class="unit">项</span></div>
+        <div class="stat-ach-label">实用新型专利</div>
+      </div>
+      <div class="stat-ach-card fade-in fade-in-delay-2">
+        <div class="stat-ach-num">3<span class="unit">项</span></div>
+        <div class="stat-ach-label">创新创业奖</div>
+      </div>
+      <div class="stat-ach-card fade-in fade-in-delay-3">
+        <div class="stat-ach-num">8<span class="unit">项</span></div>
+        <div class="stat-ach-label">国家自然基金</div>
+      </div>
+      <div class="stat-ach-card fade-in fade-in-delay-4">
+        <div class="stat-ach-num">200<span class="suffix">+</span><span class="unit">篇</span></div>
+        <div class="stat-ach-label">国际期刊论文</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section id="timeline">
+  <div class="container">
+    <div class="section-heading fade-in">
+      <div class="heading-line"></div>
+      <h2>发展历程</h2>
+    </div>
+    <div class="timeline-wrap fade-in fade-in-delay-1">
+      <div class="timeline-track">
+        <div class="timeline-line"></div>
+        <div class="timeline-node">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p>公司成立，确立生物医药研发服务与创新转化方向</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p>创新药管线推进，口服递送与线粒体治疗平台取得突破</p>
+          </div>
+        </div>
+        <div class="timeline-node">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <p>全生物活性物质开发体系完善，科研服务与创新孵化双轮驱动</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLATFORM CAPABILITIES ===== -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-heading fade-in">
+      <div class="heading-line"></div>
+      <h2>平台能力</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card fade-in fade-in-delay-1">
+        <div class="cap-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <path d="M8 4 C8 4, 12 8, 12 15 C12 22, 8 26, 8 26"/>
+            <path d="M22 4 C22 4, 18 8, 18 15 C18 22, 22 26, 22 26"/>
+            <line x1="9" y1="9" x2="21" y2="9" stroke-dasharray="2 2"/>
+            <line x1="10" y1="15" x2="20" y2="15"/>
+            <line x1="9" y1="21" x2="21" y2="21" stroke-dasharray="2 2"/>
+            <circle cx="8" cy="4" r="2" fill="#00C9A7"/>
+            <circle cx="22" cy="26" r="2" fill="#00C9A7"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">全生物活性物质开发体系</h3>
+        <p class="cap-desc">围绕天然与工程化生物活性物质，构建从发现、表征、优化到转化的全链条开发体系</p>
+      </div>
+      <div class="cap-card fade-in fade-in-delay-2">
+        <div class="cap-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <rect x="3" y="3" width="10" height="10" rx="1"/>
+            <rect x="17" y="3" width="10" height="10" rx="1"/>
+            <rect x="3" y="17" width="10" height="10" rx="1"/>
+            <rect x="17" y="17" width="10" height="10" rx="1"/>
+            <circle cx="8" cy="8" r="2" fill="#00C9A7" opacity="0.6"/>
+            <circle cx="22" cy="8" r="2" fill="#00C9A7" opacity="0.6"/>
+            <circle cx="8" cy="22" r="2" fill="#00C9A7" opacity="0.6"/>
+            <path d="M20 22 L24 22 M22 20 L22 24"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">多组学检测与生信分析</h3>
+        <p class="cap-desc">整合转录组、蛋白组、代谢组等多维度组学数据，深度挖掘生物标志物与功能机制</p>
+      </div>
+      <div class="cap-card fade-in fade-in-delay-3">
+        <div class="cap-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="15" cy="15" r="10"/>
+            <circle cx="15" cy="15" r="5"/>
+            <circle cx="15" cy="15" r="2" fill="#00C9A7"/>
+            <path d="M15 5 L15 10"/>
+            <path d="M15 20 L15 25"/>
+            <path d="M5 15 L10 15"/>
+            <path d="M20 15 L25 15"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">分子与细胞实验平台</h3>
+        <p class="cap-desc">标准化分子生物学与细胞功能实验体系，支撑从基因调控到表型验证的全流程研究</p>
+      </div>
+      <div class="cap-card fade-in fade-in-delay-4">
+        <div class="cap-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <ellipse cx="15" cy="12" rx="10" ry="7"/>
+            <path d="M5 12 C5 16, 8 22, 15 22 C22 22, 25 16, 25 12"/>
+            <path d="M10 22 L10 26 M20 22 L20 26"/>
+            <line x1="8" y1="26" x2="22" y2="26"/>
+            <circle cx="12" cy="11" r="1.5" fill="#00C9A7" opacity="0.7"/>
+            <circle cx="18" cy="11" r="1.5" fill="#00C9A7" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">动物实验与病理研究</h3>
+        <p class="cap-desc">SPF级动物实验平台，涵盖疾病模型构建、药效评价与病理分析等核心服务能力</p>
+      </div>
+      <div class="cap-card fade-in fade-in-delay-5">
+        <div class="cap-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <path d="M6 24 L6 6 L24 6"/>
+            <path d="M6 20 L10 14 L14 18 L18 10 L24 6"/>
+            <circle cx="10" cy="14" r="1.5" fill="#00C9A7"/>
+            <circle cx="14" cy="18" r="1.5" fill="#00C9A7"/>
+            <circle cx="18" cy="10" r="1.5" fill="#00C9A7"/>
+            <path d="M18 18 L22 22 M22 18 L18 22" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">创新药转化开发</h3>
+        <p class="cap-desc">从靶点发现到临床前研究的创新药全流程开发能力，覆盖多肽、线粒体治疗等前沿方向</p>
+      </div>
+      <div class="cap-card fade-in fade-in-delay-6">
+        <div class="cap-icon">
+          <svg viewBox="0 0 30 30" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+            <path d="M15 3 C15 3, 7 8, 7 15 C7 20, 10 24, 15 24 C20 24, 23 20, 23 15 C23 8, 15 3, 15 3Z"/>
+            <path d="M11 15 C11 17, 12 19, 15 19"/>
+            <circle cx="15" cy="11" r="2" fill="#00C9A7" opacity="0.6"/>
+            <path d="M26 8 L26 12 M24 10 L28 10" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3 class="cap-title">医美产品孵化</h3>
+        <p class="cap-desc">基于高透皮递送技术与生物活性材料，开发功效性医美原料与配方解决方案</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="about-contact">
+  <div class="container">
+    <div class="about-contact-inner fade-in">
+      <div class="about-contact-text">
+        <h2>联系我们</h2>
+        <p>无论您是寻求科研合作、商业合作还是投资洽谈，我们期待与您进一步交流</p>
+      </div>
+      <div class="about-contact-info">
+        <div class="about-contact-item">
+          <div class="about-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+              <path d="M9 1 C6 1, 3.5 3.5, 3.5 6.5 C3.5 10.5, 9 17, 9 17 C9 17, 14.5 10.5, 14.5 6.5 C14.5 3.5, 12 1, 9 1 Z"/>
+              <circle cx="9" cy="6.5" r="2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="about-contact-label">公司地址</div>
+            <div class="about-contact-value">重庆市沙坪坝区生命科技大厦2902</div>
+          </div>
+        </div>
+        <div class="about-contact-item">
+          <div class="about-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+              <path d="M3 3 L6.5 3 L8 7 L6 8.5 C7 10.5, 8.5 12, 10.5 13 L12 11 L16 12.5 L16 16 C16 16, 13 17, 9 14 C5 11, 2 7, 3 3 Z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="about-contact-label">联系电话</div>
+            <div class="about-contact-value">（待补充）</div>
+          </div>
+        </div>
+        <div class="about-contact-item">
+          <div class="about-contact-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#00C9A7" stroke-width="1.8" stroke-linecap="round">
+              <rect x="2" y="4" width="14" height="10" rx="2"/>
+              <path d="M2 6 L9 11 L16 6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="about-contact-label">电子邮箱</div>
+            <div class="about-contact-value">contact@quansheng-pharma.com</div>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#contact" class="btn-contact-cta">
+        联系我们
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo-text">重庆权生医药科技有限公司</div>
+        <div class="footer-logo-sub">QUANSHENG PHARMA</div>
+        <p class="footer-brand-desc">以全生物活性物质开发体系为核心的生物医药转化平台，专注科研服务、技术转化与创新孵化。</p>
+      </div>
+      <div>
+        <div class="footer-col-title">科研服务平台</div>
+        <ul class="footer-links">
+          <li><a href="research-service.html#rs-omics">组学检测平台</a></li>
+          <li><a href="research-service.html#rs-bioinfo">生物信息学分析</a></li>
+          <li><a href="research-service.html#rs-cell">细胞分子实验</a></li>
+          <li><a href="research-service.html#rs-animal">动物实验平台</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">业务板块</div>
+        <ul class="footer-links">
+          <li><a href="kits.html">预制包/技术包</a></li>
+          <li><a href="index.html#pipeline">新药管线</a></li>
+          <li><a href="research-service.html">科研服务平台</a></li>
+          <li><a href="medaes.html">医美转化</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">联系</div>
+        <ul class="footer-links">
+          <li><a href="index.html#cooperation">合作与投资</a></li>
+          <li><a href="index.html#contact">联系我们</a></li>
+          <li><a href="mailto:contact@quansheng-pharma.com">contact@quansheng-pharma.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copyright">&copy; 2026 重庆权生医药科技有限公司. All rights reserved.</div>
+      <div class="footer-icp">渝ICP备XXXXXXXX号</div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<div id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+    <path d="M9 14 L9 4 M5 8 L9 4 L13 8"/>
+  </svg>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+/* ===== Navbar scroll behavior ===== */
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('nav-hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  // back to top
+  const btt = document.getElementById('back-to-top');
+  if (window.scrollY > 400) {
+    btt.classList.add('show');
+  } else {
+    btt.classList.remove('show');
+  }
+});
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+/* ===== Intersection Observer for animations ===== */
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+fadeEls.forEach(el => observer.observe(el));
+
+/* ===== Anchor nav active state on scroll ===== */
+const anchorLinks = document.querySelectorAll('.anchor-nav-inner a');
+const sections = [];
+anchorLinks.forEach(link => {
+  const id = link.getAttribute('href').substring(1);
+  const section = document.getElementById(id);
+  if (section) sections.push({ id, el: section, link });
+});
+
+function updateActiveAnchor() {
+  const scrollY = window.scrollY + 200;
+  let current = sections[0];
+  for (const s of sections) {
+    if (s.el.offsetTop <= scrollY) current = s;
+  }
+  anchorLinks.forEach(l => l.classList.remove('active'));
+  if (current) current.link.classList.add('active');
+}
+window.addEventListener('scroll', updateActiveAnchor);
+updateActiveAnchor();
+
+/* ===== Smooth anchor scroll with offset ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 120;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+
+/* ===== Lightbox for certificate images ===== */
+function openLightbox(el) {
+  var img = el.querySelector('img') || el;
+  var src = img.getAttribute('src');
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  lbImg.src = src;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  var lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+</script>
+</body>
+</html>
